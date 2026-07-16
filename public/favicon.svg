@@ -1,10 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="A2 Commercial Fit Out">
   <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="fav-silver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f3f5f7"/>
+      <stop offset="55%" stop-color="#c6ccd3"/>
+      <stop offset="100%" stop-color="#8b929b"/>
+    </linearGradient>
+    <linearGradient id="fav-blue" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#57a0ec"/>
-      <stop offset="100%" stop-color="#2f7dd1"/>
+      <stop offset="100%" stop-color="#1c4f8a"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="10" fill="#0b0d10"/>
-  <text x="32" y="42" font-family="system-ui, Arial, sans-serif" font-weight="700" font-size="28" fill="url(#g)" text-anchor="middle">A2</text>
+  <rect width="64" height="64" rx="12" fill="#0b0d10"/>
+  <text x="10" y="45" font-family="system-ui, Arial, sans-serif" font-weight="900" font-size="34" fill="url(#fav-silver)">A</text>
+  <text x="33" y="45" font-family="system-ui, Arial, sans-serif" font-weight="900" font-size="34" fill="url(#fav-blue)">2</text>
 </svg>
