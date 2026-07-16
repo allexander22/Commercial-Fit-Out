@@ -14,10 +14,15 @@ interface Props {
 }
 const { title, description, image, type, noindex, canonicalPath } = Astro.props;
 
+// Astro/Vite's dev server injects CSS and dev-toolbar bootstrapping as
+// inline/dynamically-created <style>/<script> tags for HMR, which a strict
+// CSP blocks outright (the production build in dist/ only ever emits
+// external <link>/<script src> files, so the strict policy applies there
+// unchanged). Loosen script-src/style-src only for `astro dev`.
 const csp = [
   "default-src 'self'",
-  "script-src 'self'",
-  "style-src 'self'",
+  import.meta.env.DEV ? "script-src 'self' 'unsafe-inline'" : "script-src 'self'",
+  import.meta.env.DEV ? "style-src 'self' 'unsafe-inline'" : "style-src 'self'",
   "img-src 'self' data:",
   "font-src 'self'",
   "object-src 'none'",
