@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SERVICE_LINKS, LOCATION_LINKS } from '../consts';
+import { SERVICE_LINKS } from '../consts';
 ---
 <BaseLayout
   title="Page Not Found | A2 Commercial Fit Out"
-  description="The page you're looking for can't be found. Explore our commercial fit out services, sectors and locations instead."
+  description="The page you're looking for can't be found. Explore our commercial fit out services and sectors instead."
   noindex={true}
   canonicalPath="/404.html"
 >
@@ -17,12 +17,6 @@ import { SERVICE_LINKS, LOCATION_LINKS } from '../consts';
       <ul>
         {SERVICE_LINKS.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
         <li><a href="/services/">All services</a></li>
-      </ul>
-
-      <h2>Locations</h2>
-      <ul>
-        {LOCATION_LINKS.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
-        <li><a href="/locations/">All locations</a></li>
       </ul>
 
       <h2>More</h2>

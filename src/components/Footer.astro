@@ -2,7 +2,7 @@
 import Logo from './Logo.astro';
 import AccreditationBadges from './AccreditationBadges.astro';
 import LocalBusinessSchema from './schema/LocalBusiness.astro';
-import { SITE_NAME_FULL, EMAIL, PHONE, ADDRESS_LOCALITY, ADDRESS_REGION, SERVICE_LINKS, LOCATION_LINKS } from '../consts';
+import { SITE_NAME_FULL, EMAIL, PHONE, ADDRESS_LOCALITY, ADDRESS_REGION, SERVICE_LINKS } from '../consts';
 
 const year = new Date().getFullYear();
 ---
@@ -19,14 +19,6 @@ const year = new Date().getFullYear();
       <ul>
         {SERVICE_LINKS.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
         <li><a href="/services/">All services</a></li>
-      </ul>
-    </nav>
-
-    <nav class="footer-col" aria-label="Locations">
-      <h2>Locations</h2>
-      <ul>
-        {LOCATION_LINKS.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
-        <li><a href="/locations/">All locations</a></li>
       </ul>
     </nav>
 

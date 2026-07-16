@@ -22,7 +22,6 @@ export const NAV_LINKS = [
   { href: '/services/', label: 'Services' },
   { href: '/sectors/', label: 'Sectors' },
   { href: '/commercial-fit-out-costs/', label: 'Costs' },
-  { href: '/locations/', label: 'Locations' },
   { href: '/projects/', label: 'Projects' },
   { href: '/insights/', label: 'Insights' },
   { href: '/about/', label: 'About' },
@@ -36,9 +35,5 @@ export const SERVICE_LINKS = [
   { href: '/services/healthcare-fit-out/', label: 'Healthcare Fit Out' },
 ];
 
-export const LOCATION_LINKS = [
-  { href: '/locations/london/', label: 'London' },
-  { href: '/locations/kent/', label: 'Kent' },
-  { href: '/locations/maidstone/', label: 'Maidstone' },
-  { href: '/locations/essex/', label: 'Essex' },
-];
+// Location pages are temporarily removed from the site (see LOCATION_LINKS
+// history in git) — LOCATION_LINKS is unused while they're disabled.
