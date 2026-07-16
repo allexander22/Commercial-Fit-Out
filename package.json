@@ -1,0 +1,18 @@
+{
+  "name": "commercialfitout-co-uk",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A2 Commercial Fit Out LTD - marketing website (Astro static site)",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.4.1",
+    "astro": "^5.12.0",
+    "sharp": "^0.34.2"
+  }
+}
