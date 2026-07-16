@@ -39,7 +39,9 @@ URLs are flat, lowercase, hyphenated, with trailing slashes; canonical = `https:
 | Office Fit Out | `/services/office-fit-out/` | office fitout, office fit out companies, office fit out contractors |
 | Office Refurbishment | `/services/office-refurbishment/` | office refurbishment companies/contractors, commercial office refurbishment |
 | Retail Fit Out | `/services/retail-fit-out/` | retail fit out companies/contractors, shop fitout |
-| Healthcare Fit Out | `/services/healthcare-fit-out/` | healthcare fit out (sector credibility page) |
+| Healthcare Fit Out | `/services/healthcare-fit-out/` | healthcare fit out (sector credibility page); also covers hospital fit out/refurbishment search intent |
+| Landlord Refurbishment | `/services/landlord-refurbishment/` | landlord refurbishment, Cat A/Cat B refurbishment |
+| Higher Education Fit Out | `/services/higher-education-fit-out/` | education fit out, higher education refurbishment |
 | Services hub | `/services/` | fit out company, fit out contractor, commercial fit out services |
 | Sectors hub | `/sectors/` | interior fit out companies/contractors |
 | Sector pages ×5 | `/sectors/industrial/`, `/sectors/pubs-and-bars/`, `/sectors/turnkey/`, `/sectors/bespoke-joinery-fit-out/`, `/sectors/shops/` | industrial fit out (+contractors), pub/bar fit out companies, turnkey fit out, bespoke fit out, shop fitout |
@@ -53,7 +55,9 @@ URLs are flat, lowercase, hyphenated, with trailing slashes; canonical = `https:
 | Insights hub + 2 launch articles | `/insights/`, `/insights/<slug>/` | informational queries (e.g. "fit out costs per square foot explained", "cat a vs cat b fit out") |
 | Privacy, 404 | `/privacy-policy/`, `/404.html` | — |
 
-≈ 25 pages at launch. Case studies use realistic but clearly-marked placeholder data (type, location, sq ft, duration, outcome) awaiting the real 3–5 selected projects and photos.
+≈ 26 pages at launch. Case studies use realistic but clearly-marked placeholder data (type, location, sq ft, duration, outcome) awaiting the real 3–5 selected projects and photos.
+
+Note: the Landlord Refurbishment and Higher Education Fit Out pages were added after the initial build from separately supplied, ready-to-use marketing copy, rather than from the original May 2025–Apr 2026 keyword research — they extend the site map beyond the keywords documented above but follow the same content rules and page pattern as the rest of the services section.
 
 ## Project Structure
 

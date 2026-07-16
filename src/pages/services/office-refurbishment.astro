@@ -9,26 +9,30 @@ import officeRefurbImg from '../../assets/images/office-refurbishment.jpg';
 
 const faqs = [
   {
-    question: 'What\'s the difference between office refurbishment and office fit out?',
-    answer: 'Refurbishment generally means upgrading or reconfiguring an existing, already-fitted-out office, while fit out covers building a space out from a bare or Cat A shell. In practice many projects involve a mix of both, and we quote them the same way — as a single fixed-price scope.',
+    question: 'What\'s the difference between an office fit out and an office refurbishment?',
+    answer: 'A fit out typically applies to an empty or shell space being fitted out for the first time, while a refurbishment updates or reconfigures an existing, already-fitted space. Many projects blend both, and A2 delivers either under the same fixed-price, in-house model, so you only ever deal with one accountable team.',
   },
   {
-    question: 'Can refurbishment work happen while staff are still in the building?',
-    answer: 'Yes — most of our office refurbishment projects run around a live, occupied office. We phase the work and use out-of-hours and weekend working to keep disruption to your team to a minimum.',
+    question: 'Can you refurbish an office while it\'s still occupied?',
+    answer: 'Yes. Out-of-hours and phased working are how we handle most occupied refurbishments, scheduling disruptive works for evenings, weekends, or agreed downtime. This approach lets your team keep working normally throughout the project, with noisy or dusty tasks planned around your business hours rather than during them.',
   },
   {
-    question: 'Do you handle both minor updates and full refurbishments?',
-    answer: 'Yes, from refreshing finishes and reconfiguring a handful of rooms to a full strip-out and rebuild of an existing office — there\'s no minimum project size.',
+    question: 'How much does an office refurbishment cost?',
+    answer: 'Cost depends on the scope, the condition of the existing space, and how much M&E or structural work is involved. We provide a fixed-price quote after a site survey, so the number you agree to is the number you pay, regardless of what we uncover once work gets underway.',
   },
   {
-    question: 'Will the quote change once work starts?',
-    answer: 'No — every refurbishment is quoted at a fixed price for the agreed scope before we mobilise, so you have cost certainty from the outset.',
+    question: 'How long does an office refurbishment take?',
+    answer: 'Smaller refurbishments can be completed in a matter of weeks; larger or phased projects take longer. Our in-house trades and out-of-hours capability are built to keep programmes as short as the scope allows, and we\'ll give you a realistic timeline before you commit to anything, not an optimistic guess.',
+  },
+  {
+    question: 'Do you handle EPC and compliance improvements as part of a refurbishment?',
+    answer: 'Yes, refurbishment is often the most cost-effective point to improve EPC ratings, fire safety and accessibility compliance, and we build these into the scope where relevant. Raising an office\'s EPC rating during a wider refurbishment avoids paying for separate works later and can add real value to the property.',
   },
 ];
 ---
 <BaseLayout
-  title="Office Refurbishment Contractors | A2 Commercial Fit Out"
-  description="Commercial office refurbishment contractors delivering upgrades and reconfigurations across London, Kent and Essex. Fixed-price, in-house trades, minimal disruption."
+  title="Office Refurbishment Company | Fixed-Price Refurbishments"
+  description="Office refurbishment contractors delivering fixed-price refurbishments across London & the South East, with in-house trades and out-of-hours working."
 >
   <div class="container">
     <Breadcrumbs items={[{ label: 'Services', href: '/services/' }, { label: 'Office Refurbishment' }]} />
@@ -36,34 +40,46 @@ const faqs = [
 
   <section class="section--tight bg-white">
     <div class="container">
-      <h1>Office refurbishment</h1>
-      <p>A2 Commercial Fit Out delivers <strong>commercial office refurbishment</strong> for businesses updating, reconfiguring or modernising space they already occupy. As experienced <strong>office refurbishment contractors</strong>, we work around live operations wherever needed, delivering the finished result to a fixed price and to programme.</p>
+      <h1>Office Refurbishment Companies Rely On for Fast, Fixed-Price Work</h1>
+      <p>A2 Commercial Fit Out is an <strong>office refurbishment contractor</strong> delivering fixed-price refurbishments across London, Kent and Essex. Whether you're refreshing tired finishes, reconfiguring layouts for hybrid working, or bringing an older building up to current standards, we deliver the work with our own in-house trades and a fixed price agreed before we start.</p>
+      <p>Office refurbishment is often more disruptive than a full fit out, because your team is usually still working around it. That's exactly where our out-of-hours model earns its keep: evenings, weekends, or phased working, so your business doesn't have to stop.</p>
 
       <Picture src={officeRefurbImg} alt="" width={1200} height={800} widths={[400, 800, 1200]} sizes="(min-width: 48rem) 50vw, 100vw" formats={['avif', 'webp']} fallbackFormat="jpg" loading="lazy" />
 
-      <h2>When refurbishment makes sense</h2>
-      <p>Refurbishment is typically the right approach when the shell, services and core layout of an office are broadly sound, but the finishes, layout or facilities no longer suit how the business actually works. Common triggers include a change in headcount, a shift to more meeting and collaboration space, tired finishes at lease renewal, or bringing an older floor up to a standard that matches newer space elsewhere in a portfolio.</p>
-
-      <h2>What our office refurbishment service includes</h2>
+      <h2>What's included in an office refurbishment</h2>
+      <p>Commercial office refurbishment can range from a cosmetic refresh to a full reconfiguration. Common scope includes:</p>
       <ul>
-        <li>Reconfiguration of existing partitions and room layouts</li>
-        <li>Replacement of ceilings, lighting grids and flooring finishes</li>
-        <li>Washroom, kitchen and breakout area refurbishment, including tiling</li>
-        <li>Refreshed reception and front-of-house areas</li>
-        <li>Upgrades to meet current fire safety and accessibility standards</li>
-        <li>Phased delivery around live operations</li>
+        <li>Redecoration, flooring and ceiling replacement</li>
+        <li>Partition removal or reconfiguration</li>
+        <li>Kitchen, breakout and meeting space upgrades</li>
+        <li>M&E upgrades, including lighting and controls</li>
+        <li>Compliance improvements: fire safety, accessibility, Building Regulations</li>
+        <li>EPC and energy efficiency improvements</li>
       </ul>
 
-      <h2>Refurbishment around a working office</h2>
-      <p>Very few refurbishment clients can vacate their building entirely for the works, so phased delivery and out-of-hours working are central to how we plan every refurbishment programme. We sequence disruptive trades — demolition, dust-generating work, noisy installation — into evenings, weekends or agreed closure windows, and use hoarding and temporary partitioning to keep occupied areas usable and safe while work continues nearby.</p>
+      <h2>Our office refurbishment process</h2>
+      <ol>
+        <li><strong>Site survey and scope.</strong> We assess the existing space and confirm what's changing.</li>
+        <li><strong>Fixed-price quote.</strong> One clear price for the full scope, agreed before work starts.</li>
+        <li><strong>Phased or out-of-hours programme.</strong> We plan the works around your operating hours wherever the building stays occupied.</li>
+        <li><strong>In-house delivery.</strong> Our own trades carry out the refurbishment, keeping quality and programme under direct control.</li>
+        <li><strong>Minimal disruption handover.</strong> Each phase is signed off and handed back cleanly before the next begins.</li>
+      </ol>
 
-      <h2>In-house trades, fixed-price delivery</h2>
-      <p>Our dry lining, suspended ceiling, tape & jointing and tiling trades are all in-house, which is particularly valuable on refurbishment programmes where existing conditions are sometimes only fully understood once work is underway. Direct control over these trades means we can respond to on-site findings quickly without renegotiating a subcontractor's programme — while the fixed price agreed at contract stage still holds for the scope you signed off.</p>
+      <h2>Why choose A2 for office refurbishment</h2>
+      <ul>
+        <li><strong>Fixed-price quotes</strong>, so refurbishment budgets don't move once work is underway.</li>
+        <li><strong>In-house trades</strong>, giving direct control over quality and pace rather than relying on a subcontractor chain.</li>
+        <li><strong>Out-of-hours working</strong>, built specifically for refurbishing occupied space without disrupting your team.</li>
+        <li><strong>Fast turnaround</strong>, so your business spends less time working around scaffolding and dust sheets.</li>
+      </ul>
 
-      <h2>Compliance and accreditation</h2>
-      <p>Refurbishment projects are a common trigger for bringing older office space up to current Building Regulations and fire safety standards, and we manage that upgrade work as a core part of the scope, not an afterthought. We hold CHAS and SafeContractor accreditation and manage CDM 2015 duties appropriately for every project, whether we're appointed as principal contractor or working within a main contractor's framework.</p>
+      <h2>Refurbishment work across London, Kent and Essex</h2>
+      <p>Searches for office refurbishment companies near me are among the fastest-growing search terms in this space, and it's easy to see why: refurbishment work benefits from a contractor who can be on site quickly and communicate clearly throughout. A2 is based in Maidstone, Kent, and delivers refurbishment projects across London, Kent and Essex.</p>
 
       <FaqAccordion items={faqs} />
+
+      <p class="related-links">Related: <a href="/services/office-fit-out/">Office Fit Out</a> · <a href="/services/landlord-refurbishment/">Landlord Refurbishment</a></p>
     </div>
   </section>
 
@@ -71,3 +87,7 @@ const faqs = [
 
   <ServiceSchema name="Office Refurbishment" description="Commercial office refurbishment delivered to a fixed price by in-house trades across London, Kent, Essex and the South East." url="/services/office-refurbishment/" />
 </BaseLayout>
+
+<style>
+  .related-links { font-size: var(--step--1); color: var(--text-on-light-muted); margin-top: var(--space-md); }
+</style>

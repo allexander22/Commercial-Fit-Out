@@ -50,6 +50,8 @@ const images = [
   { name: 'office-refurbishment', width: 1200, height: 800 },
   { name: 'retail-fit-out', width: 1200, height: 800 },
   { name: 'healthcare-fit-out', width: 1200, height: 800 },
+  { name: 'landlord-refurbishment', width: 1200, height: 800 },
+  { name: 'higher-education-fit-out', width: 1200, height: 800 },
   { name: 'sectors-hub', width: 1200, height: 800 },
   { name: 'projects-hub', width: 1200, height: 800 },
   { name: 'locations-hub', width: 1200, height: 800 },

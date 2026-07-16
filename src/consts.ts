@@ -33,6 +33,8 @@ export const SERVICE_LINKS = [
   { href: '/services/office-refurbishment/', label: 'Office Refurbishment' },
   { href: '/services/retail-fit-out/', label: 'Retail Fit Out' },
   { href: '/services/healthcare-fit-out/', label: 'Healthcare Fit Out' },
+  { href: '/services/landlord-refurbishment/', label: 'Landlord Refurbishment' },
+  { href: '/services/higher-education-fit-out/', label: 'Higher Education Fit Out' },
 ];
 
 // Location pages are temporarily removed from the site (see LOCATION_LINKS

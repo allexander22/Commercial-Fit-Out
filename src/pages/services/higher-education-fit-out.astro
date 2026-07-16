@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServiceSchema from '../../components/schema/Service.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { Picture } from 'astro:assets';
+import higherEducationImg from '../../assets/images/higher-education-fit-out.jpg';
+
+const faqs = [
+  {
+    question: 'Can you complete a full refurbishment within a summer shutdown period?',
+    answer: 'Scope permitting, yes. We plan the programme against your shutdown dates from the outset and will tell you upfront if a project needs to be phased across more than one break to hit the standard required. Being upfront about what\'s achievable protects both your budget and your term-start deadline.',
+  },
+  {
+    question: 'Do you work in buildings that stay occupied during term time?',
+    answer: 'Yes, using out-of-hours and phased working to keep disruption to students and staff to a minimum. We schedule the noisiest and most disruptive works for evenings, weekends and holiday periods wherever possible, so teaching, research and campus life can continue running normally around the project.',
+  },
+  {
+    question: 'How much does an education fit out or refurbishment cost?',
+    answer: 'Cost depends on the scope and the space type, whether that\'s teaching space, communal areas, student accommodation or offices. We provide a fixed-price quote once the scope and timeline are confirmed, so your estates budget is fixed well ahead of the academic year and any shutdown-period works.',
+  },
+  {
+    question: 'Do you deliver both fit out and refurbishment projects for education clients?',
+    answer: 'Yes, from fitting out new teaching space to refurbishing existing lecture theatres, libraries, student accommodation and communal areas. Our in-house trades handle both types of project under the same fixed-price model, so estates teams can combine fit out and refurbishment work within a single shutdown-period programme if needed.',
+  },
+  {
+    question: 'When should we start planning an education fit out project?',
+    answer: 'Given the fixed nature of term dates and the seasonal spike in demand every September, we\'d recommend confirming scope and booking a fixed price several months ahead of your target shutdown window. Early planning gives us time to programme trades properly and protects your project from contractor availability.',
+  },
+];
+---
+<BaseLayout
+  title="Education Fit Out & Refurbishment Contractor | Higher Education"
+  description="Education fit out and refurbishment delivered around term dates. Fixed-price quotes, in-house trades, out-of-hours working across the South East."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Services', href: '/services/' }, { label: 'Higher Education Fit Out' }]} />
+  </div>
+
+  <section class="section--tight bg-white">
+    <div class="container">
+      <h1>Education Fit Out and Refurbishment, Built Around Your Term Dates</h1>
+      <p>A2 Commercial Fit Out delivers <strong>education fit out</strong> and <strong>education refurbishment</strong> for universities, colleges and further education institutions across London, Kent and Essex. Education projects run on a deadline that doesn't move: term starts on the date it starts, whatever the building work. Our fixed-price quotes and in-house trades exist to hit that date without the budget or the programme slipping.</p>
+      <p>We work with estates and facilities teams to deliver teaching space, lecture theatres, libraries, student union and social areas, student accommodation fit out, and administrative offices, scheduling intensive works into summer and holiday shutdown periods or working out-of-hours where buildings must stay in use during term time.</p>
+
+      <Picture src={higherEducationImg} alt="" width={1200} height={800} widths={[400, 800, 1200]} sizes="(min-width: 48rem) 50vw, 100vw" formats={['avif', 'webp']} fallbackFormat="jpg" loading="lazy" />
+
+      <h2>What's included in education fit out and refurbishment</h2>
+      <ul>
+        <li><strong>Teaching space and lecture theatres</strong> — refurbishment and fit out of learning environments.</li>
+        <li><strong>Libraries and study space</strong> — reconfiguration and refresh of communal learning areas.</li>
+        <li><strong>Student union and social space</strong> — fit out of communal and amenity areas.</li>
+        <li><strong>Student accommodation fit out</strong> — communal and reception areas within halls of residence.</li>
+        <li><strong>Administrative and estates offices</strong> — fit out of staff and back-of-house areas.</li>
+        <li><strong>Shutdown-period scheduling</strong> — programme compressed into summer and holiday windows where required.</li>
+      </ul>
+
+      <h2>Our approach to education sector projects</h2>
+      <p>Demand for education fit out and education refurbishment consistently spikes in September, in line with the start of the academic year, so shutdown-period planning starts early:</p>
+      <ol>
+        <li><strong>Scope and calendar review.</strong> We map the required works against your academic calendar to identify shutdown windows and any term-time constraints.</li>
+        <li><strong>Fixed-price quote.</strong> A single, agreed price for the full scope, so budgets are set before the works begin.</li>
+        <li><strong>Compressed or out-of-hours programme.</strong> Where the full scope can't fit into a shutdown window, we schedule out-of-hours or phased work to keep buildings usable during term time.</li>
+        <li><strong>In-house trades.</strong> Our own delivery team carries out the works directly, giving us the control needed to hit a fixed academic deadline.</li>
+        <li><strong>Handover before term starts.</strong> Completed space signed off and ready for staff and students on the agreed date.</li>
+      </ol>
+
+      <h2>Why education estates teams choose A2</h2>
+      <ul>
+        <li><strong>Fixed-price quotes</strong> protect budgets that are usually set well in advance of the academic year.</li>
+        <li><strong>In-house trades</strong> give direct control over programme, essential when the deadline is a term start date, not a target.</li>
+        <li><strong>Out-of-hours and shutdown-period working</strong> get intensive works done without disrupting teaching.</li>
+        <li><strong>Speed of delivery</strong> maximises what can be achieved within a fixed shutdown window.</li>
+      </ul>
+
+      <FaqAccordion items={faqs} />
+
+      <p class="related-links">Related: <a href="/services/office-fit-out/">Office Fit Out</a> · <a href="/services/landlord-refurbishment/">Landlord Refurbishment</a></p>
+    </div>
+  </section>
+
+  <CtaBanner heading="Planning an education fit out or refurbishment?" body="Tell us your shutdown dates and scope and we'll come back with a fixed-price quote built around your academic calendar." />
+
+  <ServiceSchema name="Higher Education Fit Out" description="Education fit out and refurbishment delivered to a fixed price by in-house trades across London, Kent, Essex and the South East, built around term dates." url="/services/higher-education-fit-out/" />
+</BaseLayout>
+
+<style>
+  .related-links { font-size: var(--step--1); color: var(--text-on-light-muted); margin-top: var(--space-md); }
+</style>
