@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServiceSchema from '../../components/schema/Service.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { Picture } from 'astro:assets';
+import officeFitOutImg from '../../assets/images/office-fit-out.jpg';
+
+const faqs = [
+  {
+    question: 'Do you deliver both Cat A and Cat B office fit out?',
+    answer: 'Yes. We deliver Cat B fit out on top of an existing Cat A shell, combined Cat A plus Cat B where the building is a bare shell, and full turnkey office fit out from an approved design pack.',
+  },
+  {
+    question: 'Can you fit out an office while our team is still working there?',
+    answer: 'Yes, this is one of our most common project types. We plan phased delivery and out-of-hours working — evenings and weekends — so disruptive trades happen outside your operating hours.',
+  },
+  {
+    question: 'Do you work from our architect\'s or designer\'s drawings?',
+    answer: 'Yes. We are a delivery contractor, not a design house, so we build to a design and specification agreed with your architect, designer or space planner, taking responsibility for accurate delivery against those drawings.',
+  },
+  {
+    question: 'Is the quote genuinely fixed price?',
+    answer: 'Yes — the price agreed at contract stage is the price you pay for the agreed scope, giving you cost certainty for budgeting and sign-off purposes.',
+  },
+  {
+    question: 'What trades do you deliver in-house?',
+    answer: 'Dry lining, suspended ceilings, tape & jointing and tiling are all delivered by our own tradespeople, giving us direct control over the packages that most affect programme and finish quality on an office fit out.',
+  },
+];
+---
+<BaseLayout
+  title="Office Fit Out Contractors | A2 Commercial Fit Out"
+  description="Office fit out contractors delivering Cat A, Cat B and turnkey office fit out across London, Kent and Essex. Fixed-price quotes, in-house trades."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Services', href: '/services/' }, { label: 'Office Fit Out' }]} />
+  </div>
+
+  <section class="section--tight bg-white">
+    <div class="container">
+      <h1>Office fit out</h1>
+      <p>A2 Commercial Fit Out is an established <strong>office fit out company</strong>, delivering Cat A, Cat B and full turnkey office projects for architects, designers, landlords and main contractors across London, Kent, Essex and the South East. As <strong>office fit out contractors</strong>, we take responsibility for building your agreed design to specification, on a fixed price, using our own in-house trades.</p>
+
+      <Picture src={officeFitOutImg} alt="" width={1200} height={800} widths={[400, 800, 1200]} sizes="(min-width: 48rem) 50vw, 100vw" formats={['avif', 'webp']} fallbackFormat="jpg" loading="lazy" />
+
+      <h2>A delivery partner, not a design house</h2>
+      <p>We work from an agreed design pack — produced by your architect, interior designer or space planner — and deliver it to specification and to programme. That delivery focus means our estimating, project management and trades teams are set up to build accurately against drawings, rather than to redesign schemes as they progress. If you already have a design or specification, we can quote against it directly; if you need help translating a brief into a buildable scope, we can work with your existing design team to get there.</p>
+
+      <h2>What our office fit out service includes</h2>
+      <ul>
+        <li>Cat A plus Cat B fit out from bare shell to fully finished office</li>
+        <li>Cat B fit out on top of an existing landlord Cat A specification</li>
+        <li>Partitioning, including acoustic-rated meeting rooms and private offices</li>
+        <li>Suspended ceiling installation and lighting grid coordination</li>
+        <li>Breakout, kitchen and washroom fit out, including tiling</li>
+        <li>Reception and front-of-house finishes</li>
+        <li>Coordination of M&E, IT and AV specialist packages</li>
+        <li>Snagging, commissioning and handover documentation</li>
+      </ul>
+
+      <h2>Built around your operating hours</h2>
+      <p>Most office fit out projects happen inside occupied buildings — either because your business is still trading from part of the floor, or because the wider building has other tenants who need to keep working. Out-of-hours and weekend working is one of our core capabilities, and we plan disruptive trades — demolition, floor preparation, ceiling replacement — outside standard hours wherever the programme requires it, so your operations continue with minimal interruption.</p>
+
+      <h2>In-house trades mean direct control</h2>
+      <p>Dry lining, suspended ceilings, tape & jointing and tiling are delivered by our own tradespeople rather than subcontractors. That matters on office fit out programmes specifically because these packages typically sit on the critical path — a delay in partitioning or ceiling work cascades through every trade that follows. Keeping them in-house lets us compress programmes and respond quickly to on-site changes, without the coordination lag of managing a subcontractor's own schedule.</p>
+
+      <h2>Compliance as standard</h2>
+      <p>Every office fit out we deliver is built to current Building Regulations, with fire safety compartmentation and means of escape considered from the design stage through to sign-off. Where we're appointed as principal contractor, CDM 2015 duties are managed formally throughout the project; where another party holds that role, we work within their framework as a compliant, accredited delivery partner. We hold CHAS and SafeContractor accreditation, reflecting our health and safety management systems.</p>
+
+      <h2>No minimum project size</h2>
+      <p>We quote office fit out projects of every size, from a single meeting room refurbishment to a multi-floor relocation — there is no minimum project value. Every quote, regardless of scale, is fixed price and delivered by the same in-house trades and project management approach.</p>
+
+      <FaqAccordion items={faqs} />
+    </div>
+  </section>
+
+  <CtaBanner heading="Ready to quote your office fit out?" body="Send us your design pack or brief and we'll come back with a fixed-price quote and realistic programme." />
+
+  <ServiceSchema name="Office Fit Out" description="Cat A, Cat B and turnkey office fit out delivered to a fixed price by in-house trades across London, Kent, Essex and the South East." url="/services/office-fit-out/" />
+</BaseLayout>

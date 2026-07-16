@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import AccreditationBadges from '../components/AccreditationBadges.astro';
+import UspGrid from '../components/UspGrid.astro';
+import { Picture } from 'astro:assets';
+import aboutImg from '../assets/images/about.jpg';
+import { ADDRESS_LOCALITY, ADDRESS_REGION } from '../consts';
+---
+<BaseLayout
+  title="About A2 Commercial Fit Out | Maidstone, Kent"
+  description="A2 Commercial Fit Out is a Maidstone-based commercial fit out contractor delivering offices, retail and healthcare fit outs across London, Kent and Essex."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'About' }]} />
+  </div>
+
+  <section class="section--tight bg-white">
+    <div class="container prose">
+      <h1>About A2 Commercial Fit Out</h1>
+      <p>A2 Commercial Fit Out is a commercial fit out contractor based in {ADDRESS_LOCALITY}, {ADDRESS_REGION}, delivering office, retail and healthcare fit out projects across London, Kent, Essex and the wider South East. We work as a delivery partner for architects, designers, landlords and main contractors — building an agreed design to specification, on a fixed price, rather than acting as a design house ourselves.</p>
+
+      <Picture src={aboutImg} alt="" width={1200} height={800} widths={[400, 800, 1200]} sizes="(min-width: 48rem) 50vw, 100vw" formats={['avif', 'webp']} fallbackFormat="jpg" loading="lazy" />
+
+      <h2>Over 15 years' experience</h2>
+      <p>Our team brings over 15 years' experience delivering commercial projects across London and the South East, across office, retail, healthcare and industrial environments. That experience sits behind every quote we give and every programme we plan — we've seen how fit out projects can slip, and we build our processes specifically to avoid the common causes.</p>
+
+      <h2>A trades-led approach</h2>
+      <p>A2 Commercial Fit Out grew from a trades background in dry lining, suspended ceilings, tape & jointing and tiling, and we've kept those trades in-house rather than outsourcing them as many contractors do. That background is why we can offer genuine control over quality and programme on every project — the packages that most often cause delay or inconsistent finish quality are the ones we deliver directly, with our own tradespeople, rather than through a chain of subcontractors.</p>
+
+      <h2>How we work</h2>
+      <UspGrid />
+
+      <h2>Accreditation and compliance</h2>
+      <p>We hold CHAS and SafeContractor accreditation, reflecting independently assessed health and safety management systems, and every project we deliver is built in line with current Building Regulations, fire safety requirements and CDM 2015. Whether we're appointed as principal contractor or working within a main contractor's or landlord's framework, compliance is managed as standard, not as an add-on.</p>
+
+      <AccreditationBadges />
+
+      <h2>All project sizes, one approach</h2>
+      <p>We don't operate a minimum project value. From a single-room refurbishment to a multi-floor relocation or a full industrial unit fit out, every project gets the same fixed-price quote, in-house trades and commitment to programme. If you're planning a commercial fit out anywhere across London, Kent, Essex or the South East, we'd welcome the chance to quote it.</p>
+    </div>
+  </section>
+
+  <CtaBanner heading="Want to talk through your project?" />
+</BaseLayout>

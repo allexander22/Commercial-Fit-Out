@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServiceSchema from '../../components/schema/Service.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { Picture } from 'astro:assets';
+import healthcareFitOutImg from '../../assets/images/healthcare-fit-out.jpg';
+
+const faqs = [
+  {
+    question: 'Do you have experience with healthcare compliance requirements?',
+    answer: 'Yes. We deliver healthcare fit out projects to current Building Regulations and relevant fire safety standards, working closely with your clinical and estates teams on any healthcare-specific requirements in the specification.',
+  },
+  {
+    question: 'Can you work around a clinic or practice that stays open during works?',
+    answer: 'Yes — out-of-hours and weekend working is central to how we plan healthcare fit out programmes, since most clinical environments need to keep treating patients throughout.',
+  },
+  {
+    question: 'Do you fit out hygiene-critical areas like treatment rooms?',
+    answer: 'Yes, including tiling, wall protection and finishes specified for hygiene-critical and clinical areas, delivered by our own in-house trades.',
+  },
+  {
+    question: 'Is the healthcare fit out quote fixed price?',
+    answer: 'Yes, every healthcare project is quoted at a fixed price for the agreed scope before mobilisation, regardless of project size.',
+  },
+];
+---
+<BaseLayout
+  title="Healthcare Fit Out Contractor | A2 Commercial Fit Out"
+  description="Healthcare fit out contractor delivering compliant clinical and healthcare environments across London, Kent and Essex. Fixed-price, in-house trades."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Services', href: '/services/' }, { label: 'Healthcare Fit Out' }]} />
+  </div>
+
+  <section class="section--tight bg-white">
+    <div class="container">
+      <h1>Healthcare fit out</h1>
+      <p>A2 Commercial Fit Out delivers <strong>healthcare fit out</strong> projects for clinics, practices and healthcare operators across London, Kent, Essex and the South East, building compliant clinical environments to a fixed price with our own in-house trades.</p>
+
+      <Picture src={healthcareFitOutImg} alt="" width={1200} height={800} widths={[400, 800, 1200]} sizes="(min-width: 48rem) 50vw, 100vw" formats={['avif', 'webp']} fallbackFormat="jpg" loading="lazy" />
+
+      <h2>A delivery partner for healthcare environments</h2>
+      <p>Healthcare fit out projects come with a specific set of requirements — hygiene-critical finishes, infection-control considerations, accessibility, and often continued clinical operation throughout the works. We work from a specification agreed with your clinical, estates or design team and deliver it to that standard, coordinating specialist M&E and equipment installation packages alongside our own trades.</p>
+
+      <h2>What our healthcare fit out service includes</h2>
+      <ul>
+        <li>Treatment room, consulting room and clinical space fit out</li>
+        <li>Hygiene-critical wall and floor finishes, including specialist tiling</li>
+        <li>Partitioning and compartmentation to relevant fire safety standards</li>
+        <li>Reception, waiting area and back-of-house fit out</li>
+        <li>Accessibility-compliant washroom and facility installation</li>
+        <li>Coordination with clinical equipment installers and M&E specialists</li>
+      </ul>
+
+      <h2>Delivered around live clinical operations</h2>
+      <p>Very few healthcare environments can close entirely for a fit out programme. We plan works in phases, using out-of-hours and weekend working for disruptive trades so clinics and practices can continue seeing patients with minimal interruption. Dust control, noise management and clear separation between live clinical areas and the works area are built into every programme from the outset.</p>
+
+      <h2>In-house trades, consistent finish quality</h2>
+      <p>Our dry lining, suspended ceiling, tape & jointing and tiling trades are delivered in-house, which matters particularly in healthcare settings where finish tolerances and hygiene-critical detailing need to be right first time. Direct control over these trades means consistent quality across every treatment room or clinical area in a project, and a fixed-price quote that holds for the full agreed scope.</p>
+
+      <h2>Compliance and accreditation</h2>
+      <p>Every healthcare fit out is delivered in line with current Building Regulations and fire safety requirements, with CDM 2015 duties managed appropriately for the project. We hold CHAS and SafeContractor accreditation, giving healthcare clients and their compliance teams confidence in our health and safety management systems before work begins.</p>
+
+      <FaqAccordion items={faqs} />
+    </div>
+  </section>
+
+  <CtaBanner heading="Planning a healthcare fit out?" body="Share your specification and we'll come back with a fixed-price quote built around your clinical operation." />
+
+  <ServiceSchema name="Healthcare Fit Out" description="Compliant healthcare and clinical fit out delivered to a fixed price by in-house trades across London, Kent, Essex and the South East." url="/services/healthcare-fit-out/" />
+</BaseLayout>

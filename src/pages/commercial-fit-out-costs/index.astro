@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { Picture } from 'astro:assets';
+import costGuideImg from '../../assets/images/cost-guide.jpg';
+
+const faqs = [
+  {
+    question: 'How much does a commercial fit out cost per square metre?',
+    answer: 'As an indicative 2026 guide, basic specification fit outs typically run £450–£750/m², mid-range £750–£1,100/m², and high-spec £1,100–£1,800/m². These are planning figures only — every project is quoted at a fixed price based on your actual specification and site conditions.',
+  },
+  {
+    question: 'How much does a commercial fit out cost per square foot?',
+    answer: 'Converting the per m² bands above gives roughly £42–£70/sq ft for basic specification, £70–£102/sq ft for mid-range, and £102–£167/sq ft for high-spec, as an indicative 2026 guide. Actual cost depends on specification, building condition and access.',
+  },
+  {
+    question: 'Do these cost bands include VAT?',
+    answer: 'No, the figures above are indicative guide costs excluding VAT. Your fixed-price quote will set out the full cost breakdown, including VAT treatment, for your specific project.',
+  },
+  {
+    question: 'Why should I get a fixed-price quote instead of using these bands to budget?',
+    answer: 'Cost-per-square-foot guides are a useful starting point, but they can\'t reflect your building\'s condition, your exact specification or your programme requirements. A fixed-price quote from us is based on a real survey and specification, so it\'s accurate rather than indicative.',
+  },
+  {
+    question: 'What factors could push my project towards the top of a cost band?',
+    answer: 'Older buildings needing M&E upgrades or additional fire compartmentation, restricted site access, tight programmes requiring out-of-hours working, and higher-specification finishes all tend to push costs towards the upper end of the relevant band.',
+  },
+];
+---
+<BaseLayout
+  title="Commercial Fit Out Costs 2026 | A2 Commercial Fit Out"
+  description="Commercial fit out costs explained: indicative 2026 cost bands per m² and per sq ft for basic, mid-range and high-spec office, retail and industrial fit outs."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Commercial Fit Out Costs' }]} />
+  </div>
+
+  <section class="section--tight bg-white">
+    <div class="container prose">
+      <h1>Commercial fit out costs: 2026 guide</h1>
+      <p>Understanding likely <strong>commercial fit out costs</strong> is usually the first step in planning a project, whether you're budgeting an office relocation, a retail unit fit out or an industrial mezzanine build. This guide sets out indicative <strong>cost per m²</strong> and <strong>cost per sq ft</strong> figures across three specification levels, so you can plan a realistic budget before requesting a fixed-price quote.</p>
+
+      <Picture src={costGuideImg} alt="" width={1200} height={800} widths={[400, 800, 1200]} sizes="(min-width: 48rem) 50vw, 100vw" formats={['avif', 'webp']} fallbackFormat="jpg" loading="lazy" />
+
+      <p><strong>Important:</strong> the figures below are an indicative 2026 guide only, intended for early-stage budgeting. They are not a quote. Every A2 Commercial Fit Out project is priced individually at a fixed price, based on a real survey of your building and an agreed specification.</p>
+
+      <h2>Indicative cost bands by specification</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Specification level</th>
+              <th scope="col">Cost per m²</th>
+              <th scope="col">Cost per sq ft</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Basic</td>
+              <td>£450–£750</td>
+              <td>£42–£70</td>
+            </tr>
+            <tr>
+              <td>Mid-range</td>
+              <td>£750–£1,100</td>
+              <td>£70–£102</td>
+            </tr>
+            <tr>
+              <td>High-spec</td>
+              <td>£1,100–£1,800</td>
+              <td>£102–£167</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Indicative 2026 guide figures, excluding VAT, for UK commercial fit out projects. Actual project cost depends on specification, existing building condition and site access — always confirmed by a fixed-price quote.</p>
+
+      <h2>What "basic", "mid-range" and "high-spec" typically include</h2>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Level</th>
+              <th scope="col">Typical inclusions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Basic</td>
+              <td>Standard partitioning, suspended ceiling tiles, carpet tile flooring, painted walls, standard sanitaryware and fittings.</td>
+            </tr>
+            <tr>
+              <td>Mid-range</td>
+              <td>Improved acoustic separation, some feature lighting, upgraded flooring in key zones, branded reception finishes, better-specified washrooms.</td>
+            </tr>
+            <tr>
+              <td>High-spec</td>
+              <td>Bespoke joinery, feature ceilings and lighting, premium flooring throughout, enhanced M&E provision, specialist tiling and finishes.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>What actually drives your cost</h2>
+      <p>Three factors matter more than any generic per-square-foot figure:</p>
+      <ul>
+        <li><strong>Specification level</strong> — the single biggest swing factor, as the bands above show.</li>
+        <li><strong>Existing building condition</strong> — a modern Cat A shell with services already distributed costs less than an older building needing M&E upgrades or additional fire compartmentation before visible fit out work can start.</li>
+        <li><strong>Working conditions</strong> — occupied buildings requiring out-of-hours or weekend working, restricted access, or compressed programmes all add cost compared with an empty shell and unrestricted access.</li>
+      </ul>
+
+      <h2>Cost by project type</h2>
+      <p>Different project types tend to sit in different parts of these bands. <a href="/services/office-fit-out/">Office fit out</a> projects range widely depending on Cat A vs Cat B scope and specification. <a href="/services/retail-fit-out/">Retail fit out</a> costs are often driven by fast turnaround requirements and centre-management working restrictions. <a href="/sectors/industrial/">Industrial fit out</a> projects vary significantly with floorplate size and the proportion of office-to-warehouse space. See our <a href="/services/">services</a> and <a href="/sectors/">sectors</a> pages for detail on each project type.</p>
+
+      <h2>Why we quote fixed price rather than per square foot</h2>
+      <p>We don't price live projects from a square-foot rate — we survey your building, agree a specification, and provide a fixed price for that exact scope. This avoids the most common source of budget overruns on fit out projects: a rate-based estimate that moves once real site conditions or specification details are confirmed. Our in-house dry lining, suspended ceiling, tape & jointing and tiling trades also mean more of your budget goes into the actual build rather than subcontractor management overhead.</p>
+
+      <h2>Getting an accurate fixed-price quote</h2>
+      <p>Use the bands above for early budgeting, then <a href="/contact/">get in touch</a> with your specification, approximate floor area and location, and we'll arrange a survey and provide a fixed-price quote — with no obligation and no minimum project value.</p>
+
+      <FaqAccordion items={faqs} />
+    </div>
+  </section>
+
+  <CtaBanner heading="Ready for an accurate, fixed-price figure?" body="Skip the guesswork — send us your specification and we'll quote your exact project." />
+</BaseLayout>
+
+<style>
+  .table-note {
+    font-size: var(--step--1);
+    color: var(--text-on-light-muted);
+  }
+</style>

@@ -1,0 +1,41 @@
+---
+interface Props {
+  heading?: string;
+  body?: string;
+}
+const {
+  heading = 'Ready to talk about your project?',
+  body = 'Tell us about your space and we’ll come back with a fixed-price quote and realistic programme.',
+} = Astro.props;
+---
+<section class="cta-banner bg-ink">
+  <div class="container cta-inner">
+    <div>
+      <h2>{heading}</h2>
+      <p>{body}</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn btn--primary" href="/contact/">Get a fixed-price quote</a>
+      <a class="btn btn--outline-dark" href="/projects/">See our projects</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-banner { padding-block: var(--space-xl); }
+  .cta-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cta-inner > div:first-child { max-width: 34rem; }
+  .cta-inner h2 { margin-bottom: var(--space-2xs); }
+  .cta-inner p { color: var(--text-on-dark-muted); margin: 0; }
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+</style>

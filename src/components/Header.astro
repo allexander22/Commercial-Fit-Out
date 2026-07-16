@@ -1,0 +1,130 @@
+---
+import Logo from './Logo.astro';
+import { NAV_LINKS, EMAIL, PHONE } from '../consts';
+
+const currentPath = Astro.url.pathname;
+function isActive(href: string) {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
+---
+<header class="site-header bg-ink">
+  <div class="container header-inner">
+    <a href="/" class="logo-link" aria-label="A2 Commercial Fit Out — home">
+      <Logo />
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+      <span class="visually-hidden">Menu</span>
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+    </button>
+
+    <nav aria-label="Primary" id="primary-nav">
+      <ul class="nav-list">
+        {NAV_LINKS.map((link) => (
+          <li>
+            <a href={link.href} aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="header-cta">
+      {PHONE && <a class="header-phone" href={`tel:${PHONE}`}>{PHONE}</a>}
+      <a class="btn btn--primary" href="/contact/">Get a quote</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--colour-ink-border);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-block: var(--space-sm);
+  }
+  .logo-link {
+    color: var(--text-on-dark);
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+  nav {
+    flex: 1 1 auto;
+  }
+  .nav-list {
+    list-style: none;
+    display: none;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin: 0;
+    padding: 0;
+  }
+  .nav-list.is-open {
+    display: flex;
+  }
+  .nav-list a {
+    color: var(--text-on-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: var(--step--1);
+    padding: var(--space-2xs) 0;
+  }
+  .nav-list a:hover {
+    color: var(--link-on-dark);
+  }
+  .nav-list a[aria-current='page'] {
+    color: var(--link-on-dark);
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+  .nav-toggle {
+    background: transparent;
+    border: 1px solid var(--colour-ink-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2xs) var(--space-xs);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .nav-toggle-bars,
+  .nav-toggle-bars::before,
+  .nav-toggle-bars::after {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--text-on-dark);
+    position: relative;
+  }
+  .nav-toggle-bars::before { content: ''; position: absolute; top: -6px; }
+  .nav-toggle-bars::after { content: ''; position: absolute; top: 6px; }
+
+  .header-cta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-shrink: 0;
+  }
+  .header-phone {
+    color: var(--text-on-dark);
+    font-weight: 600;
+    font-size: var(--step--1);
+    white-space: nowrap;
+  }
+  .header-cta .btn {
+    padding: 0.6em 1.1em;
+    font-size: var(--step--1);
+  }
+
+  @media (min-width: 62rem) {
+    .nav-toggle { display: none; }
+    .nav-list { display: flex; }
+  }
+</style>

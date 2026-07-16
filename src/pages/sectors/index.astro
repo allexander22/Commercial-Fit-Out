@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { Picture } from 'astro:assets';
+import sectorsHubImg from '../../assets/images/sectors-hub.jpg';
+import { getCollection } from 'astro:content';
+
+const sectors = (await getCollection('sectors')).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout
+  title="Interior Fit Out Contractors | A2 Commercial Fit Out"
+  description="Interior fit out companies and contractors serving industrial, hospitality, retail and bespoke sectors across London, Kent and Essex. Fixed-price delivery."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Sectors' }]} />
+  </div>
+
+  <section class="section--tight bg-white">
+    <div class="container">
+      <h1>Sectors we work in</h1>
+      <p>As an <strong>interior fit out contractor</strong> covering a range of commercial sectors, A2 Commercial Fit Out applies the same fixed-price, in-house-trade delivery model whatever the building type — from industrial units to hospitality venues, turnkey projects, bespoke joinery and retail shops.</p>
+
+      <Picture src={sectorsHubImg} alt="" width={1200} height={800} widths={[400, 800, 1200]} sizes="(min-width: 48rem) 50vw, 100vw" formats={['avif', 'webp']} fallbackFormat="jpg" loading="lazy" />
+
+      <div class="grid grid--3 sector-list">
+        {sectors.map((sector) => (
+          <a class="card sector-card" href={`/sectors/${sector.id}/`}>
+            <h3>{sector.data.title}</h3>
+            <p>{sector.data.summary}</p>
+            <span class="sector-link">Learn more →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>
+
+<style>
+  .sector-list { margin-top: var(--space-lg); }
+  .sector-card { text-decoration: none; color: inherit; }
+  .sector-card h3 { font-size: var(--step-1); }
+  .sector-card p { color: var(--text-on-light-muted); font-size: var(--step--1); }
+  .sector-link { font-weight: 600; color: var(--link-on-light); font-size: var(--step--1); }
+</style>

@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { EMAIL, SITE_NAME_FULL, ADDRESS_LOCALITY, ADDRESS_REGION } from '../consts';
+---
+<BaseLayout
+  title="Privacy Policy | A2 Commercial Fit Out"
+  description="Privacy policy for A2 Commercial Fit Out, explaining what information we collect via this website and how it is used."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Privacy Policy' }]} />
+  </div>
+
+  <section class="section--tight bg-white">
+    <div class="container prose">
+      <h1>Privacy policy</h1>
+      <p>This privacy policy explains what information {SITE_NAME_FULL} collects through this website, why, and how it is handled.</p>
+
+      <h2>Who we are</h2>
+      <p>{SITE_NAME_FULL} is a commercial fit out contractor based in {ADDRESS_LOCALITY}, {ADDRESS_REGION}. You can contact us at <a href={`mailto:${EMAIL}`}>{EMAIL}</a> with any question about this policy or about information we hold about you.</p>
+
+      <h2>Information we collect</h2>
+      <p>We collect information you provide directly, such as when you submit our contact form or email us. This may include your name, company name, email address, phone number and details of your project. We do not use cookies or analytics scripts, and this website does not track visitors across other sites.</p>
+
+      <h2>How we use your information</h2>
+      <p>Information submitted through our contact form or by email is used solely to respond to your enquiry and, where relevant, to prepare a quote or deliver a project for you. We do not sell or share your information with third parties for marketing purposes.</p>
+
+      <h2>Contact form processing</h2>
+      <p>Our contact form is processed by Web3Forms, a third-party form-submission service, which receives the information you submit and forwards it to us by email. Please refer to Web3Forms' own privacy policy for details of how they handle data in transit.</p>
+
+      <h2>How long we keep information</h2>
+      <p>We retain enquiry and project information for as long as reasonably necessary to respond to your enquiry, deliver any resulting project, and meet our legal and accounting obligations.</p>
+
+      <h2>Your rights</h2>
+      <p>You have the right to ask what personal information we hold about you, to ask us to correct or delete it, and to object to how it is used. To exercise any of these rights, contact us at <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
+
+      <h2>Changes to this policy</h2>
+      <p>We may update this policy from time to time. The version published on this page is always the current one.</p>
+    </div>
+  </section>
+</BaseLayout>

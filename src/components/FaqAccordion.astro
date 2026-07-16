@@ -1,0 +1,36 @@
+---
+// Native <details>/<summary> accordion (no JS) + matching FAQPage JSON-LD
+// generated from the same `items` array so visible copy and schema can't drift.
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+interface Props {
+  items: FaqItem[];
+  heading?: string;
+}
+const { items, heading = 'Frequently asked questions' } = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+<div class="faq">
+  <h2>{heading}</h2>
+  {items.map((item) => (
+    <details class="faq-item">
+      <summary>{item.question}</summary>
+      <p set:html={item.answer} />
+    </details>
+  ))}
+</div>
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { Picture } from 'astro:assets';
+import insightsHubImg from '../../assets/images/insights-hub.jpg';
+import { getCollection } from 'astro:content';
+
+const insights = (await getCollection('insights')).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout
+  title="Fit Out Insights & Guides | A2 Commercial Fit Out"
+  description="Practical guides on commercial fit out costs, Cat A vs Cat B fit out and more from A2 Commercial Fit Out, covering London, Kent and Essex."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Insights' }]} />
+  </div>
+
+  <section class="section--tight bg-white">
+    <div class="container">
+      <h1>Insights</h1>
+      <p>Practical guides on commercial fit out topics, written to help you plan a project before you request a quote.</p>
+
+      <Picture src={insightsHubImg} alt="" width={1200} height={800} widths={[400, 800, 1200]} sizes="(min-width: 48rem) 50vw, 100vw" formats={['avif', 'webp']} fallbackFormat="jpg" loading="lazy" />
+
+      <div class="grid grid--2 insights-list">
+        {insights.map((article) => (
+          <a class="card insight-card" href={`/insights/${article.id}/`}>
+            <h2>{article.data.title}</h2>
+            <p>{article.data.summary}</p>
+            <span class="insight-link">Read more →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>
+
+<style>
+  .insights-list { margin-top: var(--space-lg); }
+  .insight-card { text-decoration: none; color: inherit; }
+  .insight-card h2 { font-size: var(--step-1); }
+  .insight-card p { color: var(--text-on-light-muted); }
+  .insight-link { font-weight: 600; color: var(--link-on-light); font-size: var(--step--1); }
+</style>

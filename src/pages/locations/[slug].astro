@@ -1,0 +1,41 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { SERVICE_LINKS } from '../../consts';
+
+export async function getStaticPaths() {
+  const locations = await getCollection('locations');
+  return locations.map((location) => ({
+    params: { slug: location.id },
+    props: { location },
+  }));
+}
+
+const { location } = Astro.props;
+const { Content } = await render(location);
+const shortName = location.data.title.replace('Commercial Fit Out ', '');
+---
+<BaseLayout
+  title={`${location.data.title} | A2 Commercial Fit Out`}
+  description={location.data.metaDescription}
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Locations', href: '/locations/' }, { label: shortName }]} />
+  </div>
+
+  <section class="section--tight bg-white">
+    <div class="container prose">
+      <h1>{location.data.title}</h1>
+      <Content />
+
+      <h2>Services available in {shortName}</h2>
+      <ul>
+        {SERVICE_LINKS.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <CtaBanner heading={`Have a project in ${shortName}?`} />
+</BaseLayout>

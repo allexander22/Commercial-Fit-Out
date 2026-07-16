@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+
+export async function getStaticPaths() {
+  const insights = await getCollection('insights');
+  return insights.map((article) => ({
+    params: { slug: article.id },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+
+const dateLabel = article.data.publishDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<BaseLayout
+  title={`${article.data.metaTitle ?? article.data.title} | A2 Commercial Fit Out`}
+  description={article.data.metaDescription}
+  type="article"
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Insights', href: '/insights/' }, { label: article.data.title }]} />
+  </div>
+
+  <article class="section--tight bg-white">
+    <div class="container prose">
+      <p class="article-date">Published {dateLabel}</p>
+      <h1>{article.data.title}</h1>
+      <Content />
+    </div>
+  </article>
+
+  <CtaBanner />
+</BaseLayout>
+
+<style>
+  .article-date {
+    color: var(--text-on-light-muted);
+    font-size: var(--step--1);
+    margin-bottom: var(--space-2xs);
+  }
+  .prose :global(table) { font-size: var(--step--1); }
+</style>

@@ -1,0 +1,31 @@
+---
+import { SITE_NAME_FULL, SITE_URL, ADDRESS_LOCALITY, ADDRESS_REGION, ADDRESS_COUNTRY, AREA_SERVED } from '../../consts';
+
+interface Props {
+  name: string;
+  description: string;
+  url: string;
+}
+const { name, description, url } = Astro.props;
+
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: name,
+  name,
+  description,
+  url: new URL(url, SITE_URL).toString(),
+  provider: {
+    '@type': 'GeneralContractor',
+    name: SITE_NAME_FULL,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: ADDRESS_LOCALITY,
+      addressRegion: ADDRESS_REGION,
+      addressCountry: ADDRESS_COUNTRY,
+    },
+  },
+  areaServed: AREA_SERVED.map((name) => ({ '@type': 'Place', name })),
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(data)} />

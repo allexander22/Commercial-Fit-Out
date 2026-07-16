@@ -1,0 +1,61 @@
+---
+// Visible breadcrumb trail + matching BreadcrumbList JSON-LD, generated from
+// the same `items` array so the two can never drift apart.
+import { SITE_URL } from '../consts';
+
+interface Crumb {
+  label: string;
+  href?: string; // omit on the final (current-page) crumb
+}
+interface Props {
+  items: Crumb[];
+}
+const { items } = Astro.props;
+
+const allItems: Crumb[] = [{ label: 'Home', href: '/' }, ...items];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: allItems.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.label,
+    ...(item.href ? { item: new URL(item.href, SITE_URL).toString() } : {}),
+  })),
+};
+---
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    {allItems.map((item) => (
+      <li>
+        {item.href ? <a href={item.href}>{item.label}</a> : <span aria-current="page">{item.label}</span>}
+      </li>
+    ))}
+  </ol>
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+<style>
+  .breadcrumbs {
+    padding-block: var(--space-sm);
+  }
+  .breadcrumbs ol {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+    margin: 0;
+    padding: 0;
+    font-size: var(--step--1);
+    color: var(--text-on-light-muted);
+  }
+  .breadcrumbs li:not(:last-child)::after {
+    content: '/';
+    margin-left: 0.4em;
+    color: var(--colour-steel-400);
+  }
+  .breadcrumbs a {
+    color: var(--text-on-light-muted);
+  }
+</style>

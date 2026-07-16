@@ -1,0 +1,103 @@
+---
+import Logo from './Logo.astro';
+import AccreditationBadges from './AccreditationBadges.astro';
+import LocalBusinessSchema from './schema/LocalBusiness.astro';
+import { SITE_NAME_FULL, EMAIL, PHONE, ADDRESS_LOCALITY, ADDRESS_REGION, SERVICE_LINKS, LOCATION_LINKS } from '../consts';
+
+const year = new Date().getFullYear();
+---
+<footer class="site-footer bg-ink">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <Logo />
+      <p class="footer-tagline">Fixed-price commercial fit out delivery across London, Kent, Essex and the South East.</p>
+      <AccreditationBadges />
+    </div>
+
+    <nav class="footer-col" aria-label="Services">
+      <h2>Services</h2>
+      <ul>
+        {SERVICE_LINKS.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+        <li><a href="/services/">All services</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-label="Locations">
+      <h2>Locations</h2>
+      <ul>
+        {LOCATION_LINKS.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+        <li><a href="/locations/">All locations</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer-col">
+      <h2>Contact</h2>
+      <address>
+        {SITE_NAME_FULL}<br />
+        {ADDRESS_LOCALITY}, {ADDRESS_REGION}, UK<br />
+        <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+        {PHONE && <><br /><a href={`tel:${PHONE}`}>{PHONE}</a></>}
+      </address>
+      <ul class="footer-misc-links">
+        <li><a href="/contact/">Contact us</a></li>
+        <li><a href="/privacy-policy/">Privacy policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>&copy; {year} {SITE_NAME_FULL}. All rights reserved.</p>
+  </div>
+</footer>
+
+<LocalBusinessSchema />
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--colour-ink-border);
+    padding-block: var(--space-xl) var(--space-md);
+  }
+  .footer-grid {
+    display: grid;
+    gap: var(--space-lg);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  }
+  .footer-brand :global(svg) { color: var(--text-on-dark); }
+  .footer-tagline {
+    color: var(--text-on-dark-muted);
+    margin-block: var(--space-sm);
+    max-width: 26rem;
+  }
+  .footer-col h2 {
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-on-dark-muted);
+    margin-bottom: var(--space-sm);
+  }
+  .footer-col ul, .footer-misc-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+  .footer-misc-links { margin-top: var(--space-sm); }
+  .footer-col a, address a {
+    color: var(--text-on-dark);
+    text-decoration: none;
+  }
+  .footer-col a:hover, address a:hover {
+    color: var(--link-on-dark);
+  }
+  address { font-style: normal; color: var(--text-on-dark-muted); line-height: 1.7; }
+  .footer-bottom {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--colour-ink-border);
+    color: var(--text-on-dark-muted);
+    font-size: var(--step--1);
+  }
+  .footer-bottom p { margin: 0; }
+</style>

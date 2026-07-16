@@ -1,0 +1,23 @@
+---
+import { SITE_NAME_FULL, SITE_URL, EMAIL, ADDRESS_LOCALITY, ADDRESS_REGION, ADDRESS_COUNTRY, AREA_SERVED, PHONE } from '../../consts';
+
+const data: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'GeneralContractor',
+  name: SITE_NAME_FULL,
+  url: SITE_URL,
+  email: EMAIL,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: ADDRESS_LOCALITY,
+    addressRegion: ADDRESS_REGION,
+    addressCountry: ADDRESS_COUNTRY,
+  },
+  areaServed: AREA_SERVED.map((name) => ({ '@type': 'Place', name })),
+};
+
+if (PHONE) {
+  data.telephone = PHONE;
+}
+---
+<script type="application/ld+json" set:html={JSON.stringify(data)} />

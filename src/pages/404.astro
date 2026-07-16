@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SERVICE_LINKS, LOCATION_LINKS } from '../consts';
+---
+<BaseLayout
+  title="Page Not Found | A2 Commercial Fit Out"
+  description="The page you're looking for can't be found. Explore our commercial fit out services, sectors and locations instead."
+  noindex={true}
+  canonicalPath="/404.html"
+>
+  <section class="section bg-white">
+    <div class="container prose">
+      <h1>Page not found</h1>
+      <p>Sorry, we can't find the page you were looking for. It may have moved, or the link may be out of date. Try one of the links below, or head back to the <a href="/">homepage</a>.</p>
+
+      <h2>Services</h2>
+      <ul>
+        {SERVICE_LINKS.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+        <li><a href="/services/">All services</a></li>
+      </ul>
+
+      <h2>Locations</h2>
+      <ul>
+        {LOCATION_LINKS.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+        <li><a href="/locations/">All locations</a></li>
+      </ul>
+
+      <h2>More</h2>
+      <ul>
+        <li><a href="/sectors/">Sectors</a></li>
+        <li><a href="/commercial-fit-out-costs/">Commercial fit out costs</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/insights/">Insights</a></li>
+        <li><a href="/about/">About us</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

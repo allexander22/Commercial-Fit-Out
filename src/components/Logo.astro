@@ -1,0 +1,31 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+<svg
+  class={className}
+  viewBox="0 0 260 48"
+  role="img"
+  aria-label="A2 Commercial Fit Out"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient id="logo-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7db4ee" />
+      <stop offset="100%" stop-color="#2f7dd1" />
+    </linearGradient>
+  </defs>
+  <text x="0" y="32" font-family="system-ui, Arial, sans-serif" font-weight="800" font-size="30" fill="url(#logo-accent)">A2</text>
+  <text x="48" y="20" font-family="system-ui, Arial, sans-serif" font-weight="700" font-size="13" letter-spacing="0.5" fill="currentColor">COMMERCIAL</text>
+  <text x="48" y="36" font-family="system-ui, Arial, sans-serif" font-weight="700" font-size="13" letter-spacing="0.5" fill="currentColor">FIT OUT</text>
+</svg>
+
+<style>
+  svg {
+    height: 2.25rem;
+    width: auto;
+    color: inherit;
+  }
+</style>

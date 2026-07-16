@@ -1,0 +1,65 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  sector: string;
+  location: string;
+  sqFt: number;
+  durationWeeks: number;
+  placeholder?: boolean;
+}
+const { href, title, sector, location, sqFt, durationWeeks, placeholder = true } = Astro.props;
+---
+<a class="case-card card" href={href}>
+  {placeholder && <span class="case-card-flag">Example project</span>}
+  <h3>{title}</h3>
+  <dl class="case-card-facts">
+    <div><dt>Sector</dt><dd>{sector}</dd></div>
+    <div><dt>Location</dt><dd>{location}</dd></div>
+    <div><dt>Size</dt><dd>{sqFt.toLocaleString('en-GB')} sq ft</dd></div>
+    <div><dt>Duration</dt><dd>{durationWeeks} weeks</dd></div>
+  </dl>
+  <span class="case-card-link">View project →</span>
+</a>
+
+<style>
+  .case-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+  }
+  .case-card-flag {
+    display: inline-block;
+    background: var(--colour-steel-100);
+    color: var(--text-on-light-muted);
+    font-size: var(--step--1);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: var(--space-3xs) var(--space-xs);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-sm);
+  }
+  .case-card h3 { font-size: var(--step-1); }
+  .case-card-facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xs) var(--space-sm);
+    margin: var(--space-sm) 0;
+  }
+  .case-card-facts dt {
+    font-size: var(--step--1);
+    color: var(--text-on-light-muted);
+    margin: 0;
+  }
+  .case-card-facts dd {
+    margin: 0;
+    font-weight: 600;
+  }
+  .case-card-link {
+    font-weight: 600;
+    color: var(--link-on-light);
+    font-size: var(--step--1);
+  }
+</style>

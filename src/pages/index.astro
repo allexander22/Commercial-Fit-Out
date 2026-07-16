@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import UspGrid from '../components/UspGrid.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import AccreditationBadges from '../components/AccreditationBadges.astro';
+import heroImage from '../assets/images/hero.jpg';
+import officeFitOutImg from '../assets/images/office-fit-out.jpg';
+import officeRefurbImg from '../assets/images/office-refurbishment.jpg';
+import retailFitOutImg from '../assets/images/retail-fit-out.jpg';
+import healthcareFitOutImg from '../assets/images/healthcare-fit-out.jpg';
+import { getCollection } from 'astro:content';
+
+const caseStudies = (await getCollection('caseStudies')).sort((a, b) => a.data.order - b.data.order);
+
+const faqs = [
+  {
+    question: 'Are your fit out quotes really fixed price?',
+    answer: 'Yes. Every quote is agreed in full before we mobilise on site, covering the whole scope you’ve asked us to price — not just a headline figure with variations added later.',
+  },
+  {
+    question: 'Do you use subcontractors?',
+    answer: 'Our dry lining, suspended ceiling, tape & jointing and tiling trades are all in-house. We manage specialist packages such as M&E through vetted partners, but the trades that most affect programme and quality stay under our direct control.',
+  },
+  {
+    question: 'Can you work out of hours to avoid disrupting our business?',
+    answer: 'Yes — evening and weekend working is one of our core capabilities, and we plan it into the programme from the outset for clients who need to keep operating throughout the works.',
+  },
+  {
+    question: 'What size of project do you take on?',
+    answer: 'All sizes. We don’t operate a minimum project value, so a single-room refurbishment gets the same fixed-price, in-house-trade approach as a multi-floor fit out.',
+  },
+  {
+    question: 'Which areas do you cover?',
+    answer: 'We deliver commercial fit out projects across London, Kent, Essex and the wider South East, from our base in Maidstone, Kent.',
+  },
+];
+---
+<BaseLayout
+  title="Commercial Fit Out Company | A2 Commercial Fit Out"
+  description="Fixed-price commercial fit out contractor across London, Kent, Essex and the South East. In-house trades, out-of-hours working, fast delivery."
+>
+  <Hero image={heroImage} imageAlt="" eyebrow="Commercial Fit Out Contractor">
+    <Fragment slot="heading">Commercial fit out, delivered to a fixed price</Fragment>
+    <p>A2 Commercial Fit Out is a delivery partner for architects, designers, landlords and main contractors — building your design to specification, on time, with our own in-house trades.</p>
+    <Fragment slot="actions">
+      <a class="btn btn--primary" href="/contact/">Get a fixed-price quote</a>
+      <a class="btn btn--outline-dark" href="/services/">Explore our services</a>
+    </Fragment>
+  </Hero>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Why clients choose A2 Commercial Fit Out</h2>
+      <UspGrid />
+    </div>
+  </section>
+
+  <section class="section bg-steel">
+    <div class="container">
+      <h2>Commercial fit out services</h2>
+      <p>As a commercial fit out company covering offices, retail and healthcare environments, we deliver every project as a single point of responsibility — from first survey through to handover.</p>
+      <div class="grid grid--4">
+        <ServiceCard href="/services/office-fit-out/" title="Office Fit Out" description="Cat A, Cat B and turnkey office fit out delivered to a fixed price." image={officeFitOutImg} imageAlt="" />
+        <ServiceCard href="/services/office-refurbishment/" title="Office Refurbishment" description="Refurbishment of existing office space with minimal disruption to your team." image={officeRefurbImg} imageAlt="" />
+        <ServiceCard href="/services/retail-fit-out/" title="Retail Fit Out" description="Shop and retail unit fit out delivered fast, to protect your opening date." image={retailFitOutImg} imageAlt="" />
+        <ServiceCard href="/services/healthcare-fit-out/" title="Healthcare Fit Out" description="Compliant healthcare and clinical fit out delivered by trusted trades." image={healthcareFitOutImg} imageAlt="" />
+      </div>
+      <p><a class="btn btn--outline-light" href="/services/">View all services</a></p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Recent project examples</h2>
+      <p>A selection of example projects illustrating the type of work we deliver. Full case studies with real client details and photography are coming soon.</p>
+      <div class="grid grid--3">
+        {caseStudies.map((cs) => (
+          <CaseStudyCard
+            href={`/projects/${cs.id}/`}
+            title={cs.data.title}
+            sector={cs.data.sector}
+            location={cs.data.location}
+            sqFt={cs.data.sqFt}
+            durationWeeks={cs.data.durationWeeks}
+            placeholder={cs.data.placeholder}
+          />
+        ))}
+      </div>
+      <p><a class="btn btn--outline-light" href="/projects/">View all projects</a></p>
+    </div>
+  </section>
+
+  <section class="section bg-steel">
+    <div class="container accreditation-section">
+      <h2>Accredited and compliant</h2>
+      <p>We hold CHAS and SafeContractor accreditation, and every project is delivered in line with current Building Regulations, fire safety requirements and CDM 2015.</p>
+      <AccreditationBadges />
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <FaqAccordion items={faqs} />
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>
+
+<style>
+  .accreditation-section h2, .accreditation-section p { text-align: left; }
+</style>

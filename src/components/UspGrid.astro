@@ -1,0 +1,39 @@
+---
+const usps = [
+  {
+    title: 'Fixed-price quotes',
+    body: 'Cost certainty from day one — the price you agree is the price you pay, with no hidden variations.',
+  },
+  {
+    title: 'In-house trades',
+    body: 'Dry lining, suspended ceilings, tape & jointing and tiling delivered by our own tradespeople, not subcontractors — direct control of quality and programme.',
+  },
+  {
+    title: 'Out-of-hours working',
+    body: 'Evening and weekend delivery so your operations, staff or tenants keep running throughout the works.',
+  },
+  {
+    title: 'Speed of delivery',
+    body: 'Fast turnaround from survey to handover, without compromising on quality or Building Regulations compliance.',
+  },
+];
+---
+<div class="usp-grid grid grid--4">
+  {usps.map((usp) => (
+    <div class="usp-card card">
+      <h3>{usp.title}</h3>
+      <p>{usp.body}</p>
+    </div>
+  ))}
+</div>
+
+<style>
+  .usp-card h3 {
+    font-size: var(--step-1);
+    color: var(--link-on-light);
+  }
+  .usp-card p {
+    margin-bottom: 0;
+    color: var(--text-on-light-muted);
+  }
+</style>

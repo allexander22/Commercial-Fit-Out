@@ -1,0 +1,11 @@
+---
+// Placeholder text badges until real CHAS / SafeContractor artwork arrives.
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+<div class={`badge-row ${className}`}>
+  <span class="accred-badge">CHAS Accredited</span>
+  <span class="accred-badge">SafeContractor Approved</span>
+</div>

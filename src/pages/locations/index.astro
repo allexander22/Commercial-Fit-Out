@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import { Picture } from 'astro:assets';
+import locationsHubImg from '../../assets/images/locations-hub.jpg';
+import { getCollection } from 'astro:content';
+
+const locations = (await getCollection('locations')).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout
+  title="Fit Out Company Near Me | A2 Commercial Fit Out"
+  description="A2 Commercial Fit Out delivers commercial fit out across London, Kent, Maidstone and Essex. Find local coverage and a fast response near you."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Locations' }]} />
+  </div>
+
+  <section class="section--tight bg-white">
+    <div class="container">
+      <h1>Areas we cover</h1>
+      <p>Searching for a <strong>fit out company near me</strong>? A2 Commercial Fit Out is based in Maidstone, Kent, and delivers commercial fit out projects across London, Kent, Essex and the wider South East. Choose your area below for local detail on how we work.</p>
+
+      <Picture src={locationsHubImg} alt="" width={1200} height={800} widths={[400, 800, 1200]} sizes="(min-width: 48rem) 50vw, 100vw" formats={['avif', 'webp']} fallbackFormat="jpg" loading="lazy" />
+
+      <div class="grid grid--4 location-list">
+        {locations.map((location) => (
+          <a class="card location-card" href={`/locations/${location.id}/`}>
+            <h3>{location.data.title.replace('Commercial Fit Out ', '')}</h3>
+            <p>{location.data.summary}</p>
+            <span class="location-link">View coverage →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>
+
+<style>
+  .location-list { margin-top: var(--space-lg); }
+  .location-card { text-decoration: none; color: inherit; }
+  .location-card h3 { font-size: var(--step-1); }
+  .location-card p { color: var(--text-on-light-muted); font-size: var(--step--1); }
+  .location-link { font-weight: 600; color: var(--link-on-light); font-size: var(--step--1); }
+</style>

@@ -1,0 +1,78 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+
+export async function getStaticPaths() {
+  const caseStudies = await getCollection('caseStudies');
+  return caseStudies.map((cs) => ({
+    params: { slug: cs.id },
+    props: { cs },
+  }));
+}
+
+const { cs } = Astro.props;
+const { Content } = await render(cs);
+---
+<BaseLayout
+  title={`${cs.data.metaTitle ?? cs.data.title} | A2 Commercial Fit Out`}
+  description={cs.data.metaDescription}
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Projects', href: '/projects/' }, { label: cs.data.title }]} />
+  </div>
+
+  <section class="section--tight bg-white">
+    <div class="container prose">
+      {cs.data.placeholder && (
+        <p class="placeholder-flag">Example project — full case study coming soon</p>
+      )}
+      <h1>{cs.data.title}</h1>
+
+      <dl class="project-facts">
+        <div><dt>Sector</dt><dd>{cs.data.sector}</dd></div>
+        <div><dt>Location</dt><dd>{cs.data.location}</dd></div>
+        <div><dt>Size</dt><dd>{cs.data.sqFt.toLocaleString('en-GB')} sq ft</dd></div>
+        <div><dt>Duration</dt><dd>{cs.data.durationWeeks} weeks</dd></div>
+        <div><dt>Outcome</dt><dd>{cs.data.outcome}</dd></div>
+      </dl>
+
+      <Content />
+    </div>
+  </section>
+
+  <CtaBanner heading="Have a similar project in mind?" />
+</BaseLayout>
+
+<style>
+  .placeholder-flag {
+    display: inline-block;
+    background: var(--colour-steel-100);
+    color: var(--text-on-light-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: var(--step--1);
+    letter-spacing: 0.03em;
+    padding: var(--space-2xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-sm);
+  }
+  .project-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: var(--space-sm);
+    background: var(--colour-steel-100);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+  .project-facts dt {
+    font-size: var(--step--1);
+    color: var(--text-on-light-muted);
+  }
+  .project-facts dd {
+    margin: 0;
+    font-weight: 700;
+  }
+</style>

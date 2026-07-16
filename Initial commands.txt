@@ -1,0 +1,7 @@
+git config --global user.name "allexander22"
+
+git config --global user.email "allexander22@gmail.com"
+
+git remote add origin https://github.com/allexander22/Commercial-Fit-Out.git
+git branch -M main
+git push -u origin main
