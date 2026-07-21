@@ -10,7 +10,7 @@ interface Props {
   canonicalPath?: string;
 }
 
-const { title, description, image = '/favicon.svg', type = 'website', noindex = false, canonicalPath } = Astro.props;
+const { title, description, image = '/og-image.jpg', type = 'website', noindex = false, canonicalPath } = Astro.props;
 
 const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, Astro.site);
 const imageURL = new URL(image, Astro.site);

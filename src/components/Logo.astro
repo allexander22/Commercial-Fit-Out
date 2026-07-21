@@ -1,10 +1,15 @@
 ---
-// Vector recreation of the A2 Commercial Fit Out mark: silver "A" + blue "2"
-// monogram over a thin swoosh, with the COMMERCIAL / FIT OUT wordmark.
-// `variant="dark"` (default) is for use on the site's dark header/footer;
-// `variant="light"` swaps the silver/steel tones for a dark-ink equivalent
-// so the mark reads correctly on white sections, documents and email
-// signatures (the light-background colourway called for in the brand brief).
+// `variant="dark"` (default) renders the real supplied logo artwork
+// (src/assets/brand/logo-mark-transparent.png — watermark removed, trimmed,
+// background keyed to transparent so it drops onto the site's own dark
+// surfaces) for use on the site's dark header/footer.
+// `variant="light"` has no real-artwork equivalent to work from (the supplied
+// file is a chrome-on-black render with no light-background version), so it
+// falls back to a hand-vectorised recreation in dark-ink tones, for any
+// future white-section, document or email-signature use.
+import { Image } from 'astro:assets';
+import logoMark from '../assets/brand/logo-mark-transparent.png';
+
 interface Props {
   class?: string;
   variant?: 'dark' | 'light';
@@ -14,44 +19,48 @@ const isLight = variant === 'light';
 const uid = Math.random().toString(36).slice(2, 9);
 const silverId = `logo-silver-${uid}`;
 const blueId = `logo-blue-${uid}`;
-const wordmarkFill = isLight ? '#14171c' : 'currentColor';
-const silverStops = isLight
-  ? ['#6b7280', '#3f454d', '#14171c']
-  : ['#f3f5f7', '#c6ccd3', '#8b929b'];
 ---
-<svg
-  class={className}
-  viewBox="0 0 260 48"
-  role="img"
-  aria-label="A2 Commercial Fit Out"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <defs>
-    <linearGradient id={silverId} x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color={silverStops[0]} />
-      <stop offset="55%" stop-color={silverStops[1]} />
-      <stop offset="100%" stop-color={silverStops[2]} />
-    </linearGradient>
-    <linearGradient id={blueId} x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="var(--colour-blue-400, #57a0ec)" />
-      <stop offset="100%" stop-color="var(--colour-blue-700, #1c4f8a)" />
-    </linearGradient>
-  </defs>
-
-  <!-- A2 monogram -->
-  <text x="-1" y="34" font-family="system-ui, Arial, sans-serif" font-weight="900" font-size="34" fill={`url(#${silverId})`}>A</text>
-  <text x="19" y="34" font-family="system-ui, Arial, sans-serif" font-weight="900" font-size="34" fill={`url(#${blueId})`}>2</text>
-  <path d="M 3 40 Q 22 45 41 40" fill="none" stroke={`url(#${blueId})`} stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
-
-  <!-- Wordmark -->
-  <text x="50" y="20" font-family="system-ui, Arial, sans-serif" font-weight="800" font-size="13" letter-spacing="1.1" fill={wordmarkFill}>COMMERCIAL</text>
-  <line x1="50" y1="31" x2="57" y2="31" stroke={`url(#${blueId})`} stroke-width="1.5" />
-  <text x="62" y="35" font-family="system-ui, Arial, sans-serif" font-weight="700" font-size="11" letter-spacing="2.2" fill={`url(#${blueId})`}>FIT OUT</text>
-  <line x1="129" y1="31" x2="136" y2="31" stroke={`url(#${blueId})`} stroke-width="1.5" />
-</svg>
+{isLight ? (
+  <svg
+    class={className}
+    viewBox="0 0 260 48"
+    role="img"
+    aria-label="A2 Commercial Fit Out"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient id={silverId} x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#6b7280" />
+        <stop offset="55%" stop-color="#3f454d" />
+        <stop offset="100%" stop-color="#14171c" />
+      </linearGradient>
+      <linearGradient id={blueId} x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="var(--colour-blue-400, #57a0ec)" />
+        <stop offset="100%" stop-color="var(--colour-blue-700, #1c4f8a)" />
+      </linearGradient>
+    </defs>
+    <text x="-1" y="34" font-family="system-ui, Arial, sans-serif" font-weight="900" font-size="34" fill={`url(#${silverId})`}>A</text>
+    <text x="19" y="34" font-family="system-ui, Arial, sans-serif" font-weight="900" font-size="34" fill={`url(#${blueId})`}>2</text>
+    <path d="M 3 40 Q 22 45 41 40" fill="none" stroke={`url(#${blueId})`} stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+    <text x="50" y="20" font-family="system-ui, Arial, sans-serif" font-weight="800" font-size="13" letter-spacing="1.1" fill="#14171c">COMMERCIAL</text>
+    <line x1="50" y1="31" x2="57" y2="31" stroke={`url(#${blueId})`} stroke-width="1.5" />
+    <text x="62" y="35" font-family="system-ui, Arial, sans-serif" font-weight="700" font-size="11" letter-spacing="2.2" fill={`url(#${blueId})`}>FIT OUT</text>
+    <line x1="129" y1="31" x2="136" y2="31" stroke={`url(#${blueId})`} stroke-width="1.5" />
+  </svg>
+) : (
+  <Image
+    src={logoMark}
+    alt="A2 Commercial Fit Out"
+    width={200}
+    height={111}
+    class={className}
+    loading="eager"
+    fetchpriority="high"
+  />
+)}
 
 <style>
-  svg {
+  svg, img {
     height: 2.25rem;
     width: auto;
     color: inherit;
