@@ -49,6 +49,7 @@ const insights = defineCollection({
     publishDate: z.date(),
     summary: z.string(),
     order: z.number().default(0),
+    faqs: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
   }),
 });
 

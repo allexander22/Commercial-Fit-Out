@@ -38,7 +38,7 @@ Cat B is almost always where a business's specific requirements — desk ratios,
 
 ## Why the distinction matters for budgeting
 
-Understanding which category you're inheriting from a landlord — and which you're responsible for delivering yourself — has a direct effect on your budget and programme. Leases vary: some include a Cat A contribution or a "Cat A plus" specification, others hand over genuine shell-and-core space that needs both categories delivered from scratch. Before setting a fit out budget, it's worth clarifying in writing exactly what condition the space will be in on handover, because the answer changes the scope — and cost — of the fit out significantly. Our [commercial fit out cost guide](/commercial-fit-out-costs/) sets out indicative cost bands per square metre and square foot for different specification levels, which is a useful starting point once you know which category of work you're actually budgeting for.
+Understanding which category you're inheriting from a landlord — and which you're responsible for delivering yourself — has a direct effect on your budget and programme. Leases vary: some include a Cat A contribution or a "Cat A plus" specification, others hand over genuine shell-and-core space that needs both categories delivered from scratch. Before setting a fit out budget, it's worth clarifying in writing exactly what condition the space will be in on handover, because the answer changes the scope — and cost — of the fit out significantly. Our [commercial fit out cost guide](/insights/commercial-fit-out-costs/) sets out indicative cost bands per square metre and square foot for different specification levels, which is a useful starting point once you know which category of work you're actually budgeting for.
 
 ## Where a delivery contractor fits in
 
@@ -50,4 +50,4 @@ If you're moving into a new lease and unsure which category of work applies to y
 
 - [Office fit out services](/services/office-fit-out/)
 - [Office refurbishment](/services/office-refurbishment/)
-- [Commercial fit out cost guide](/commercial-fit-out-costs/)
+- [Commercial fit out cost guide](/insights/commercial-fit-out-costs/)

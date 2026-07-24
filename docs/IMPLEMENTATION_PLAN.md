@@ -45,17 +45,16 @@ URLs are flat, lowercase, hyphenated, with trailing slashes; canonical = `https:
 | Services hub | `/services/` | fit out company, fit out contractor, commercial fit out services |
 | Sectors hub | `/sectors/` | interior fit out companies/contractors |
 | Sector pages ×5 | `/sectors/industrial/`, `/sectors/pubs-and-bars/`, `/sectors/turnkey/`, `/sectors/bespoke-joinery-fit-out/`, `/sectors/shops/` | industrial fit out (+contractors), pub/bar fit out companies, turnkey fit out, bespoke fit out, shop fitout |
-| Cost guide | `/commercial-fit-out-costs/` | fitout costs, commercial fit out costs, cost per m²/sq ft (FAQ-rich) |
 | Locations hub | `/locations/` | fit out companies near me (via GBP + local signals) |
 | Location pages ×4 | `/locations/london/`, `/locations/kent/`, `/locations/essex/`, `/locations/maidstone/` | "{service} + {location}" variants; Midlands deferred |
 | Projects hub | `/projects/` | case-study index |
 | Case studies ×3 | `/projects/<slug>/` | long-tail + internal-link source to services/locations |
 | About | `/about/` | brand/experience/accreditations |
 | Contact | `/contact/` | conversion page |
-| Insights hub + 2 launch articles | `/insights/`, `/insights/<slug>/` | informational queries (e.g. "fit out costs per square foot explained", "cat a vs cat b fit out") |
+| Insights hub + 2 launch articles | `/insights/`, `/insights/<slug>/` | informational queries, incl. the merged cost guide (fitout costs, commercial fit out costs, cost per m²/sq ft, FAQ-rich) and "cat a vs cat b fit out" |
 | Privacy, 404 | `/privacy-policy/`, `/404.html` | — |
 
-≈ 26 pages at launch. Case studies use realistic but clearly-marked placeholder data (type, location, sq ft, duration, outcome) awaiting the real 3–5 selected projects and photos.
+≈ 25 pages at launch. The cost guide was folded into the `/insights/commercial-fit-out-costs/` article rather than kept as a standalone page, since the two covered near-identical ground — one comprehensive page beats two thin ones competing for the same cost-related keywords. Case studies use realistic but clearly-marked placeholder data (type, location, sq ft, duration, outcome) awaiting the real 3–5 selected projects and photos.
 
 Note: the Landlord Refurbishment and Higher Education Fit Out pages were added after the initial build from separately supplied, ready-to-use marketing copy, rather than from the original May 2025–Apr 2026 keyword research — they extend the site map beyond the keywords documented above but follow the same content rules and page pattern as the rest of the services section.
 

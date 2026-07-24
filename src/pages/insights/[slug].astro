@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CtaBanner from '../../components/CtaBanner.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
 
 export async function getStaticPaths() {
   const insights = await getCollection('insights');
@@ -31,6 +32,7 @@ const dateLabel = article.data.publishDate.toLocaleDateString('en-GB', { day: 'n
       <p class="article-date">Published {dateLabel}</p>
       <h1>{article.data.title}</h1>
       <Content />
+      {article.data.faqs && <FaqAccordion items={article.data.faqs} />}
     </div>
   </article>
 
