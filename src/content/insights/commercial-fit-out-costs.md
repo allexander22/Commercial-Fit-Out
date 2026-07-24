@@ -64,3 +64,4 @@ The only way to get a genuinely accurate cost is a fixed-price quote based on yo
 
 - [Cat A vs Cat B fit out: what's the difference?](/insights/cat-a-vs-cat-b-fit-out/)
 - [Office fit out services](/services/office-fit-out/)
+- [Calculating office refurbishment costs for UK businesses](/insights/calculating-office-refurbishment-costs-uk/)

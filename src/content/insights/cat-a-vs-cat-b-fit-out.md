@@ -51,3 +51,4 @@ If you're moving into a new lease and unsure which category of work applies to y
 - [Office fit out services](/services/office-fit-out/)
 - [Office refurbishment](/services/office-refurbishment/)
 - [Commercial fit out cost guide](/insights/commercial-fit-out-costs/)
+- [Managing commercial fit out projects on a fixed budget](/insights/managing-commercial-fit-out-projects-fixed-budget/)
