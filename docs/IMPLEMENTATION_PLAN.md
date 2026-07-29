@@ -52,9 +52,9 @@ URLs are flat, lowercase, hyphenated, with trailing slashes; canonical = `https:
 | About | `/about/` | brand/experience/accreditations |
 | Contact | `/contact/` | conversion page |
 | Insights hub + 2 launch articles | `/insights/`, `/insights/<slug>/` | informational queries, incl. the merged cost guide (fitout costs, commercial fit out costs, cost per m²/sq ft, FAQ-rich) and "cat a vs cat b fit out" |
-| Privacy, 404 | `/privacy-policy/`, `/404.html` | — |
+| Privacy, Modern Slavery Statement, 404 | `/privacy-policy/`, `/modern-slavery-statement/`, `/404.html` | — |
 
-≈ 25 pages at launch. The cost guide was folded into the `/insights/commercial-fit-out-costs/` article rather than kept as a standalone page, since the two covered near-identical ground — one comprehensive page beats two thin ones competing for the same cost-related keywords. Case studies use realistic but clearly-marked placeholder data (type, location, sq ft, duration, outcome) awaiting the real 3–5 selected projects and photos.
+≈ 30 pages at launch (this count previously fell behind as insights articles and new service pages were added in later revisions — corrected here to match the actual build). The modern slavery statement is published voluntarily (the company is below the section 54 turnover threshold) and deliberately avoids specific governance/KPI claims until the business has the processes to back them. The cost guide was folded into the `/insights/commercial-fit-out-costs/` article rather than kept as a standalone page, since the two covered near-identical ground — one comprehensive page beats two thin ones competing for the same cost-related keywords. Case studies use realistic but clearly-marked placeholder data (type, location, sq ft, duration, outcome) awaiting the real 3–5 selected projects and photos.
 
 Note: the Landlord Refurbishment and Higher Education Fit Out pages were added after the initial build from separately supplied, ready-to-use marketing copy, rather than from the original May 2025–Apr 2026 keyword research — they extend the site map beyond the keywords documented above but follow the same content rules and page pattern as the rest of the services section.
 
