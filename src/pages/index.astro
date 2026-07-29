@@ -5,7 +5,6 @@ import UspGrid from '../components/UspGrid.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import CaseStudyCard from '../components/CaseStudyCard.astro';
 import CtaBanner from '../components/CtaBanner.astro';
-import FaqAccordion from '../components/FaqAccordion.astro';
 import AccreditationBadges from '../components/AccreditationBadges.astro';
 import heroImage from '../assets/images/hero.jpg';
 import officeFitOutImg from '../assets/images/office-fit-out.jpg';
@@ -15,29 +14,6 @@ import healthcareFitOutImg from '../assets/images/healthcare-fit-out.jpg';
 import { getCollection } from 'astro:content';
 
 const caseStudies = (await getCollection('caseStudies')).sort((a, b) => a.data.order - b.data.order);
-
-const faqs = [
-  {
-    question: 'Are your fit out quotes really fixed price?',
-    answer: 'Yes. Every quote is agreed in full before we mobilise on site, covering the whole scope you’ve asked us to price — not just a headline figure with variations added later.',
-  },
-  {
-    question: 'Do you use subcontractors?',
-    answer: 'Our dry lining, suspended ceiling, tape & jointing and tiling trades are all in-house. We manage specialist packages such as M&E through vetted partners, but the trades that most affect programme and quality stay under our direct control.',
-  },
-  {
-    question: 'Can you work out of hours to avoid disrupting our business?',
-    answer: 'Yes — evening and weekend working is one of our core capabilities, and we plan it into the programme from the outset for clients who need to keep operating throughout the works.',
-  },
-  {
-    question: 'What size of project do you take on?',
-    answer: 'All sizes. We don’t operate a minimum project value, so a single-room refurbishment gets the same fixed-price, in-house-trade approach as a multi-floor fit out.',
-  },
-  {
-    question: 'Which areas do you cover?',
-    answer: 'We deliver commercial fit out projects across London, Kent, Essex and the wider South East, from our base in Maidstone, Kent.',
-  },
-];
 ---
 <BaseLayout
   title="Commercial Fit Out Company | Fixed-Price Fit Out & Refurbishment"
@@ -108,12 +84,6 @@ const faqs = [
       <h2>Accredited and compliant</h2>
       <p>Every fit out project comes down to the people on site. Our team brings over 15 years' experience delivering commercial projects across London and the South East, with a background in dry lining, suspended ceilings, tape & jointing and tiling — that's why we run our own trades rather than subcontracting the work out. We hold CHAS and SafeContractor accreditation, and every project is delivered in line with current Building Regulations, fire safety requirements and CDM 2015.</p>
       <AccreditationBadges />
-    </div>
-  </section>
-
-  <section class="section bg-steel">
-    <div class="container">
-      <FaqAccordion items={faqs} />
     </div>
   </section>
 
