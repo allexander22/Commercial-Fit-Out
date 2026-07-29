@@ -20,7 +20,7 @@ const { image, imageAlt = '', eyebrow } = Astro.props;
 
     <div class="hero-visual" aria-hidden={imageAlt === '' ? 'true' : undefined}>
       <div class="hero-visual-glow"></div>
-      <Picture src={image} alt={imageAlt} widths={[400, 700, 900]} sizes="(min-width: 56rem) 32rem, 90vw" width={900} height={900} formats={['avif', 'webp']} fallbackFormat="jpg" loading="eager" fetchpriority="high" class="hero-img" />
+      <Picture src={image} alt={imageAlt} widths={[500, 900, 1200]} sizes="(min-width: 56rem) 34rem, 90vw" width={1200} height={900} formats={['avif', 'webp']} fallbackFormat="jpg" loading="eager" fetchpriority="high" class="hero-img" />
       <div class="hero-visual-frame"></div>
     </div>
   </div>
@@ -65,9 +65,7 @@ const { image, imageAlt = '', eyebrow } = Astro.props;
 
   .hero-visual {
     position: relative;
-    aspect-ratio: 1 / 1;
-    max-width: 28rem;
-    margin-inline: auto;
+    aspect-ratio: 4 / 3;
     width: 100%;
   }
   .hero-visual :global(picture) {
