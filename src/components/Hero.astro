@@ -10,47 +10,39 @@ interface Props {
 const { image, imageAlt = '', eyebrow } = Astro.props;
 ---
 <section class="hero bg-ink">
-  <Picture src={image} alt={imageAlt} widths={[800, 1200, 1600]} sizes="100vw" width={1600} height={900} formats={['avif', 'webp']} fallbackFormat="jpg" loading="eager" fetchpriority="high" pictureAttributes={{ class: 'hero-picture' }} class="hero-img" />
-  <div class="hero-overlay" aria-hidden="true"></div>
-  <div class="container hero-content">
-    {eyebrow && <p class="hero-eyebrow">{eyebrow}</p>}
-    <h1><slot name="heading" /></h1>
-    <div class="hero-body"><slot /></div>
-    <div class="hero-actions"><slot name="actions" /></div>
+  <div class="container hero-grid">
+    <div class="hero-content">
+      {eyebrow && <p class="hero-eyebrow">{eyebrow}</p>}
+      <h1><slot name="heading" /></h1>
+      <div class="hero-body"><slot /></div>
+      <div class="hero-actions"><slot name="actions" /></div>
+    </div>
+
+    <div class="hero-visual" aria-hidden={imageAlt === '' ? 'true' : undefined}>
+      <div class="hero-visual-glow"></div>
+      <Picture src={image} alt={imageAlt} widths={[400, 700, 900]} sizes="(min-width: 56rem) 32rem, 90vw" width={900} height={900} formats={['avif', 'webp']} fallbackFormat="jpg" loading="eager" fetchpriority="high" class="hero-img" />
+      <div class="hero-visual-frame"></div>
+    </div>
   </div>
 </section>
 
 <style>
   .hero {
-    position: relative;
-    overflow: hidden;
     padding-block: var(--space-2xl);
-    min-height: 28rem;
-    display: flex;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
     align-items: center;
   }
-  .hero :global(.hero-picture) {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-  }
-  .hero :global(.hero-img) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(115deg, rgba(11,13,16,0.94) 20%, rgba(11,13,16,0.75) 100%);
-    z-index: 1;
+  @media (min-width: 56rem) {
+    .hero-grid {
+      grid-template-columns: 1.1fr 1fr;
+    }
   }
   .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 44rem;
+    max-width: 34rem;
   }
   .hero-eyebrow {
     color: var(--link-on-dark);
@@ -69,5 +61,51 @@ const { image, imageAlt = '', eyebrow } = Astro.props;
     flex-wrap: wrap;
     gap: var(--space-sm);
     margin-top: var(--space-md);
+  }
+
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    max-width: 28rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+  .hero-visual :global(picture) {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-lg, 1rem);
+    overflow: hidden;
+  }
+  .hero-visual :global(.hero-img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-visual-frame {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: var(--radius-lg, 1rem);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    pointer-events: none;
+  }
+  .hero-visual-glow {
+    position: absolute;
+    inset: -12%;
+    z-index: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--colour-blue-500, #2f7dd1) 0%, transparent 70%);
+    opacity: 0.35;
+    filter: blur(2.5rem);
+    animation: hero-glow-pulse 7s ease-in-out infinite;
+  }
+
+  @keyframes hero-glow-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.08); opacity: 0.45; }
   }
 </style>
