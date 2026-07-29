@@ -54,10 +54,10 @@ const caseStudies = (await getCollection('caseStudies')).sort((a, b) => a.data.o
   </section>
 
   <section class="section bg-white">
-    <div class="container">
+    <div class="container serving-area-section">
       <h2>Serving London, Kent and Essex</h2>
       <p>A2 Commercial Fit Out is based in Maidstone, Kent, and delivers commercial fit out and refurbishment projects across London and the South East. If you're searching for a fit out company near you, or an office refurbishment company near me, we cover Kent, Essex and Greater London as standard, with further UK regions available on request.</p>
-      <Picture src={servingAreaImg} alt="Map of London, Kent, Essex and the wider South East covered by A2 Commercial Fit Out" width={1600} height={900} widths={[400, 700]} sizes="(min-width: 30rem) 28rem, 90vw" formats={['avif', 'webp']} fallbackFormat="jpg" loading="lazy" class="serving-area-img" />
+      <Picture src={servingAreaImg} alt="Map of London, Kent, Essex and the wider South East covered by A2 Commercial Fit Out" width={1600} height={900} widths={[600, 900, 1200]} sizes="(min-width: 48rem) 44rem, 90vw" formats={['avif', 'webp']} fallbackFormat="jpg" loading="lazy" class="serving-area-img" />
     </div>
   </section>
 
@@ -95,12 +95,20 @@ const caseStudies = (await getCollection('caseStudies')).sort((a, b) => a.data.o
 
 <style>
   .accreditation-section h2, .accreditation-section p { text-align: left; }
+  .serving-area-section {
+    text-align: center;
+  }
+  .serving-area-section p {
+    max-width: 44rem;
+    margin-inline: auto;
+  }
   .serving-area-img {
     display: block;
     width: 100%;
-    max-width: 28rem;
+    max-width: 44rem;
     height: auto;
     margin-top: var(--space-md);
+    margin-inline: auto;
     border-radius: var(--radius-md);
   }
 </style>
