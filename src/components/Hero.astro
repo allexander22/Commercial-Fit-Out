@@ -1,13 +1,18 @@
 ---
-import { Picture } from 'astro:assets';
+import { Picture, getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
   image: ImageMetadata;
   imageAlt?: string;
   eyebrow?: string;
+  video?: string;
 }
-const { image, imageAlt = '', eyebrow } = Astro.props;
+const { image, imageAlt = '', eyebrow, video } = Astro.props;
+
+// The video's poster (shown before playback starts, and if autoplay is
+// blocked) reuses the same still image as the no-video fallback.
+const posterImage = video ? await getImage({ src: image, width: 1200, height: 900, format: 'jpg' }) : null;
 ---
 <section class="hero bg-ink">
   <div class="container hero-grid">
@@ -20,11 +25,17 @@ const { image, imageAlt = '', eyebrow } = Astro.props;
 
     <div class="hero-visual" aria-hidden={imageAlt === '' ? 'true' : undefined}>
       <div class="hero-visual-glow"></div>
-      <Picture src={image} alt={imageAlt} widths={[500, 900, 1200]} sizes="(min-width: 56rem) 34rem, 90vw" width={1200} height={900} formats={['avif', 'webp']} fallbackFormat="jpg" loading="eager" fetchpriority="high" class="hero-img" />
+      {video ? (
+        <video class="hero-img" src={video} poster={posterImage.src} autoplay muted loop playsinline preload="auto" />
+      ) : (
+        <Picture src={image} alt={imageAlt} widths={[500, 900, 1200]} sizes="(min-width: 56rem) 34rem, 90vw" width={1200} height={900} formats={['avif', 'webp']} fallbackFormat="jpg" loading="eager" fetchpriority="high" class="hero-img" />
+      )}
       <div class="hero-visual-frame"></div>
     </div>
   </div>
 </section>
+
+{video && <script src="../scripts/hero-video.js"></script>}
 
 <style>
   .hero {
@@ -68,7 +79,8 @@ const { image, imageAlt = '', eyebrow } = Astro.props;
     aspect-ratio: 4 / 3;
     width: 100%;
   }
-  .hero-visual :global(picture) {
+  .hero-visual :global(picture),
+  .hero-visual :global(video) {
     position: relative;
     z-index: 1;
     display: block;
