@@ -41,7 +41,11 @@ const posterImage = video ? await getImage({ src: image, width: 1200, height: 90
   .hero {
     padding-block: var(--space-2xl);
   }
+  /* Wider than the site's standard 72rem container so the visual panel
+     gets meaningfully more room on large screens, rather than sitting in
+     a box capped well inside the available viewport width. */
   .hero-grid {
+    max-width: 84rem;
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-xl);
