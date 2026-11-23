@@ -5,6 +5,7 @@ metaDescription: "Cat A vs Cat B fit out explained: what each category includes,
 publishDate: 2026-06-02
 summary: "A clear explanation of Cat A and Cat B fit out categories, who delivers each stage, and how they fit together on an office project."
 order: 1
+readTime: "4 min read"
 ---
 
 If you're leasing or fitting out a commercial office for the first time, "Cat A" and "Cat B" are two terms you'll hear constantly — and they matter, because they define exactly what condition a space is in when you take it on, and what work still needs to happen before it's usable.

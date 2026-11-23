@@ -5,6 +5,7 @@ metaDescription: "How to manage a commercial fit out budget: common causes of ov
 publishDate: 2026-07-07
 summary: "Why commercial fit out projects overrun, how fixed-price quoting reduces risk, and where to value engineer a budget without cutting quality."
 order: 4
+readTime: "12 min read"
 faqs:
   - question: "What is the 70/20/10 rule in budgeting?"
     answer: "The 70/20/10 rule is a general budgeting framework that allocates 70% to essentials, 20% to priorities, and 10% to savings or contingency. In fit out terms, you might apply this as 70% hard costs, 20% soft costs, and 10% contingency — though actual proportions vary by project."

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import AccreditationBadges from '../components/AccreditationBadges.astro';
+import ContactForm from '../components/ContactForm.astro';
 import { EMAIL, PHONE, ADDRESS_LOCALITY, ADDRESS_REGION } from '../consts';
 ---
 <BaseLayout
@@ -36,49 +37,7 @@ import { EMAIL, PHONE, ADDRESS_LOCALITY, ADDRESS_REGION } from '../consts';
         <AccreditationBadges />
       </div>
 
-      <div class="contact-form-wrapper card">
-        <h2>Project enquiry form</h2>
-        <!--
-          TODO: Web3Forms access key required before this form will deliver
-          submissions. Get a free key at https://web3forms.com (no account
-          needed beyond an email address to receive submissions) and replace
-          "YOUR_WEB3FORMS_ACCESS_KEY" below. Until then, please use the
-          mailto link above — it works immediately.
-        -->
-        <form action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
-          <input type="hidden" name="subject" value="New project enquiry from commercialfitout.co.uk" />
-          <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
-
-          <div class="form-row">
-            <label for="name">Full name</label>
-            <input id="name" name="name" type="text" autocomplete="name" required />
-          </div>
-
-          <div class="form-row">
-            <label for="company">Company</label>
-            <input id="company" name="company" type="text" autocomplete="organization" />
-          </div>
-
-          <div class="form-row">
-            <label for="email">Email address</label>
-            <input id="email" name="email" type="email" autocomplete="email" required />
-          </div>
-
-          <div class="form-row">
-            <label for="phone">Phone number</label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" />
-          </div>
-
-          <div class="form-row">
-            <label for="details">Project details</label>
-            <textarea id="details" name="message" rows="5" required></textarea>
-          </div>
-
-          <button class="btn btn--primary" type="submit">Send enquiry</button>
-          <p class="form-note">This form needs a Web3Forms access key to be added before it will deliver submissions — see the README. Meanwhile, please email us directly using the link opposite.</p>
-        </form>
-      </div>
+      <ContactForm />
     </div>
   </section>
 </BaseLayout>
@@ -89,27 +48,5 @@ import { EMAIL, PHONE, ADDRESS_LOCALITY, ADDRESS_REGION } from '../consts';
     gap: var(--space-lg);
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
     align-items: start;
-  }
-  .contact-form-wrapper h2 { margin-top: 0; }
-  .form-row {
-    margin-bottom: var(--space-sm);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3xs);
-  }
-  .form-row label {
-    font-weight: 600;
-    font-size: var(--step--1);
-  }
-  .form-row input, .form-row textarea {
-    font: inherit;
-    padding: var(--space-xs);
-    border: 1px solid var(--colour-steel-200);
-    border-radius: var(--radius-sm);
-  }
-  .form-note {
-    font-size: var(--step--1);
-    color: var(--text-on-light-muted);
-    margin-top: var(--space-sm);
   }
 </style>

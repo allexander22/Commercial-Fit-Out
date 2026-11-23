@@ -5,6 +5,7 @@ metaDescription: "Commercial fit out costs explained: indicative 2026 cost bands
 publishDate: 2026-06-16
 summary: "Indicative 2026 cost bands per m² and per sq ft for commercial fit out projects, and a plain-English breakdown of what actually drives the number."
 order: 2
+readTime: "5 min read"
 faqs:
   - question: "How much does a commercial fit out cost per square metre?"
     answer: "As an indicative 2026 guide, basic specification fit outs typically run £450–£750/m², mid-range £750–£1,100/m², and high-spec £1,100–£1,800/m². These are planning figures only — every project is quoted at a fixed price based on your actual specification and site conditions."

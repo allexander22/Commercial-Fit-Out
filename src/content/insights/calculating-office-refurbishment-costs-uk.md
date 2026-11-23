@@ -5,6 +5,7 @@ metaDescription: "How to calculate office refurbishment costs in the UK: budgeti
 publishDate: 2026-06-30
 summary: "A step-by-step guide to calculating an office refurbishment budget, covering specification tiers, cost drivers and what sits outside the main contract."
 order: 3
+readTime: "9 min read"
 faqs:
   - question: "Can office refurbishment costs be claimed as capital allowances?"
     answer: "Some refurbishment works qualify for capital allowances, particularly plant and machinery elements such as electrical systems and HVAC. The rules are complex, so it's worth consulting your accountant for project-specific advice."

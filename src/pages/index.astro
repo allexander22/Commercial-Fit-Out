@@ -4,6 +4,8 @@ import Hero from '../components/Hero.astro';
 import UspGrid from '../components/UspGrid.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import CaseStudyCard from '../components/CaseStudyCard.astro';
+import InsightCard from '../components/InsightCard.astro';
+import ContactForm from '../components/ContactForm.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import AccreditationBadges from '../components/AccreditationBadges.astro';
 import { Picture } from 'astro:assets';
@@ -13,9 +15,21 @@ import officeRefurbImg from '../assets/images/office-refurbishment.jpg';
 import retailFitOutImg from '../assets/images/retail-fit-out.jpg';
 import healthcareFitOutImg from '../assets/images/healthcare-fit-out.jpg';
 import servingAreaImg from '../assets/images/A2 Commercial Fit Out Serving Area.png';
+import outOfHoursImg from '../assets/images/out-of-hours-refurbishment.jpg';
+import budgetImg from '../assets/images/managing-fit-out-costs.jpg';
 import { getCollection } from 'astro:content';
+import type { ImageMetadata } from 'astro';
 
 const caseStudies = (await getCollection('caseStudies')).sort((a, b) => a.data.order - b.data.order);
+
+const insightImages: Record<string, ImageMetadata> = {
+  'healthcare-fit-out-compliance-requirements': healthcareFitOutImg,
+  'benefits-of-out-of-hours-office-refurbishment': outOfHoursImg,
+  'managing-commercial-fit-out-projects-fixed-budget': budgetImg,
+};
+const latestInsights = (await getCollection('insights'))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 3);
 ---
 <BaseLayout
   title="Commercial Fit Out Company | Fixed-Price Fit Out & Refurbishment"
@@ -90,10 +104,58 @@ const caseStudies = (await getCollection('caseStudies')).sort((a, b) => a.data.o
     </div>
   </section>
 
+  <section class="section bg-ink">
+    <div class="container">
+      <div class="insights-head">
+        <div>
+          <h2>Latest insights</h2>
+          <p>Practical guides on commercial fit out costs, compliance and project delivery, written to help you plan before you request a quote.</p>
+        </div>
+        <a class="btn btn--outline-dark insights-head-link" href="/insights/">View all insights</a>
+      </div>
+      <div class="grid grid--3">
+        {latestInsights.map((article) => (
+          <InsightCard
+            href={`/insights/${article.id}/`}
+            title={article.data.title}
+            summary={article.data.summary}
+            image={insightImages[article.id]}
+            readTime={article.data.readTime}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-steel">
+    <div class="container contact-form-section">
+      <h2>Get a fixed-price quote</h2>
+      <p>Tell us about your project and we'll come back with a fixed-price quote and a realistic programme.</p>
+      <ContactForm compact />
+    </div>
+  </section>
+
   <CtaBanner />
 </BaseLayout>
 
 <style>
+  .insights-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: end;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+  .insights-head p {
+    color: var(--text-on-dark-muted);
+    max-width: 34rem;
+    margin-bottom: 0;
+  }
+  .insights-head-link { flex-shrink: 0; }
+  .contact-form-section {
+    max-width: 40rem;
+  }
   .accreditation-section h2, .accreditation-section p { text-align: left; }
   .serving-area-section {
     text-align: center;

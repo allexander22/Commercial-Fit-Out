@@ -5,6 +5,7 @@ metaDescription: "The benefits of out-of-hours office refurbishment: less disrup
 publishDate: 2026-07-14
 summary: "Six practical benefits of scheduling office refurbishment work outside business hours, from minimising disruption to compressing project timelines."
 order: 5
+readTime: "10 min read"
 faqs:
   - question: "Does out of hours working cost more than a standard daytime refurbishment?"
     answer: "There may be a modest premium for unsociable hours, typically reflecting overtime rates for trades. However, faster completion and reduced business disruption often offset this premium. Many businesses find the total cost comparable when productivity losses and extended timelines are factored in."

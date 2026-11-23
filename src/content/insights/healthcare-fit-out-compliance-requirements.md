@@ -5,6 +5,7 @@ metaDescription: "UK healthcare fit out compliance explained: Building Regulatio
 publishDate: 2026-07-21
 summary: "A guide to UK healthcare facility fit out compliance, covering Building Regulations, HTM/HBN standards, CQC requirements, infection control and fire safety."
 order: 6
+readTime: "11 min read"
 faqs:
   - question: "What are the seven elements of healthcare compliance?"
     answer: "The seven elements typically refer to organisational compliance programmes covering policies, training, auditing, and reporting rather than building compliance. For fit out projects, the relevant framework includes Building Regulations, HTMs, HBNs, CQC standards, fire safety, accessibility, and CDM duties."

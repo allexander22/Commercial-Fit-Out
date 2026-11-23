@@ -1,0 +1,377 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import '../styles/stats-fonts.css';
+
+const lastVerified = '31 July 2026';
+---
+<BaseLayout
+  title="UK Commercial Fit Out Statistics & Trends 2026 | A2 Commercial Fit Out"
+  description="UK and global commercial fit out cost and market statistics for 2026 — sourced from Turner & Townsend, Cushman & Wakefield, JLL and Coherent Market Insights, independently verified against each publisher."
+>
+  <div class="stats-page">
+    <div class="container">
+      <Breadcrumbs items={[{ label: 'Commercial Fit Out Statistics' }]} />
+    </div>
+
+    <section class="stats-hero">
+      <div class="container">
+        <p class="eyebrow">Market intelligence &middot; 2026</p>
+        <h1>UK commercial fit out statistics &amp; trends</h1>
+        <p class="lede">A working reference of cost and market figures for anyone budgeting a UK commercial fit out — pulled from Turner &amp; Townsend, Cushman &amp; Wakefield, JLL and Coherent Market Insights, and checked against each publisher's own page rather than reproduced second-hand.</p>
+        <p class="verified-line">Sources last checked: {lastVerified}</p>
+      </div>
+    </section>
+
+    <section class="stats-section" id="global-rankings">
+      <div class="container">
+        <div class="section-head">
+          <h2>Global fit out cost rankings</h2>
+          <div class="citation">
+            <a href="https://www.turnerandtownsend.com/news/heightened-demand-for-premium-office-space-leads-to-double-digit-percentage-increases-in-fit-out-costs/" target="_blank" rel="noopener noreferrer">Turner &amp; Townsend &#8599;</a>
+            <button type="button" class="copy-btn" data-copy-link="global-rankings">Copy link</button>
+          </div>
+        </div>
+        <p>Turner &amp; Townsend's global benchmark compares a standardised ~4,294m&sup2; two-floor office fit out across 58 cities. Grade A office shortages are cited as the primary driver of cost increases.</p>
+        <div class="table-scroll">
+          <table class="dark-table">
+            <thead>
+              <tr><th>City</th><th>Cost per m&sup2;</th><th>YoY change</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>New York <span class="rank-tag">#1 globally</span></td><td>$5,885.94</td><td>+4%</td></tr>
+              <tr><td>London <span class="rank-tag">#2 globally</span></td><td>$5,872</td><td>&minus;1%</td></tr>
+              <tr><td>Tokyo <span class="rank-tag">Top 10</span></td><td>$4,814</td><td>&mdash;</td></tr>
+              <tr><td>Miami</td><td>$4,323</td><td>+11%</td></tr>
+              <tr><td>Dublin <span class="rank-tag">Up 10 places</span></td><td>$3,878</td><td>+12%</td></tr>
+              <tr><td>Edinburgh &amp; Glasgow</td><td>$3,859</td><td>+12%</td></tr>
+              <tr><td>Manchester</td><td>$3,666</td><td>&mdash;</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section stats-section--alt" id="uk-cost-bands">
+      <div class="container">
+        <div class="section-head">
+          <h2>UK regional cost bands</h2>
+          <div class="citation">
+            <a href="https://www.cushmanwakefield.com/en/united-kingdom/insights/office-fit-out-cost-guide" target="_blank" rel="noopener noreferrer">Cushman &amp; Wakefield UK &#8599;</a>
+            <button type="button" class="copy-btn" data-copy-link="uk-cost-bands">Copy link</button>
+          </div>
+        </div>
+        <p>Cushman &amp; Wakefield's UK guide bands office fit out cost per sq ft by specification. As they put it: &ldquo;UK office fit-out costs remain structurally higher following the post-2022 reset, with no return to pre-pandemic pricing levels.&rdquo;</p>
+        <div class="table-scroll">
+          <table class="dark-table">
+            <thead>
+              <tr><th>City</th><th>Low</th><th>Medium</th><th>High</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>London</td><td>&pound;148</td><td>&pound;243</td><td>&pound;359</td></tr>
+              <tr><td>Manchester</td><td>&pound;128</td><td>&pound;210</td><td>&pound;310</td></tr>
+              <tr><td>Birmingham</td><td>&pound;121</td><td>&pound;200</td><td>&pound;295</td></tr>
+              <tr><td>Glasgow</td><td>&pound;117</td><td>&pound;192</td><td>&pound;284</td></tr>
+            </tbody>
+          </table>
+          <p class="table-note">Figures per sq ft. Treat as indicative planning bands — see our own <a href="/insights/commercial-fit-out-costs/">fit out cost guide</a> for per&nbsp;m&sup2; figures and what actually drives your number.</p>
+        </div>
+        <div class="stat-pill-row">
+          <div class="stat-pill"><span class="stat-num">77%</span><span class="stat-label">of UK respondents expect vendor price increases</span></div>
+          <div class="stat-pill"><span class="stat-num">69%</span><span class="stat-label">expect labour costs to rise moderately</span></div>
+          <div class="stat-pill"><span class="stat-num">92%</span><span class="stat-label">report project backlogs of five months or fewer</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section" id="emea-trend">
+      <div class="container">
+        <div class="section-head">
+          <h2>EMEA cost trend</h2>
+          <div class="citation">
+            <a href="https://www.cushmanwakefield.com/en/insights/office-fit-out-cost-guide" target="_blank" rel="noopener noreferrer">Cushman &amp; Wakefield EMEA &#8599;</a>
+            <button type="button" class="copy-btn" data-copy-link="emea-trend">Copy link</button>
+          </div>
+        </div>
+        <div class="big-stat-row">
+          <div class="big-stat">
+            <span class="big-stat-num">+3.8%</span>
+            <span class="big-stat-label">rise in all-in EMEA fit out costs in 2025, with modest growth expected through 2026</span>
+          </div>
+          <p class="stat-aside">Backlogs across the region run roughly five to six months. Southern Europe and CEE are seeing the strongest increases, contrasted by more moderate expectations in Germany and parts of Western Europe.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section stats-section--alt" id="jll-benchmarks">
+      <div class="container">
+        <div class="section-head">
+          <h2>Global &amp; EMEA cost benchmarks</h2>
+          <div class="citation">
+            <a href="https://www.jll.com/en-us/guides/global-office-fit-out-costs-guide" target="_blank" rel="noopener noreferrer">JLL Global &#8599;</a>
+            <a href="https://www.jll.com/en-uk/guides/emea-fit-out-costs-guide" target="_blank" rel="noopener noreferrer">JLL EMEA &#8599;</a>
+            <button type="button" class="copy-btn" data-copy-link="jll-benchmarks">Copy link</button>
+          </div>
+        </div>
+        <p>JLL puts the global average for a medium-quality office fit out at <strong>$2,150/m&sup2;</strong>, with regional averages varying widely:</p>
+        <div class="table-scroll">
+          <table class="dark-table">
+            <thead>
+              <tr><th>Region</th><th>Average cost per m&sup2;</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>North America</td><td>$3,200</td></tr>
+              <tr><td>EMEA</td><td>$2,300</td></tr>
+              <tr><td>Latin America</td><td>$1,800</td></tr>
+              <tr><td>APAC</td><td>$1,550</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>JLL's dedicated EMEA guide gives a regional average of <strong>&euro;1,960/m&sup2;</strong> (medium-quality office) against a global average of &euro;1,840/m&sup2; &mdash; a 5&ndash;7% year-on-year increase.</p>
+        <h3>Where the budget goes</h3>
+        <div class="stat-pill-row">
+          <div class="stat-pill"><span class="stat-num">35&ndash;38%</span><span class="stat-label">builders' works</span></div>
+          <div class="stat-pill"><span class="stat-num">25&ndash;31%</span><span class="stat-label">M&amp;E (40%+ in high-sustainability markets)</span></div>
+          <div class="stat-pill"><span class="stat-num">~14%</span><span class="stat-label">FF&amp;E</span></div>
+          <div class="stat-pill"><span class="stat-num">40%+</span><span class="stat-label">M&amp;E, security, IT &amp; AV combined (EMEA average)</span></div>
+        </div>
+        <h3>Market pressures</h3>
+        <div class="stat-pill-row">
+          <div class="stat-pill"><span class="stat-num">55%</span><span class="stat-label">of markets report skilled labour shortages</span></div>
+          <div class="stat-pill"><span class="stat-num">26&ndash;30%</span><span class="stat-label">YoY rise in copper prices</span></div>
+          <div class="stat-pill"><span class="stat-num">73%</span><span class="stat-label">of occupiers prioritise cost reduction</span></div>
+          <div class="stat-pill"><span class="stat-num">63%</span><span class="stat-label">of markets report rising demand for complex tech integration</span></div>
+          <div class="stat-pill"><span class="stat-num">88%</span><span class="stat-label">of CRE leaders prioritise energy savings over the next 3 years</span></div>
+          <div class="stat-pill"><span class="stat-num">70%</span><span class="stat-label">of markets report increased sustainable fit out requests</span></div>
+          <div class="stat-pill"><span class="stat-num">65%</span><span class="stat-label">cite energy performance as the dominant sustainability driver</span></div>
+          <div class="stat-pill"><span class="stat-num">42%</span><span class="stat-label">prioritise net-zero / decarbonisation alignment</span></div>
+        </div>
+        <p class="stat-aside">Overall, JLL records a 2&ndash;6% rise in fit out costs over the past year: 52% of markets saw a slight increase in Q4 2025, while 48% saw little or no change.</p>
+      </div>
+    </section>
+
+    <section class="stats-section" id="market-size">
+      <div class="container">
+        <div class="section-head">
+          <h2>Global market size</h2>
+          <div class="citation">
+            <a href="https://www.coherentmarketinsights.com/market-insight/interior-fit-out-market-6113" target="_blank" rel="noopener noreferrer">Coherent Market Insights &#8599;</a>
+            <button type="button" class="copy-btn" data-copy-link="market-size">Copy link</button>
+          </div>
+        </div>
+        <div class="big-stat-row">
+          <div class="big-stat">
+            <span class="big-stat-num">$78.58bn &rarr; $137.32bn</span>
+            <span class="big-stat-label">global interior fit out market, 2026 to a forecast 2033, at an 8.3% CAGR</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section stats-section--alt" id="methodology">
+      <div class="container">
+        <h2>Methodology</h2>
+        <p>Every figure on this page was checked directly against the publisher's own page on {lastVerified} — we don't reproduce third-party statistics without confirming them first. Where a source's figures update over time (market-size forecasts in particular), we'll refresh this page rather than leave stale numbers live.</p>
+        <ul class="source-list">
+          <li>Turner &amp; Townsend &mdash; International Office Fit Out Cost Guide</li>
+          <li>Cushman &amp; Wakefield &mdash; UK and EMEA Office Fit Out Cost Guides</li>
+          <li>JLL &mdash; Global and EMEA Office Fit Out Costs Guides</li>
+          <li>Coherent Market Insights &mdash; Interior Fit Out Market Report</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <CtaBanner
+    heading="Budgeting a fit out against these numbers?"
+    body="Get a fixed-price quote based on your actual building and specification, not an industry average."
+  />
+
+  <script src="../scripts/stats-copy-link.js"></script>
+</BaseLayout>
+
+<style>
+  .stats-page {
+    background: var(--colour-ink);
+    color: var(--text-on-dark);
+    font-family: 'Barlow', var(--font-body);
+  }
+  .stats-page :global(.breadcrumbs),
+  .stats-page :global(.breadcrumbs a) {
+    color: var(--text-on-dark-muted);
+  }
+  .stats-page :global(.breadcrumbs li:not(:last-child)::after) {
+    color: var(--colour-ink-border);
+  }
+
+  .stats-hero {
+    padding-block: var(--space-xl) var(--space-lg);
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step--1);
+    color: var(--colour-blue-400);
+    margin-bottom: var(--space-xs);
+  }
+  .stats-hero h1 {
+    font-family: 'Barlow Condensed', var(--font-body);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .lede {
+    max-width: 46rem;
+    color: var(--text-on-dark-muted);
+    font-size: var(--step-1);
+  }
+  .verified-line {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: var(--step--1);
+    color: var(--colour-steel-400);
+  }
+
+  .stats-section {
+    padding-block: var(--space-xl);
+    border-top: 1px solid var(--colour-ink-border);
+  }
+  .stats-section--alt {
+    background: var(--colour-ink-raised);
+  }
+  .section-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+  .stats-section h2 {
+    font-family: 'Barlow Condensed', var(--font-body);
+    font-weight: 600;
+    margin: 0;
+  }
+  .stats-section h3 {
+    font-family: 'Barlow Condensed', var(--font-body);
+    font-weight: 600;
+    margin-top: var(--space-lg);
+  }
+  .stats-section p, .stats-section li {
+    color: var(--text-on-dark-muted);
+  }
+  .stats-section strong { color: var(--text-on-dark); }
+
+  .citation {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: var(--step--1);
+  }
+  .citation a { color: var(--link-on-dark); text-decoration: none; }
+  .citation a:hover { text-decoration: underline; }
+  .copy-btn {
+    background: transparent;
+    border: 1px solid var(--colour-ink-border);
+    color: var(--text-on-dark-muted);
+    border-radius: var(--radius-sm);
+    padding: 0.3em 0.7em;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: var(--step--1);
+    cursor: pointer;
+  }
+  .copy-btn:hover { border-color: var(--colour-blue-400); color: var(--text-on-dark); }
+
+  .dark-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: var(--step--1);
+  }
+  .dark-table th, .dark-table td {
+    border: 1px solid var(--colour-ink-border);
+    padding: var(--space-xs) var(--space-sm);
+    text-align: left;
+  }
+  .dark-table th {
+    background: rgba(255,255,255,0.03);
+    color: var(--text-on-dark-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  .dark-table td { color: var(--text-on-dark); }
+  .rank-tag {
+    display: inline-block;
+    margin-left: var(--space-2xs);
+    font-size: 0.85em;
+    color: var(--colour-blue-400);
+  }
+  .table-note {
+    font-size: var(--step--1);
+    color: var(--colour-steel-400);
+  }
+  .table-note a { color: var(--link-on-dark); }
+
+  .stat-pill-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+  .stat-pill {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--colour-ink-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+  .stat-num {
+    font-family: 'Barlow Condensed', var(--font-body);
+    font-weight: 700;
+    font-size: var(--step-3);
+    color: var(--colour-blue-400);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: var(--step--1);
+    color: var(--text-on-dark-muted);
+  }
+
+  .big-stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    align-items: center;
+  }
+  .big-stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+  .big-stat-num {
+    font-family: 'Barlow Condensed', var(--font-body);
+    font-weight: 700;
+    font-size: var(--step-5);
+    color: var(--colour-blue-400);
+    line-height: 1;
+  }
+  .big-stat-label {
+    max-width: 32rem;
+    color: var(--text-on-dark-muted);
+  }
+  .stat-aside {
+    max-width: 26rem;
+    font-size: var(--step--1);
+  }
+
+  .source-list {
+    color: var(--text-on-dark-muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: var(--step--1);
+  }
+</style>

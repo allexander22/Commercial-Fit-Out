@@ -48,6 +48,7 @@ const insights = defineCollection({
     metaDescription: z.string(),
     publishDate: z.date(),
     summary: z.string(),
+    readTime: z.string().optional(),
     order: z.number().default(0),
     faqs: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
   }),

@@ -20,12 +20,21 @@ const { title, description, image, type, noindex, canonicalPath } = Astro.props;
 // CSP blocks outright (the production build in dist/ only ever emits
 // external <link>/<script src> files, so the strict policy applies there
 // unchanged). Loosen script-src/style-src only for `astro dev`.
+// Google reCAPTCHA (contact form spam protection) is this site's one
+// deliberate third-party dependency — it cannot be self-hosted (Google
+// requires the widget script to load live), so script-src/frame-src/
+// connect-src carry explicit google.com/gstatic.com exceptions rather
+// than the site's usual self-only policy.
 const csp = [
   "default-src 'self'",
-  import.meta.env.DEV ? "script-src 'self' 'unsafe-inline'" : "script-src 'self'",
+  import.meta.env.DEV
+    ? "script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com"
+    : "script-src 'self' https://www.google.com https://www.gstatic.com",
   import.meta.env.DEV ? "style-src 'self' 'unsafe-inline'" : "style-src 'self'",
-  "img-src 'self' data:",
+  "img-src 'self' data: https://www.gstatic.com",
   "font-src 'self'",
+  "frame-src https://www.google.com",
+  "connect-src 'self' https://www.google.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self' https://api.web3forms.com",
