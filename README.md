@@ -91,8 +91,9 @@ Until this is done, the prominent `mailto:` link on the contact page (and in the
 1. Push this repository to GitHub (public or private with GitHub Pages available on your plan).
 2. In the repo, go to **Settings → Pages** and set the source to **GitHub Actions**.
 3. Push to `main` — the `.github/workflows/deploy.yml` workflow builds and deploys automatically via `withastro/action` + `actions/deploy-pages`.
-4. Still under **Settings → Pages**, set the **custom domain** to `commercialfitout.co.uk` (this matches `public/CNAME`, which Astro copies into every build) and tick **Enforce HTTPS** once the certificate has provisioned (can take up to 24 hours after DNS is correct).
-5. At your domain registrar/DNS provider, add:
+4. Verify the domain on the account that owns the repo, before adding it to the repo (prevents domain takeover): **profile picture → Settings → Pages → Add a domain** → `commercialfitout.co.uk`, then add the TXT record GitHub shows (hostname `_github-pages-challenge-<github-username>.commercialfitout.co.uk`) and click **Verify**.
+5. In the repo, **Settings → Pages → Custom domain** → `commercialfitout.co.uk` → **Save**. This setting is what GitHub Pages uses: with a GitHub Actions deployment, `public/CNAME` is ignored ([docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)).
+6. At the DNS host the domain's nameservers point to (if the nameservers point to a parking/marketplace service, change them at the registrar first), remove any existing apex and `www` `A`/`AAAA`/`CNAME` records, keep `MX`/`TXT` records for email, then add:
    - Four apex `A` records for `commercialfitout.co.uk` pointing to:
      - `185.199.108.153`
      - `185.199.109.153`
@@ -104,7 +105,10 @@ Until this is done, the prominent `mailto:` link on the contact page (and in the
      - `2606:50c0:8002::153`
      - `2606:50c0:8003::153`
    - A `CNAME` record for `www` pointing to `<github-username-or-org>.github.io`
-6. Verify the live site over HTTPS and check `www.commercialfitout.co.uk` redirects to the apex domain (GitHub Pages handles this once the custom domain is set and HTTPS is enforced).
+7. Once **Settings → Pages** shows the DNS check as successful and the certificate has provisioned (DNS changes can take up to 24 hours), tick **Enforce HTTPS**.
+8. Verify the live site over HTTPS and check `www.commercialfitout.co.uk` redirects to the apex domain.
+
+Until step 5 is done, the site at `https://<github-username>.github.io/Commercial-Fit-Out/` loads without CSS/JS: the build targets the domain root (`/_astro/...`), not the `/Commercial-Fit-Out/` sub-path. This is expected and goes away once the custom domain is set.
 
 ## Known limitation: GitHub Pages can't send custom HTTP headers
 
