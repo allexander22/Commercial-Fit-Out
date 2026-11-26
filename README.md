@@ -20,7 +20,7 @@ Marketing website for **A2 Commercial Fit Out LTD**. It is a static Astro site, 
 | Logo | Real supplied artwork (`src/assets/brand/logo-mark-transparent.png`) in the header and footer. |
 | Photography | Real photos on all service, hub and article pages. The homepage hero is a looping background video (`public/A2 Commercial Fit Out Intro.mp4`, poster `hero.jpg`). |
 | Case studies | **Placeholders.** All 3 carry the "Example project" label (`placeholder: true`). |
-| Contact form | **Not yet delivering.** The Web3Forms access key and reCAPTCHA site key are still placeholders, so the page shows a "please email us directly" note. Email is the only working contact route. |
+| Contact form | Live on `/contact/` and the homepage. Submissions go through Web3Forms to the inbox registered with the access key, with hCaptcha spam protection (see [Contact form](#contact-form)). |
 | Phone number | **Not set.** `PHONE` is empty in `src/consts.ts`, so phone links are hidden site-wide. |
 | Location pages | **Disabled.** `/locations/` returns 404 (see [Location pages](#location-pages-disabled)). |
 | Cookie banner | Live (necessary / analytics choice, stored in `localStorage`). |
@@ -109,6 +109,15 @@ The six service pages are individual `.astro` files in `src/pages/services/`. To
 
 Put photography in `src/assets/images/` and import it statically in the page (`<Image>`/`<Picture>` need a static import, not a runtime path). Use 16:9 for heroes and 3:2 elsewhere. `scripts/generate-placeholders.mjs` is a leftover from the build phase. Don't re-run it, because it would overwrite the real photos.
 
+### Contact form
+
+The form (`src/components/ContactForm.astro`, used on `/contact/` and the homepage) posts to [Web3Forms](https://web3forms.com), which emails each enquiry to the address the access key was registered with.
+
+- **Access key:** `WEB3FORMS_ACCESS_KEY` at the top of the component. It's meant to be public, so committing it is fine. If it's ever reset to a `YOUR_…` placeholder, the form automatically shows a "please email us" note instead.
+- **Change the recipient inbox, subject line or other settings:** sign in at <https://app.web3forms.com> with the registered email.
+- **Spam protection:** hCaptcha, through Web3Forms' free integration, using Web3Forms' shared free-plan site key (`HCAPTCHA_SITE_KEY`). There's no hCaptcha account involved. Web3Forms only checks the hCaptcha answer if **hCaptcha** is selected as the captcha in the form's settings at app.web3forms.com, so keep that setting on. (reCAPTCHA and Turnstile are paid Web3Forms Pro features, which is why they aren't used.)
+- The CSP in `BaseLayout.astro` allows `hcaptcha.com` / `*.hcaptcha.com` and posting to `api.web3forms.com`. The privacy policy names Web3Forms and hCaptcha. Update both if the form provider changes.
+
 ### Location pages (disabled)
 
 The London, Kent, Essex and Maidstone pages were taken off the site. Their content is still in `src/content/locations/` and their routes are in `src/_disabled/locations/`. To bring them back:
@@ -118,17 +127,6 @@ The London, Kent, Essex and Maidstone pages were taken off the site. Their conte
 3. Rebuild. The pages will reappear in the sitemap automatically.
 
 ## Outstanding setup
-
-### Contact form (Web3Forms + reCAPTCHA)
-
-The form on `/contact/` and the homepage lives in `src/components/ContactForm.astro`. It needs two keys:
-
-1. **Web3Forms:** go to [web3forms.com](https://web3forms.com), enter the inbox address and copy the access key. Replace `YOUR_WEB3FORMS_ACCESS_KEY` (the hidden `access_key` input).
-2. **reCAPTCHA v2 ("I'm not a robot"):** create a key pair at <https://www.google.com/recaptcha/admin> for `commercialfitout.co.uk`. Add the **secret** key in your Web3Forms dashboard, and put the **site** key in `RECAPTCHA_SITE_KEY` in the same component.
-3. Remove the `form-note` paragraph that tells visitors the form isn't working yet. It is currently visible on the live site.
-4. Push to `main`, then send a test enquiry from the live site.
-
-The CSP in `BaseLayout.astro` already allows Google reCAPTCHA and `api.web3forms.com`.
 
 ### Phone number
 
@@ -153,4 +151,4 @@ Set `PHONE` in `src/consts.ts` (e.g. `'01622 000000'`). It then appears automati
 
 ### Known limitation: no custom HTTP headers
 
-GitHub Pages can't set response headers, so the Content-Security-Policy and Referrer-Policy are delivered as `<meta>` tags in `BaseLayout.astro`. The CSP is self-only, except for Google reCAPTCHA (script/frame/connect) and Web3Forms (form-action). `X-Frame-Options` and HSTS preload aren't possible on GitHub Pages alone. To add them, front the site with Cloudflare (free tier) and keep GitHub Pages as the origin.
+GitHub Pages can't set response headers, so the Content-Security-Policy and Referrer-Policy are delivered as `<meta>` tags in `BaseLayout.astro`. The CSP is self-only, except for hCaptcha (script/style/frame/connect) and Web3Forms (form-action). `X-Frame-Options` and HSTS preload aren't possible on GitHub Pages alone. To add them, front the site with Cloudflare (free tier) and keep GitHub Pages as the origin.
