@@ -1,16 +1,20 @@
 ---
-// TODO: Web3Forms access key required before this form will deliver
-// submissions. Get a free key at https://web3forms.com and replace
-// "YOUR_WEB3FORMS_ACCESS_KEY" below. Until then, please use the mailto
-// link on the contact page — it works immediately.
-//
-// TODO: Google reCAPTCHA site key required before the widget below will
-// render. Create a reCAPTCHA v2 ("I'm not a robot") key pair at
-// https://www.google.com/recaptcha/admin, add the secret key to your
-// Web3Forms account (Web3Forms verifies the token server-side), and
-// replace "YOUR_RECAPTCHA_SITE_KEY" below. This is the site's only
-// third-party network dependency — see BaseLayout.astro's CSP comment.
-const RECAPTCHA_SITE_KEY = 'YOUR_RECAPTCHA_SITE_KEY';
+import { EMAIL } from '../consts';
+
+// Submissions are delivered by Web3Forms (https://web3forms.com). Paste the
+// access key Web3Forms emails you into WEB3FORMS_ACCESS_KEY below. The key
+// is designed to sit in public HTML, so committing it is fine. While it is
+// still the placeholder, the form shows a "please email us" note instead of
+// pretending to work.
+const WEB3FORMS_ACCESS_KEY = '447a2db2-0976-4f34-a818-114ab481e704';
+const formReady = !WEB3FORMS_ACCESS_KEY.startsWith('YOUR_');
+
+// Spam protection: hCaptcha via Web3Forms' free built-in integration. This
+// is Web3Forms' shared free-plan site key, so there's no hCaptcha account
+// to set up. Web3Forms verifies the token server-side once "hCaptcha" is
+// selected as the captcha in the form's settings at app.web3forms.com.
+// (reCAPTCHA is a paid Web3Forms Pro feature, which is why it isn't used.)
+const HCAPTCHA_SITE_KEY = '50b2fe65-b00b-4b9e-ad62-3ba471098be2';
 
 interface Props {
   compact?: boolean;
@@ -22,7 +26,7 @@ const idPrefix = compact ? 'home-' : '';
 <div class="contact-form-wrapper card">
   {!compact && <h2>{heading}</h2>}
   <form action="https://api.web3forms.com/submit" method="POST">
-    <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+    <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
     <input type="hidden" name="subject" value="New project enquiry from commercialfitout.co.uk" />
     <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
 
@@ -68,16 +72,18 @@ const idPrefix = compact ? 'home-' : '';
     </div>
 
     <div class="form-row">
-      <div class="g-recaptcha" data-sitekey={RECAPTCHA_SITE_KEY}></div>
-      <p class="recaptcha-note">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.</p>
+      <div class="h-captcha" data-sitekey={HCAPTCHA_SITE_KEY}></div>
+      <p class="captcha-note">This form is protected by hCaptcha. Its <a href="https://www.hcaptcha.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://www.hcaptcha.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.</p>
     </div>
 
     <button class="btn btn--primary" type="submit">Send enquiry</button>
-    <p class="form-note">This form needs a Web3Forms access key and a reCAPTCHA site key to be added before it will deliver submissions — see the TODO comments in ContactForm.astro. Meanwhile, please email us directly.</p>
+    {!formReady && (
+      <p class="form-note">Our online form isn't accepting enquiries just yet. Please email us at <a href={`mailto:${EMAIL}`}>{EMAIL}</a> in the meantime.</p>
+    )}
   </form>
 </div>
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://js.hcaptcha.com/1/api.js?recaptchacompat=off" async defer></script>
 
 <style>
   .contact-form-wrapper h2 { margin-top: 0; }
@@ -122,7 +128,7 @@ const idPrefix = compact ? 'home-' : '';
   .form-row--checkbox label {
     font-weight: 400;
   }
-  .recaptcha-note {
+  .captcha-note {
     font-size: var(--step--1);
     color: var(--text-on-light-muted);
     margin-top: var(--space-2xs);

@@ -20,21 +20,22 @@ const { title, description, image, type, noindex, canonicalPath } = Astro.props;
 // CSP blocks outright (the production build in dist/ only ever emits
 // external <link>/<script src> files, so the strict policy applies there
 // unchanged). Loosen script-src/style-src only for `astro dev`.
-// Google reCAPTCHA (contact form spam protection) is this site's one
-// deliberate third-party dependency — it cannot be self-hosted (Google
-// requires the widget script to load live), so script-src/frame-src/
-// connect-src carry explicit google.com/gstatic.com exceptions rather
-// than the site's usual self-only policy.
+// hCaptcha (contact form spam protection) is this site's one deliberate
+// third-party dependency. It can't be self-hosted (the widget must load
+// live), so script-src/frame-src/style-src/connect-src carry the
+// hcaptcha.com exceptions from hCaptcha's CSP guidance rather than the
+// site's usual self-only policy.
+const HCAPTCHA = 'https://hcaptcha.com https://*.hcaptcha.com';
 const csp = [
   "default-src 'self'",
   import.meta.env.DEV
-    ? "script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com"
-    : "script-src 'self' https://www.google.com https://www.gstatic.com",
-  import.meta.env.DEV ? "style-src 'self' 'unsafe-inline'" : "style-src 'self'",
-  "img-src 'self' data: https://www.gstatic.com",
+    ? `script-src 'self' 'unsafe-inline' ${HCAPTCHA}`
+    : `script-src 'self' ${HCAPTCHA}`,
+  import.meta.env.DEV ? `style-src 'self' 'unsafe-inline' ${HCAPTCHA}` : `style-src 'self' ${HCAPTCHA}`,
+  "img-src 'self' data:",
   "font-src 'self'",
-  "frame-src https://www.google.com",
-  "connect-src 'self' https://www.google.com",
+  `frame-src ${HCAPTCHA}`,
+  `connect-src 'self' ${HCAPTCHA}`,
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self' https://api.web3forms.com",
