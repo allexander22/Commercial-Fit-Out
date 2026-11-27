@@ -10,7 +10,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       // 404 is excluded automatically (not a route); filter is a safety net
-      filter: (page) => !page.includes('/404'),
+      filter: (page) => !page.includes('/404') && !page.includes('/thank-you'),
       changefreq: 'monthly',
       lastmod: new Date(),
     }),

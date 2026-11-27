@@ -1,6 +1,6 @@
 # commercialfitout.co.uk
 
-Marketing website for **A2 Commercial Fit Out LTD**. It is a static Astro site, deployed to GitHub Pages and **live at <https://commercialfitout.co.uk/>**.
+Marketing website for **A2 Commercial Fit Out LTD**. It is a static Astro site, hosted on Krystal and **live at <https://commercialfitout.co.uk/>**.
 
 ## Overview
 
@@ -9,7 +9,7 @@ Marketing website for **A2 Commercial Fit Out LTD**. It is a static Astro site, 
 - Fonts: self-hosted Barlow, Barlow Condensed and IBM Plex Mono (`public/fonts/*.woff2`)
 - Content: Astro Content Collections (Markdown + zod schemas) for sectors, case studies and insights articles
 - Images: real photography through `astro:assets` + Sharp, with AVIF/WebP generated at build time
-- Hosting: GitHub Pages with the custom domain `commercialfitout.co.uk`, deployed by GitHub Actions on every push to `main`
+- Hosting: [Krystal](https://krystal.io) web hosting (LiteSpeed). GitHub Actions builds the site and uploads it over FTPS on every push to `main` (see [Hosting & deployment](#hosting--deployment))
 
 ## Current state of the live site
 
@@ -76,13 +76,13 @@ src/
 ├─ assets/images/          # site photography
 └─ pages/                  # routes: services/*.astro are hand-written pages;
                            #   sectors/, projects/, insights/ are generated from collections
-public/                    # CNAME, robots.txt, favicon, og-image, fonts, hero video
+public/                    # robots.txt, favicon, og-image, fonts, hero video
 docs/IMPLEMENTATION_PLAN.md# original build plan and keyword mapping (historical reference)
 ```
 
 ## Editing content
 
-Every push to `main` rebuilds and redeploys the live site automatically, usually within a couple of minutes. Run `npm run build` locally first to catch errors.
+Every push to `main` rebuilds the site and uploads it to Krystal automatically, usually within a few minutes. Run `npm run build` locally first to catch errors.
 
 ### Replace an example case study with a real one
 
@@ -116,7 +116,8 @@ The form (`src/components/ContactForm.astro`, used on `/contact/` and the homepa
 - **Access key:** `WEB3FORMS_ACCESS_KEY` at the top of the component. It's meant to be public, so committing it is fine. If it's ever reset to a `YOUR_…` placeholder, the form automatically shows a "please email us" note instead.
 - **Change the recipient inbox, subject line or other settings:** sign in at <https://app.web3forms.com> with the registered email.
 - **Spam protection:** hCaptcha, through Web3Forms' free integration, using Web3Forms' shared free-plan site key (`HCAPTCHA_SITE_KEY`). There's no hCaptcha account involved. Web3Forms only checks the hCaptcha answer if **hCaptcha** is selected as the captcha in the form's settings at app.web3forms.com, so keep that setting on. (reCAPTCHA and Turnstile are paid Web3Forms Pro features, which is why they aren't used.)
-- The CSP in `BaseLayout.astro` allows `hcaptcha.com` / `*.hcaptcha.com` and posting to `api.web3forms.com`. The privacy policy names Web3Forms and hCaptcha. Update both if the form provider changes.
+- **After sending:** a hidden `redirect` field sends visitors to `/thank-you/` (kept out of the sitemap and search results) instead of Web3Forms' own success page. A small script in the component stops the form from submitting until the hCaptcha box is ticked, and shows a message instead.
+- The CSP in `BaseLayout.astro` allows `hcaptcha.com` / `*.hcaptcha.com`, and lets the form post to `api.web3forms.com` and follow redirects to `web3forms.com`. The privacy policy names Web3Forms and hCaptcha. Update both if the form provider changes.
 
 ### Location pages (disabled)
 
@@ -144,11 +145,20 @@ Set `PHONE` in `src/consts.ts` (e.g. `'01622 000000'`). It then appears automati
 
 ## Hosting & deployment
 
-- Workflow: `.github/workflows/deploy.yml`. It runs `withastro/action@v3` (Node 22) and then `actions/deploy-pages@v4` on push to `main` or on manual dispatch.
-- **Settings → Pages:** the source is **GitHub Actions** and the custom domain is `commercialfitout.co.uk`, with **Enforce HTTPS** on. With an Actions deployment, the repo setting controls the domain and `public/CNAME` is ignored.
-- DNS: four apex `A` records pointing to `185.199.108.153`, `185.199.109.153`, `185.199.110.153` and `185.199.111.153` (plus optional `AAAA` records `2606:50c0:8000::153` … `8003::153`), and `www` as a `CNAME` to the account's `github.io` host. Keep the `MX`/`TXT` records for email.
-- The domain is verified on the GitHub account to prevent takeover. Don't remove the `_github-pages-challenge-…` TXT record.
+The live site is hosted on **Krystal**: `commercialfitout.co.uk` resolves to Krystal's LiteSpeed server. GitHub Pages is not used. The host handles the `http://` → `https://` and `www.` → apex redirects and serves the custom 404 page, through its own server configuration (e.g. `.htaccess`).
 
-### Known limitation: no custom HTTP headers
+### How a change goes live
 
-GitHub Pages can't set response headers, so the Content-Security-Policy and Referrer-Policy are delivered as `<meta>` tags in `BaseLayout.astro`. The CSP is self-only, except for hCaptcha (script/style/frame/connect) and Web3Forms (form-action). `X-Frame-Options` and HSTS preload aren't possible on GitHub Pages alone. To add them, front the site with Cloudflare (free tier) and keep GitHub Pages as the origin.
+1. Merge a pull request into `main` (or push to `main`).
+2. The **Deploy to Krystal** workflow (`.github/workflows/deploy.yml`) runs `npm ci` and `npm run build` on Node 22, then uploads `dist/` to the website folder over FTPS with [FTP-Deploy-Action](https://github.com/SamKirkland/FTP-Deploy-Action).
+3. Progress shows in the repo's **Actions** tab. A green tick means the change is live. You can also re-run the deploy by hand with **Actions → Deploy to Krystal → Run workflow**.
+
+The upload is incremental. The action records what it uploaded in `.ftp-deploy-sync-state.json` in the website folder, and only ever updates or deletes those files. Anything else there (`.htaccess`, files Krystal created) is left alone. Don't delete that state file. If it's removed, the next deploy re-uploads everything, which is harmless but slower.
+
+### Deploy settings
+
+The FTP login is stored as repository secrets under **Settings → Secrets and variables → Actions**: `FTP_SERVER` (hostname, with no `ftp://`), `FTP_USERNAME` and `FTP_PASSWORD`. The workflow uploads to the FTP account's starting folder (`server-dir: ./`), so the FTP account must open directly in the website folder (e.g. a Krystal FTP account whose directory is `public_html`). If the FTP password changes in Krystal, update `FTP_PASSWORD` here too, or deploys will fail.
+
+### Security headers
+
+The Content-Security-Policy and Referrer-Policy are delivered as `<meta>` tags in `BaseLayout.astro`, so they don't depend on server configuration. The CSP is self-only, except for hCaptcha (script/style/frame/connect) and Web3Forms (form-action). Because Krystal runs LiteSpeed, real response headers (`frame-ancestors`/`X-Frame-Options`, HSTS) could be added later through `.htaccess` in the website folder.

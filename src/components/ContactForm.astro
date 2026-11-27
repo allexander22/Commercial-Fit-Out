@@ -1,5 +1,5 @@
 ---
-import { EMAIL } from '../consts';
+import { EMAIL, SITE_URL } from '../consts';
 
 // Submissions are delivered by Web3Forms (https://web3forms.com). Paste the
 // access key Web3Forms emails you into WEB3FORMS_ACCESS_KEY below. The key
@@ -25,7 +25,10 @@ const idPrefix = compact ? 'home-' : '';
 ---
 <div class="contact-form-wrapper card">
   {!compact && <h2>{heading}</h2>}
-  <form action="https://api.web3forms.com/submit" method="POST">
+  <form class="js-contact-form" action="https://api.web3forms.com/submit" method="POST">
+    <!-- After a successful send, Web3Forms redirects here instead of its own
+         success page (which the CSP's form-action would block). -->
+    <input type="hidden" name="redirect" value={`${SITE_URL}/thank-you/`} />
     <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
     <input type="hidden" name="subject" value="New project enquiry from commercialfitout.co.uk" />
     <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
@@ -73,6 +76,7 @@ const idPrefix = compact ? 'home-' : '';
 
     <div class="form-row">
       <div class="h-captcha" data-sitekey={HCAPTCHA_SITE_KEY}></div>
+      <p class="captcha-error" role="alert" hidden>Please tick the "I am human" box before sending your enquiry.</p>
       <p class="captcha-note">This form is protected by hCaptcha. Its <a href="https://www.hcaptcha.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://www.hcaptcha.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.</p>
     </div>
 
@@ -84,6 +88,24 @@ const idPrefix = compact ? 'home-' : '';
 </div>
 
 <script src="https://js.hcaptcha.com/1/api.js?recaptchacompat=off" async defer></script>
+
+<script>
+  // Stop the form posting to Web3Forms without an hCaptcha answer, which
+  // would otherwise land the visitor on a bare Web3Forms error page.
+  document.querySelectorAll<HTMLFormElement>('.js-contact-form').forEach((form) => {
+    const error = form.querySelector<HTMLElement>('.captcha-error');
+    form.addEventListener('submit', (event) => {
+      const token = form.querySelector<HTMLTextAreaElement>('[name="h-captcha-response"]');
+      if (!token || !token.value) {
+        event.preventDefault();
+        if (error) error.hidden = false;
+        form.querySelector('.h-captcha')?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      } else if (error) {
+        error.hidden = true;
+      }
+    });
+  });
+</script>
 
 <style>
   .contact-form-wrapper h2 { margin-top: 0; }
@@ -127,6 +149,12 @@ const idPrefix = compact ? 'home-' : '';
   }
   .form-row--checkbox label {
     font-weight: 400;
+  }
+  .captcha-error {
+    color: #b42318;
+    font-weight: 600;
+    font-size: var(--step--1);
+    margin: var(--space-2xs) 0 0;
   }
   .captcha-note {
     font-size: var(--step--1);

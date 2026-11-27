@@ -38,7 +38,9 @@ const csp = [
   `connect-src 'self' ${HCAPTCHA}`,
   "object-src 'none'",
   "base-uri 'self'",
-  "form-action 'self' https://api.web3forms.com",
+  // web3forms.com too: if Web3Forms ever redirects to its own result page
+  // (e.g. a submission error), the browser must be allowed to follow it.
+  "form-action 'self' https://api.web3forms.com https://web3forms.com",
   'upgrade-insecure-requests',
 ].join('; ');
 ---
