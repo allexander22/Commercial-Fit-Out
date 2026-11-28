@@ -1,0 +1,318 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { EMAIL, SITE_NAME_FULL } from '../consts';
+
+// Press and brand assets. Files live in public/brand/ (the ZIP bundles the
+// four PNGs plus README.txt). Copy follows the A2 Brand Kit (Rev 2.0).
+const assets = [
+  {
+    title: 'Full Logo on Ink',
+    file: 'a2-commercial-fit-out-logo-on-ink.png',
+    size: '1200 × 675 px',
+    note: 'Use anywhere, including on light backgrounds.',
+  },
+  {
+    title: 'Full Logo, Transparent',
+    file: 'a2-commercial-fit-out-logo.png',
+    size: '709 × 392 px',
+    note: 'For dark backgrounds only.',
+  },
+  {
+    title: 'A2 Monogram on Ink',
+    file: 'a2-monogram-on-ink.png',
+    size: '512 × 512 px',
+    note: 'For avatars and small placements.',
+  },
+  {
+    title: 'A2 Monogram, Transparent',
+    file: 'a2-monogram.png',
+    size: '512 × 512 px',
+    note: 'For dark backgrounds only.',
+  },
+];
+
+const colours = [
+  { name: 'Ink', key: 'ink', hex: '#0B0D10', rgb: '11 13 16' },
+  { name: 'Steel', key: 'steel', hex: '#9AA3AD', rgb: '154 163 173' },
+  { name: 'Light Steel', key: 'light-steel', hex: '#F4F5F7', rgb: '244 245 247' },
+  { name: 'A2 Blue', key: 'blue', hex: '#2F7DD1', rgb: '47 125 209' },
+  { name: 'Deep Blue', key: 'deep-blue', hex: '#1C4F8A', rgb: '28 79 138' },
+];
+
+const facts = [
+  { label: 'Registered name', value: SITE_NAME_FULL },
+  { label: 'Based in', value: 'Maidstone, Kent, UK' },
+  { label: 'Areas served', value: 'London, Kent, Essex and the South East' },
+  { label: 'Services', value: 'Office fit out, office refurbishment, retail fit out, healthcare fit out, landlord refurbishment, higher education fit out' },
+  { label: 'Accreditations', value: 'CHAS, SafeContractor' },
+];
+
+const pressMail = `mailto:${EMAIL}?subject=Press`;
+---
+<BaseLayout
+  title="Press and Brand Assets | A2 Commercial Fit Out"
+  description="Download the A2 Commercial Fit Out logo, brand colours, company boilerplate and facts. Press enquiries and higher-resolution artwork: info@commercialfitout.co.uk."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Press and Brand Assets' }]} />
+  </div>
+
+  <section class="section--tight bg-white">
+    <div class="container narrow">
+      <h1>Press and Brand Assets</h1>
+      <p class="lead">Writing about A2 Commercial Fit Out, or listing us on a project board, tender or website? Use the logo files and company details on this page. If you need something that isn't here, email <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
+      <a class="btn btn--primary" href="/brand/a2-commercial-fit-out-brand-assets.zip" download>Download All Brand Assets (ZIP)</a>
+    </div>
+  </section>
+
+  <section class="section bg-ink" aria-labelledby="logo-files">
+    <div class="container">
+      <h2 id="logo-files">Logo Files</h2>
+      <p class="section-intro">Our logo is chrome artwork made for dark backgrounds. On light backgrounds, use the "on Ink" versions, which carry their own dark panel.</p>
+
+      <div class="logo-stage">
+        <img src="/brand/a2-commercial-fit-out-logo.png" width="709" height="392" alt="A2 Commercial Fit Out logo" loading="lazy" decoding="async" />
+      </div>
+
+      <ul class="asset-grid" role="list">
+        {assets.map((a) => (
+          <li class="card asset">
+            <h3>{a.title}</h3>
+            <p class="asset-meta">PNG · {a.size}</p>
+            <p class="asset-note">{a.note}</p>
+            <a class="btn btn--outline-dark btn-small" href={`/brand/${a.file}`} download aria-label={`Download ${a.title} (PNG)`}>Download</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-white" aria-labelledby="using-logo">
+    <div class="container">
+      <h2 id="using-logo">Using Our Logo</h2>
+      <div class="grid grid--2">
+        <div class="card rules">
+          <h3>Please Do</h3>
+          <ul>
+            <li>Use the files exactly as supplied.</li>
+            <li>Leave clear space around the logo equal to the height of the "2".</li>
+            <li>Keep the full logo at least 120 px wide and the monogram at least 32 px.</li>
+            <li>Link the logo to <a href="https://commercialfitout.co.uk">commercialfitout.co.uk</a> when you use it online.</li>
+          </ul>
+        </div>
+        <div class="card rules">
+          <h3>Please Don't</h3>
+          <ul>
+            <li>Recolour, stretch, rotate, crop or outline the logo, or add effects.</li>
+            <li>Place the transparent versions on white, light or busy backgrounds.</li>
+            <li>Recreate the logo in another typeface.</li>
+            <li>Use our name or logo to suggest a partnership or endorsement without our written permission.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-steel" aria-labelledby="brand-colours">
+    <div class="container">
+      <h2 id="brand-colours">Brand Colours</h2>
+      <ul class="swatches" role="list">
+        {colours.map((c) => (
+          <li class="swatch">
+            <span class={`chip chip--${c.key}`} aria-hidden="true"></span>
+            <div class="swatch-info">
+              <h3>{c.name}</h3>
+              <p class="code">HEX {c.hex}</p>
+              <p class="code">RGB {c.rgb}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container narrow">
+      <h2>Writing About A2</h2>
+      <ul>
+        <li>Write <strong>A2 Commercial Fit Out</strong> in full on first mention, then <strong>A2</strong>.</li>
+        <li>Use <strong>{SITE_NAME_FULL}</strong> in legal or contractual contexts.</li>
+        <li>Please don't shorten our name to "A2 Fit Out", "A2 Commercial" or "A2CFO".</li>
+        <li>We write "fit out" as two words, without a hyphen.</li>
+      </ul>
+
+      <h2 class="spaced">Company Boilerplate</h2>
+      <p class="label">Short</p>
+      <blockquote class="boilerplate">
+        <p>A2 Commercial Fit Out is a fixed-price commercial fit out contractor based in Maidstone, Kent, delivering office, retail and healthcare fit outs across London, Kent, Essex and the South East.</p>
+      </blockquote>
+      <p class="label">Long</p>
+      <blockquote class="boilerplate">
+        <p>A2 Commercial Fit Out is a commercial fit out contractor based in Maidstone, Kent, delivering office fit outs, office refurbishments, retail, healthcare, landlord and higher education projects across London, Kent, Essex and the wider South East. A2 works as a delivery partner for businesses, landlords, developers, main contractors, architects and designers, building agreed designs to specification on a fixed price. Core trades, including dry lining, suspended ceilings, tape &amp; jointing and tiling, are delivered by A2's own tradespeople. The company holds CHAS and SafeContractor accreditation. Find out more at commercialfitout.co.uk.</p>
+      </blockquote>
+
+      <h2 class="spaced">Company Facts</h2>
+      <dl class="facts">
+        {facts.map((f) => (
+          <div class="fact">
+            <dt>{f.label}</dt>
+            <dd>{f.value}</dd>
+          </div>
+        ))}
+        <div class="fact">
+          <dt>Website</dt>
+          <dd><a href="https://commercialfitout.co.uk">commercialfitout.co.uk</a></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section--tight bg-ink" aria-labelledby="press-enquiries">
+    <div class="container">
+      <h2 id="press-enquiries">Press Enquiries</h2>
+      <p class="press-text">For interviews, project information, photography or higher-resolution artwork, email <a href={pressMail}>{EMAIL}</a> with "Press" in the subject line.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .narrow { max-width: 50rem; }
+  .lead {
+    font-size: var(--step-1);
+    color: var(--text-on-light-muted);
+    margin-bottom: var(--space-md);
+  }
+  .lead a { color: var(--link-on-light); }
+
+  /* Logo files (Ink) */
+  .section-intro {
+    color: var(--text-on-dark-muted);
+    max-width: 44rem;
+    margin-bottom: var(--space-lg);
+  }
+  .logo-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl) var(--space-md);
+    border: 1px solid var(--colour-ink-border);
+    border-radius: var(--radius-md);
+    background: radial-gradient(ellipse at 50% 45%, #1a1f26 0%, var(--colour-ink) 70%);
+  }
+  .logo-stage img {
+    width: min(440px, 100%);
+    height: auto;
+  }
+  .asset-grid {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-md) 0 0;
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  }
+  .asset {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .asset h3 {
+    font-size: var(--step-1);
+    color: var(--text-on-dark);
+    margin-bottom: var(--space-3xs);
+  }
+  .asset-meta {
+    font-size: var(--step--1);
+    color: var(--colour-steel-400);
+    margin-bottom: var(--space-2xs);
+  }
+  .asset-note {
+    font-size: var(--step--1);
+    color: var(--text-on-dark-muted);
+    margin-bottom: var(--space-md);
+  }
+  .asset .btn-small { color: var(--text-on-dark); }
+  .btn-small {
+    margin-top: auto;
+    padding: 0.5em 1em;
+    font-size: var(--step--1);
+  }
+
+  /* Using our logo */
+  .rules h3 { font-size: var(--step-1); }
+  .rules ul { margin: 0; }
+  .rules li + li { margin-top: var(--space-2xs); }
+
+  /* Colours */
+  .swatches {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-sm);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.5rem), 1fr));
+  }
+  .swatch {
+    background: var(--colour-white);
+    border: 1px solid var(--colour-steel-200);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .chip {
+    display: block;
+    height: 5.5rem;
+    border-bottom: 1px solid var(--colour-steel-200);
+  }
+  .chip--ink { background: var(--colour-ink); }
+  .chip--steel { background: var(--colour-steel-400); }
+  .chip--light-steel { background: var(--colour-steel-100); }
+  .chip--blue { background: var(--colour-blue-500); }
+  .chip--deep-blue { background: var(--colour-blue-700); }
+  .swatch-info { padding: var(--space-sm); }
+  .swatch-info h3 {
+    font-size: var(--step-0);
+    margin-bottom: var(--space-2xs);
+  }
+  .code {
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: var(--step--1);
+    color: var(--text-on-light-muted);
+    margin: 0;
+  }
+
+  /* Writing, boilerplate, facts */
+  .spaced { margin-top: var(--space-xl); }
+  .label {
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-on-light-muted);
+    margin: var(--space-md) 0 var(--space-2xs);
+  }
+  .boilerplate {
+    margin: 0;
+    padding: var(--space-sm) var(--space-md);
+    border-left: 3px solid var(--colour-blue-500);
+    background: var(--colour-steel-100);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+  .boilerplate p { margin: 0; }
+  .facts { margin: 0; }
+  .fact {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: var(--space-sm);
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--colour-steel-200);
+  }
+  .fact dt { font-weight: 600; }
+  .fact dd { margin: 0; color: var(--text-on-light-muted); }
+  @media (max-width: 36rem) {
+    .fact { grid-template-columns: 1fr; gap: var(--space-3xs); }
+  }
+
+  /* Press enquiries */
+  .press-text { color: var(--text-on-dark-muted); margin: 0; }
+</style>
