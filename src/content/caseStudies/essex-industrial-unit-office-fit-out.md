@@ -11,7 +11,7 @@ placeholder: true
 order: 3
 ---
 
-## Project overview
+## Project Overview
 
 This example illustrates a typical industrial fit out on an Essex business park, where a logistics tenant needed new mezzanine office and welfare space built into an operational warehouse unit.
 

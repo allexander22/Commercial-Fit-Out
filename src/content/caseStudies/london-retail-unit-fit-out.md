@@ -11,7 +11,7 @@ placeholder: true
 order: 2
 ---
 
-## Project overview
+## Project Overview
 
 This example represents the kind of retail fit out programme A2 Commercial Fit Out runs regularly inside occupied London shopping centres, where the surrounding units continue trading throughout the works.
 

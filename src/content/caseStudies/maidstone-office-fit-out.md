@@ -11,7 +11,7 @@ placeholder: true
 order: 1
 ---
 
-## Project overview
+## Project Overview
 
 This example illustrates the type of programme A2 Commercial Fit Out delivers for office clients relocating within Kent. A professional services tenant required a full Cat B fit out across two floors of a Maidstone town-centre office building, moving from an outdated open-plan layout to a mix of meeting rooms, breakout space and agile desking.
 
