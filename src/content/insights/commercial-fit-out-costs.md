@@ -51,7 +51,7 @@ These figures are an indicative guide only, based on typical UK commercial fit o
 
 ## Cost by Project Type
 
-Different project types tend to sit in different parts of these bands. [Office fit out](/services/office-fit-out/) projects range widely depending on Cat A vs Cat B scope and specification. [Retail fit out](/services/retail-fit-out/) costs are often driven by fast turnaround requirements and centre-management working restrictions. [Industrial fit out](/sectors/industrial/) projects vary significantly with floorplate size and the proportion of office-to-warehouse space. See our [services](/services/) and [sectors](/sectors/) pages for detail on each project type.
+Different project types tend to sit in different parts of these bands. [Office fit out](/services/office-fit-out) projects range widely depending on Cat A vs Cat B scope and specification. [Retail fit out](/services/retail-fit-out) costs are often driven by fast turnaround requirements and centre-management working restrictions. [Industrial fit out](/sectors/industrial) projects vary significantly with floorplate size and the proportion of office-to-warehouse space. See our [services](/services) and [sectors](/sectors) pages for detail on each project type.
 
 ## Why Fixed-Price Quoting Matters
 
@@ -59,10 +59,10 @@ Square-foot cost guides are useful for early budgeting, but they can't account f
 
 ## Getting an Accurate Figure for Your Project
 
-The only way to get a genuinely accurate cost is a fixed-price quote based on your actual specification, building condition and programme — the bands above are a planning tool, not a substitute for that. [Get in touch](/contact/) with your specification, approximate floor area and location, and we'll arrange a survey and provide a fixed-price quote — with no obligation and no minimum project value.
+The only way to get a genuinely accurate cost is a fixed-price quote based on your actual specification, building condition and programme — the bands above are a planning tool, not a substitute for that. [Get in touch](/contact) with your specification, approximate floor area and location, and we'll arrange a survey and provide a fixed-price quote — with no obligation and no minimum project value.
 
 ## Related Reading
 
-- [Cat A vs Cat B fit out: what's the difference?](/insights/cat-a-vs-cat-b-fit-out/)
-- [Office fit out services](/services/office-fit-out/)
-- [Calculating office refurbishment costs for UK businesses](/insights/calculating-office-refurbishment-costs-uk/)
+- [Cat A vs Cat B fit out: what's the difference?](/insights/cat-a-vs-cat-b-fit-out)
+- [Office fit out services](/services/office-fit-out)
+- [Calculating office refurbishment costs for UK businesses](/insights/calculating-office-refurbishment-costs-uk)

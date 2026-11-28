@@ -202,10 +202,10 @@ Past performance isn't a guarantee, but it's the closest thing you'll get to one
 
 A2 Commercial Fit Out delivers office, retail, and healthcare fit outs with fixed-price quotations, in-house trades, and flexible out-of-hours working. We focus on expert project delivery — bringing designs to life efficiently and without surprises.
 
-**[Request a fixed-price quotation](/contact/)** and discover how we can help you manage your commercial fit out on a fixed budget.
+**[Request a fixed-price quotation](/contact)** and discover how we can help you manage your commercial fit out on a fixed budget.
 
 ## Related Reading
 
-- [Calculating office refurbishment costs for UK businesses](/insights/calculating-office-refurbishment-costs-uk/)
-- [Commercial fit out costs: 2026 guide](/insights/commercial-fit-out-costs/)
-- [Office fit out services](/services/office-fit-out/)
+- [Calculating office refurbishment costs for UK businesses](/insights/calculating-office-refurbishment-costs-uk)
+- [Commercial fit out costs: 2026 guide](/insights/commercial-fit-out-costs)
+- [Office fit out services](/services/office-fit-out)

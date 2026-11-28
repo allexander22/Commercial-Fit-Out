@@ -31,7 +31,7 @@ A2 Commercial Fit Out LTD (Maidstone, Kent) needs a new marketing website at **c
 
 ## Site Map & Keyword Mapping
 
-URLs are flat, lowercase, hyphenated, with trailing slashes; canonical = `https://commercialfitout.co.uk/...`.
+URLs are flat, lowercase, hyphenated, with **no** trailing slashes (changed November 2026, see README → URLs); canonical = `https://commercialfitout.co.uk/...`.
 
 | Page | URL | Primary keyword(s) |
 |---|---|---|

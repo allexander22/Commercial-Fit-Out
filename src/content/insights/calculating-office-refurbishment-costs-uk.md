@@ -128,7 +128,7 @@ These terms appear frequently in commercial property. Understanding the distinct
 - **Cat A:** the landlord's base build. Raised floors, suspended ceilings, basic M&E distribution, and a neutral finish ready for tenant fit out.
 - **Cat B:** the occupier's fit out. Partitions, finishes, branding, furniture, and everything that makes the space functional for your business.
 
-Most refurbishments are Cat B works. However, some projects involve upgrading or replacing Cat A elements that have reached the end of their useful life. See our [Cat A vs Cat B fit out guide](/insights/cat-a-vs-cat-b-fit-out/) for the full breakdown.
+Most refurbishments are Cat B works. However, some projects involve upgrading or replacing Cat A elements that have reached the end of their useful life. See our [Cat A vs Cat B fit out guide](/insights/cat-a-vs-cat-b-fit-out) for the full breakdown.
 
 ## London and Regional UK Office Refurbishment Cost Differences
 
@@ -182,10 +182,10 @@ Check what's included, what's excluded, and whether contingency is built in or q
 
 Calculating office refurbishment costs accurately requires clear specifications, realistic contingencies, and a contractor who delivers what they quote.
 
-A2 Commercial Fit Out provides fixed-price quotations, in-house trades, and flexible out-of-hours working to deliver your project on time and on budget. [Request a fixed-price quotation](/contact/) to start planning your refurbishment.
+A2 Commercial Fit Out provides fixed-price quotations, in-house trades, and flexible out-of-hours working to deliver your project on time and on budget. [Request a fixed-price quotation](/contact) to start planning your refurbishment.
 
 ## Related Reading
 
-- [Commercial fit out costs: 2026 guide](/insights/commercial-fit-out-costs/)
-- [Office refurbishment services](/services/office-refurbishment/)
-- [Managing commercial fit out projects on a fixed budget](/insights/managing-commercial-fit-out-projects-fixed-budget/)
+- [Commercial fit out costs: 2026 guide](/insights/commercial-fit-out-costs)
+- [Office refurbishment services](/services/office-refurbishment)
+- [Managing commercial fit out projects on a fixed budget](/insights/managing-commercial-fit-out-projects-fixed-budget)

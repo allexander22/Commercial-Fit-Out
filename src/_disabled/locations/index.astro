@@ -25,7 +25,7 @@ const locations = (await getCollection('locations')).sort((a, b) => a.data.order
 
       <div class="grid grid--4 location-list">
         {locations.map((location) => (
-          <a class="card location-card" href={`/locations/${location.id}/`}>
+          <a class="card location-card" href={`/locations/${location.id}`}>
             <h3>{location.data.title.replace('Commercial Fit Out ', '')}</h3>
             <p>{location.data.summary}</p>
             <span class="location-link">View coverage →</span>

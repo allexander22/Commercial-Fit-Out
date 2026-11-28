@@ -5,7 +5,8 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://commercialfitout.co.uk',
-  trailingSlash: 'always',
+  // URLs never end in a slash (except the homepage "/"). See README → URLs.
+  trailingSlash: 'never',
   output: 'static',
   integrations: [
     sitemap({
@@ -16,6 +17,9 @@ export default defineConfig({
     }),
   ],
   build: {
+    // Emit about.html rather than about/index.html so the server can serve
+    // /about directly, without redirecting it to /about/ (see public/.htaccess).
+    format: 'file',
     // Keep all CSS in external files so the Content-Security-Policy
     // does not need 'unsafe-inline' for styles.
     inlineStylesheets: 'never',

@@ -27,7 +27,7 @@ const caseStudies = (await getCollection('caseStudies')).sort((a, b) => a.data.o
       <div class="grid grid--3">
         {caseStudies.map((cs) => (
           <CaseStudyCard
-            href={`/projects/${cs.id}/`}
+            href={`/projects/${cs.id}`}
             title={cs.data.title}
             sector={cs.data.sector}
             location={cs.data.location}

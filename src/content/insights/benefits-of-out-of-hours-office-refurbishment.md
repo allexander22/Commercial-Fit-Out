@@ -127,10 +127,10 @@ A2 Commercial Fit Out delivers office refurbishments with flexible out of hours 
 
 Our approach focuses on practical project delivery. We bring designs to life through skilled tradespeople, efficient programming, and clear communication throughout. Whether you're refurbishing a single floor or transforming an entire building, we can tailor working hours to suit your operational requirements.
 
-[Request a fixed-price quotation](/contact/) for your office refurbishment project.
+[Request a fixed-price quotation](/contact) for your office refurbishment project.
 
 ## Related Reading
 
-- [Office refurbishment services](/services/office-refurbishment/)
-- [Managing commercial fit out projects on a fixed budget](/insights/managing-commercial-fit-out-projects-fixed-budget/)
-- [Healthcare facility fit out compliance](/insights/healthcare-fit-out-compliance-requirements/)
+- [Office refurbishment services](/services/office-refurbishment)
+- [Managing commercial fit out projects on a fixed budget](/insights/managing-commercial-fit-out-projects-fixed-budget)
+- [Healthcare facility fit out compliance](/insights/healthcare-fit-out-compliance-requirements)

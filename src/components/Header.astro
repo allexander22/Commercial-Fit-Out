@@ -5,7 +5,7 @@ import { NAV_LINKS, EMAIL, PHONE } from '../consts';
 const currentPath = Astro.url.pathname;
 function isActive(href: string) {
   if (href === '/') return currentPath === '/';
-  return currentPath.startsWith(href);
+  return currentPath === href || currentPath.startsWith(`${href}/`);
 }
 ---
 <header class="site-header bg-ink">
@@ -31,7 +31,7 @@ function isActive(href: string) {
 
     <div class="header-cta">
       {PHONE && <a class="header-phone" href={`tel:${PHONE}`}>{PHONE}</a>}
-      <a class="btn btn--primary" href="/contact/">Get a quote</a>
+      <a class="btn btn--primary" href="/contact">Get a quote</a>
     </div>
   </div>
 </header>

@@ -25,7 +25,7 @@ const insights = (await getCollection('insights')).sort((a, b) => a.data.order -
 
       <div class="grid grid--2 insights-list">
         {insights.map((article) => (
-          <a class="card insight-card" href={`/insights/${article.id}/`}>
+          <a class="card insight-card" href={`/insights/${article.id}`}>
             <h2>{article.data.title}</h2>
             <p>{article.data.summary}</p>
             <span class="insight-link">Read more →</span>

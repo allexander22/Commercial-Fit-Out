@@ -18,7 +18,7 @@ const year = new Date().getFullYear();
       <h2>Services</h2>
       <ul>
         {SERVICE_LINKS.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
-        <li><a href="/services/">All services</a></li>
+        <li><a href="/services">All services</a></li>
       </ul>
     </nav>
 
@@ -31,10 +31,10 @@ const year = new Date().getFullYear();
         {PHONE && <><br /><a href={`tel:${PHONE}`}>{PHONE}</a></>}
       </address>
       <ul class="footer-misc-links">
-        <li><a href="/contact/">Contact us</a></li>
-        <li><a href="/commercial-fit-out-statistics/">Fit out statistics</a></li>
-        <li><a href="/privacy-policy/">Privacy policy</a></li>
-        <li><a href="/modern-slavery-statement/">Modern slavery statement</a></li>
+        <li><a href="/contact">Contact us</a></li>
+        <li><a href="/commercial-fit-out-statistics">Fit out statistics</a></li>
+        <li><a href="/privacy-policy">Privacy policy</a></li>
+        <li><a href="/modern-slavery-statement">Modern slavery statement</a></li>
       </ul>
     </div>
   </div>

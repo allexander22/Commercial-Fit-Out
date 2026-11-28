@@ -28,7 +28,7 @@ const idPrefix = compact ? 'home-' : '';
   <form class="js-contact-form" action="https://api.web3forms.com/submit" method="POST">
     <!-- After a successful send, Web3Forms redirects here instead of its own
          success page (which the CSP's form-action would block). -->
-    <input type="hidden" name="redirect" value={`${SITE_URL}/thank-you/`} />
+    <input type="hidden" name="redirect" value={`${SITE_URL}/thank-you`} />
     <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
     <input type="hidden" name="subject" value="New project enquiry from commercialfitout.co.uk" />
     <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
@@ -66,7 +66,7 @@ const idPrefix = compact ? 'home-' : '';
 
     <div class="form-row form-row--checkbox">
       <input id={`${idPrefix}privacy-consent`} name="privacy_consent" type="checkbox" required />
-      <label for={`${idPrefix}privacy-consent`}>I agree to the <a href="/privacy-policy/">privacy policy</a> <span class="required">*</span></label>
+      <label for={`${idPrefix}privacy-consent`}>I agree to the <a href="/privacy-policy">privacy policy</a> <span class="required">*</span></label>
     </div>
 
     <div class="form-row form-row--checkbox">

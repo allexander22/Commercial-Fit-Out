@@ -39,8 +39,8 @@ const latestInsights = (await getCollection('insights'))
     <Fragment slot="heading">Commercial Fit Out, Delivered on a Fixed Price</Fragment>
     <p>A2 Commercial Fit Out is a UK commercial fit out company delivering office fit outs, refurbishments, retail spaces and healthcare environments across London, Kent and Essex. We're a fit out contractor, not a design house: give us the brief and the drawings, and we build to spec, on budget, and on time.</p>
     <Fragment slot="actions">
-      <a class="btn btn--primary" href="/contact/">Get a fixed-price quote</a>
-      <a class="btn btn--outline-dark" href="/services/">Explore our services</a>
+      <a class="btn btn--primary" href="/contact">Get a fixed-price quote</a>
+      <a class="btn btn--outline-dark" href="/services">Explore our services</a>
     </Fragment>
   </Hero>
 
@@ -57,13 +57,13 @@ const latestInsights = (await getCollection('insights'))
       <h2>What We Do</h2>
       <p>A2 covers the full spectrum of commercial fit out and refurbishment, from a single-room refresh to a complete turnkey fit out. We work directly with businesses, landlords, developers and main contractors, and we're a dependable delivery partner for architects and designers who need their specification built exactly as drawn.</p>
       <div class="grid grid--4 services-grid">
-        <ServiceCard href="/services/office-fit-out/" title="Office Fit Out" description="Cat A, Cat B and turnkey office fit out delivered to a fixed price." image={officeFitOutImg} imageAlt="" />
-        <ServiceCard href="/services/office-refurbishment/" title="Office Refurbishment" description="Refurbishment of existing office space with minimal disruption to your team." image={officeRefurbImg} imageAlt="" />
-        <ServiceCard href="/services/retail-fit-out/" title="Retail Fit Out" description="Shop and retail unit fit out delivered fast, to protect your opening date." image={retailFitOutImg} imageAlt="" />
-        <ServiceCard href="/services/healthcare-fit-out/" title="Healthcare Fit Out" description="Compliant healthcare and clinical fit out, including hospital settings, delivered by trusted trades." image={healthcareFitOutImg} imageAlt="" />
+        <ServiceCard href="/services/office-fit-out" title="Office Fit Out" description="Cat A, Cat B and turnkey office fit out delivered to a fixed price." image={officeFitOutImg} imageAlt="" />
+        <ServiceCard href="/services/office-refurbishment" title="Office Refurbishment" description="Refurbishment of existing office space with minimal disruption to your team." image={officeRefurbImg} imageAlt="" />
+        <ServiceCard href="/services/retail-fit-out" title="Retail Fit Out" description="Shop and retail unit fit out delivered fast, to protect your opening date." image={retailFitOutImg} imageAlt="" />
+        <ServiceCard href="/services/healthcare-fit-out" title="Healthcare Fit Out" description="Compliant healthcare and clinical fit out, including hospital settings, delivered by trusted trades." image={healthcareFitOutImg} imageAlt="" />
       </div>
-      <p>We also deliver <a href="/services/landlord-refurbishment/">landlord refurbishment</a>, repositioning commercial assets ahead of re-letting, and <a href="/services/higher-education-fit-out/">higher education fit out and refurbishment</a>, built around university and college term dates.</p>
-      <p><a class="btn btn--outline-light" href="/services/">View all services</a></p>
+      <p>We also deliver <a href="/services/landlord-refurbishment">landlord refurbishment</a>, repositioning commercial assets ahead of re-letting, and <a href="/services/higher-education-fit-out">higher education fit out and refurbishment</a>, built around university and college term dates.</p>
+      <p><a class="btn btn--outline-light" href="/services">View all services</a></p>
     </div>
   </section>
 
@@ -82,7 +82,7 @@ const latestInsights = (await getCollection('insights'))
       <div class="grid grid--3">
         {caseStudies.map((cs) => (
           <CaseStudyCard
-            href={`/projects/${cs.id}/`}
+            href={`/projects/${cs.id}`}
             title={cs.data.title}
             sector={cs.data.sector}
             location={cs.data.location}
@@ -92,7 +92,7 @@ const latestInsights = (await getCollection('insights'))
           />
         ))}
       </div>
-      <p><a class="btn btn--outline-light" href="/projects/">View all projects</a></p>
+      <p><a class="btn btn--outline-light" href="/projects">View all projects</a></p>
     </div>
   </section>
 
@@ -111,12 +111,12 @@ const latestInsights = (await getCollection('insights'))
           <h2>Latest Insights</h2>
           <p>Practical guides on commercial fit out costs, compliance and project delivery, written to help you plan before you request a quote.</p>
         </div>
-        <a class="btn btn--outline-dark insights-head-link" href="/insights/">View all insights</a>
+        <a class="btn btn--outline-dark insights-head-link" href="/insights">View all insights</a>
       </div>
       <div class="grid grid--3">
         {latestInsights.map((article) => (
           <InsightCard
-            href={`/insights/${article.id}/`}
+            href={`/insights/${article.id}`}
             title={article.data.title}
             summary={article.data.summary}
             image={insightImages[article.id]}

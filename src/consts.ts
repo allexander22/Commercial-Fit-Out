@@ -24,21 +24,21 @@ export const SOCIAL = {
 
 export const NAV_LINKS = [
   { href: '/', label: 'Home' },
-  { href: '/services/', label: 'Services' },
-  { href: '/sectors/', label: 'Sectors' },
-  { href: '/projects/', label: 'Projects' },
-  { href: '/insights/', label: 'Insights' },
-  { href: '/about/', label: 'About' },
-  { href: '/contact/', label: 'Contact' },
+  { href: '/services', label: 'Services' },
+  { href: '/sectors', label: 'Sectors' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/insights', label: 'Insights' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export const SERVICE_LINKS = [
-  { href: '/services/office-fit-out/', label: 'Office Fit Out' },
-  { href: '/services/office-refurbishment/', label: 'Office Refurbishment' },
-  { href: '/services/retail-fit-out/', label: 'Retail Fit Out' },
-  { href: '/services/healthcare-fit-out/', label: 'Healthcare Fit Out' },
-  { href: '/services/landlord-refurbishment/', label: 'Landlord Refurbishment' },
-  { href: '/services/higher-education-fit-out/', label: 'Higher Education Fit Out' },
+  { href: '/services/office-fit-out', label: 'Office Fit Out' },
+  { href: '/services/office-refurbishment', label: 'Office Refurbishment' },
+  { href: '/services/retail-fit-out', label: 'Retail Fit Out' },
+  { href: '/services/healthcare-fit-out', label: 'Healthcare Fit Out' },
+  { href: '/services/landlord-refurbishment', label: 'Landlord Refurbishment' },
+  { href: '/services/higher-education-fit-out', label: 'Higher Education Fit Out' },
 ];
 
 // Location pages are temporarily removed from the site (see LOCATION_LINKS

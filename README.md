@@ -1,10 +1,10 @@
 # commercialfitout.co.uk
 
-Marketing website for **A2 Commercial Fit Out LTD**. It is a static Astro site, hosted on Krystal and **live at <https://commercialfitout.co.uk/>**.
+Marketing website for **A2 Commercial Fit Out LTD**. It is a static Astro site, hosted on Krystal and **live at <https://commercialfitout.co.uk>**.
 
 ## Overview
 
-- Framework: [Astro](https://astro.build) v5, `output: 'static'`, `trailingSlash: 'always'`
+- Framework: [Astro](https://astro.build) v5, `output: 'static'`, `trailingSlash: 'never'`, `build.format: 'file'` (see [URLs: no trailing slashes](#urls-no-trailing-slashes))
 - Styling: hand-written global CSS tokens (`src/styles/global.css`) plus Astro scoped `<style>` per component, with no CSS framework
 - Fonts: self-hosted Barlow, Barlow Condensed and IBM Plex Mono (`public/fonts/*.woff2`)
 - Content: Astro Content Collections (Markdown + zod schemas) for sectors, case studies and insights articles
@@ -20,20 +20,20 @@ Marketing website for **A2 Commercial Fit Out LTD**. It is a static Astro site, 
 | Logo | Real supplied artwork (`src/assets/brand/logo-mark-transparent.png`) in the header and footer. |
 | Photography | Real photos on all service, hub and article pages. The homepage hero is a looping background video (`public/A2 Commercial Fit Out Intro.mp4`, poster `hero.jpg`). |
 | Case studies | **Placeholders.** All 3 carry the "Example project" label (`placeholder: true`). |
-| Contact form | Live on `/contact/` and the homepage. Submissions go through Web3Forms to the inbox registered with the access key, with hCaptcha spam protection (see [Contact form](#contact-form)). |
+| Contact form | Live on `/contact` and the homepage. Submissions go through Web3Forms to the inbox registered with the access key, with hCaptcha spam protection (see [Contact form](#contact-form)). |
 | Phone number | **Not set.** `PHONE` is empty in `src/consts.ts`, so phone links are hidden site-wide. |
-| Location pages | **Disabled.** `/locations/` returns 404 (see [Location pages](#location-pages-disabled)). |
+| Location pages | **Disabled.** `/locations` returns 404 (see [Location pages](#location-pages-disabled)). |
 | Cookie banner | Live (necessary / analytics choice, stored in `localStorage`). |
 | Analytics | **None installed yet.** The cookie banner exposes `window.a2CookieConsent.hasAnalyticsConsent()` so that any future script can check consent first. |
 | Accreditations | CHAS / SafeContractor shown on the homepage, about, contact and footer. |
 
 ### Site map (live)
 
-- **Core:** `/`, `/about/`, `/contact/`, `/commercial-fit-out-statistics/`, `/privacy-policy/`, `/modern-slavery-statement/`
-- **Services** (`/services/`): `office-fit-out`, `office-refurbishment`, `retail-fit-out`, `healthcare-fit-out`, `landlord-refurbishment`, `higher-education-fit-out`
-- **Sectors** (`/sectors/`): `industrial`, `pubs-and-bars`, `shops`, `turnkey`, `bespoke-joinery-fit-out`
-- **Projects** (`/projects/`): `maidstone-office-fit-out`, `london-retail-unit-fit-out`, `essex-industrial-unit-office-fit-out` (all example placeholders)
-- **Insights** (`/insights/`): `cat-a-vs-cat-b-fit-out`, `commercial-fit-out-costs`, `calculating-office-refurbishment-costs-uk`, `managing-commercial-fit-out-projects-fixed-budget`, `benefits-of-out-of-hours-office-refurbishment`, `healthcare-fit-out-compliance-requirements`
+- **Core:** `/`, `/about`, `/contact`, `/commercial-fit-out-statistics`, `/privacy-policy`, `/modern-slavery-statement`
+- **Services** (`/services`): `office-fit-out`, `office-refurbishment`, `retail-fit-out`, `healthcare-fit-out`, `landlord-refurbishment`, `higher-education-fit-out`
+- **Sectors** (`/sectors`): `industrial`, `pubs-and-bars`, `shops`, `turnkey`, `bespoke-joinery-fit-out`
+- **Projects** (`/projects`): `maidstone-office-fit-out`, `london-retail-unit-fit-out`, `essex-industrial-unit-office-fit-out` (all example placeholders)
+- **Insights** (`/insights`): `cat-a-vs-cat-b-fit-out`, `commercial-fit-out-costs`, `calculating-office-refurbishment-costs-uk`, `managing-commercial-fit-out-projects-fixed-budget`, `benefits-of-out-of-hours-office-refurbishment`, `healthcare-fit-out-compliance-requirements`
 
 Header nav: Home · Services · Sectors · Projects · Insights · About · Contact, plus a "Get a quote" button. Navigation is defined in `src/consts.ts`.
 
@@ -48,7 +48,7 @@ Header nav: Home · Services · Sectors · Projects · Insights · About · Cont
 |---|---|
 | `npm install` | Install dependencies |
 | `npm run dev` | Start local dev server |
-| `npm run build` | Build the production site to `dist/` |
+| `npm run build` | Build the production site to `dist/`, then fail if any internal URL ends in `/` (`scripts/check-trailing-slashes.mjs`) |
 | `npm run preview` | Preview the production build locally |
 
 On Windows, if `node`/`npm` aren't on your PATH, prefix commands with:
@@ -76,7 +76,7 @@ src/
 ├─ assets/images/          # site photography
 └─ pages/                  # routes: services/*.astro are hand-written pages;
                            #   sectors/, projects/, insights/ are generated from collections
-public/                    # robots.txt, favicon, og-image, fonts, hero video
+public/                    # .htaccess (server rules), robots.txt, favicon, og-image, fonts, hero video
 docs/IMPLEMENTATION_PLAN.md# original build plan and keyword mapping (historical reference)
 ```
 
@@ -143,9 +143,21 @@ Set `GA_MEASUREMENT_ID` in `src/consts.ts` (e.g. `'G-XXXXXXXXXX'`, from GA4 → 
 - Light-background logo artwork (`Logo.astro`'s `variant="light"` is currently a hand-made vector stand-in)
 - Statistics page sources were last checked on 31 July 2026. Re-check them periodically.
 
+## URLs: no trailing slashes
+
+**Rule for every page, existing and new: URLs never end in a slash.** Write `/services/office-fit-out`, never `/services/office-fit-out/`. The homepage `/` is the only exception. This applies to every link: `href`s in `.astro` files, links in Markdown content, `NAV_LINKS`/`SERVICE_LINKS` in `src/consts.ts`, `Breadcrumbs` items, `ServiceSchema` `url` props and `canonicalPath`.
+
+How it's enforced:
+
+- `astro.config.mjs` sets `trailingSlash: 'never'`, so the dev server 404s on slash URLs and the sitemap is generated without them.
+- `build.format: 'file'` emits `about.html` rather than `about/index.html`. That stops the server redirecting `/about` to `/about/` (it does that for directories).
+- `public/.htaccess` serves `/about` from `about.html` and 301-redirects `/about/` and `/about.html` to `/about`.
+- `Seo.astro` normalises canonical and `og:url` values, so they never end in `/` or `.html`.
+- `npm run build` runs `scripts/check-trailing-slashes.mjs`, which fails the build (and so the deploy) if any internal link, JSON-LD URL or sitemap entry in `dist/` ends in `/`.
+
 ## Hosting & deployment
 
-The live site is hosted on **Krystal**: `commercialfitout.co.uk` resolves to Krystal's LiteSpeed server. GitHub Pages is not used. The host handles the `http://` → `https://` and `www.` → apex redirects and serves the custom 404 page, through its own server configuration (e.g. `.htaccess`).
+The live site is hosted on **Krystal**: `commercialfitout.co.uk` resolves to Krystal's LiteSpeed server. GitHub Pages is not used. Server rules live in `public/.htaccess`, which is deployed with the site: the `http://` → `https://` and `www.` → apex redirects, the custom 404 page, and the no-trailing-slash rules. Edit that file, not the copy on the server, because each deploy overwrites it.
 
 ### How a change goes live
 
@@ -153,7 +165,7 @@ The live site is hosted on **Krystal**: `commercialfitout.co.uk` resolves to Kry
 2. The **Deploy to Krystal** workflow (`.github/workflows/deploy.yml`) runs `npm ci` and `npm run build` on Node 22, then uploads `dist/` to the website folder over FTPS with [FTP-Deploy-Action](https://github.com/SamKirkland/FTP-Deploy-Action).
 3. Progress shows in the repo's **Actions** tab. A green tick means the change is live. You can also re-run the deploy by hand with **Actions → Deploy to Krystal → Run workflow**.
 
-The upload is incremental. The action records what it uploaded in `.ftp-deploy-sync-state.json` in the website folder, and only ever updates or deletes those files. Anything else there (`.htaccess`, files Krystal created) is left alone. Don't delete that state file. If it's removed, the next deploy re-uploads everything, which is harmless but slower.
+The upload is incremental. The action records what it uploaded in `.ftp-deploy-sync-state.json` in the website folder, and only ever updates or deletes those files. Anything else there (files Krystal created) is left alone. `.htaccess` is part of the build, so it is uploaded too. Don't delete that state file. If it's removed, the next deploy re-uploads everything, which is harmless but slower.
 
 ### Deploy settings
 
@@ -161,4 +173,4 @@ The FTP login is stored as repository secrets under **Settings → Secrets and v
 
 ### Security headers
 
-The Content-Security-Policy and Referrer-Policy are delivered as `<meta>` tags in `BaseLayout.astro`, so they don't depend on server configuration. The CSP is self-only, except for hCaptcha (script/style/frame/connect), Web3Forms (form-action) and, when `GA_MEASUREMENT_ID` is set, Google Analytics (script/img/connect). Because Krystal runs LiteSpeed, real response headers (`frame-ancestors`/`X-Frame-Options`, HSTS) could be added later through `.htaccess` in the website folder.
+The Content-Security-Policy and Referrer-Policy are delivered as `<meta>` tags in `BaseLayout.astro`, so they don't depend on server configuration. The CSP is self-only, except for hCaptcha (script/style/frame/connect), Web3Forms (form-action) and, when `GA_MEASUREMENT_ID` is set, Google Analytics (script/img/connect). Because Krystal runs LiteSpeed, real response headers (`frame-ancestors`/`X-Frame-Options`, HSTS) could be added later through `public/.htaccess`.

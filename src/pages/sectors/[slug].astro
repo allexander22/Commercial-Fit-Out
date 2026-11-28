@@ -21,7 +21,7 @@ const { Content } = await render(sector);
   description={sector.data.metaDescription}
 >
   <div class="container">
-    <Breadcrumbs items={[{ label: 'Sectors', href: '/sectors/' }, { label: sector.data.title }]} />
+    <Breadcrumbs items={[{ label: 'Sectors', href: '/sectors' }, { label: sector.data.title }]} />
   </div>
 
   <section class="section--tight bg-white">
@@ -41,7 +41,7 @@ const { Content } = await render(sector);
 
   <CtaBanner />
 
-  <ServiceSchema name={sector.data.title} description={sector.data.metaDescription} url={`/sectors/${sector.id}/`} />
+  <ServiceSchema name={sector.data.title} description={sector.data.metaDescription} url={`/sectors/${sector.id}`} />
 </BaseLayout>
 
 <style>

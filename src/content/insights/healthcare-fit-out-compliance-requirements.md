@@ -178,9 +178,9 @@ A2 Commercial Fit Out delivers healthcare fit out projects with fixed-price quot
 
 With experience in clinical environments and a commitment to working out of hours where required, we help healthcare providers achieve compliant, functional spaces without unnecessary disruption.
 
-[Request a fixed-price quotation for your healthcare fit out project.](/contact/)
+[Request a fixed-price quotation for your healthcare fit out project.](/contact)
 
 ## Related Reading
 
-- [Healthcare fit out services](/services/healthcare-fit-out/)
-- [Benefits of out of hours working for office renovations](/insights/benefits-of-out-of-hours-office-refurbishment/)
+- [Healthcare fit out services](/services/healthcare-fit-out)
+- [Benefits of out of hours working for office renovations](/insights/benefits-of-out-of-hours-office-refurbishment)

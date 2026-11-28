@@ -6,7 +6,7 @@
   "description": "A2 Commercial Fit Out LTD - marketing website (Astro static site)",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/check-trailing-slashes.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

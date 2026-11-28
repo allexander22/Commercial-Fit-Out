@@ -25,7 +25,7 @@ const sectors = (await getCollection('sectors')).sort((a, b) => a.data.order - b
 
       <div class="grid grid--3 sector-list">
         {sectors.map((sector) => (
-          <a class="card sector-card" href={`/sectors/${sector.id}/`}>
+          <a class="card sector-card" href={`/sectors/${sector.id}`}>
             <h3>{sector.data.title}</h3>
             <p>{sector.data.summary}</p>
             <span class="sector-link">Learn more →</span>
