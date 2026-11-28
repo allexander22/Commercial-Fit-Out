@@ -7,6 +7,11 @@ export const SITE_URL = 'https://commercialfitout.co.uk';
 export const EMAIL = 'info@commercialfitout.co.uk';
 export const PHONE = '';
 
+// Google Analytics 4 measurement ID (e.g. 'G-XXXXXXXXXX'). Leave blank to
+// disable GA entirely: no script, no CSP exceptions. When set, gtag.js
+// still only loads after the visitor accepts analytics cookies.
+export const GA_MEASUREMENT_ID = 'G-XY2KW6T7G3';
+
 export const ADDRESS_LOCALITY = 'Maidstone';
 export const ADDRESS_REGION = 'Kent';
 export const ADDRESS_COUNTRY = 'GB';

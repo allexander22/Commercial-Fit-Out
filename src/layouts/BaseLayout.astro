@@ -3,6 +3,7 @@ import Seo from '../components/Seo.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieConsent from '../components/CookieConsent.astro';
+import { GA_MEASUREMENT_ID } from '../consts';
 import '../styles/global.css';
 
 interface Props {
@@ -26,16 +27,26 @@ const { title, description, image, type, noindex, canonicalPath } = Astro.props;
 // hcaptcha.com exceptions from hCaptcha's CSP guidance rather than the
 // site's usual self-only policy.
 const HCAPTCHA = 'https://hcaptcha.com https://*.hcaptcha.com';
+// Google Analytics 4 hosts, per Google's CSP guidance for gtag.js. Only
+// added when a measurement ID is configured; the script itself is still
+// consent-gated (see src/scripts/analytics.js).
+const GA = GA_MEASUREMENT_ID
+  ? {
+      script: ' https://*.googletagmanager.com',
+      img: ' https://*.google-analytics.com https://*.googletagmanager.com',
+      connect: ' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com',
+    }
+  : { script: '', img: '', connect: '' };
 const csp = [
   "default-src 'self'",
   import.meta.env.DEV
-    ? `script-src 'self' 'unsafe-inline' ${HCAPTCHA}`
-    : `script-src 'self' ${HCAPTCHA}`,
+    ? `script-src 'self' 'unsafe-inline' ${HCAPTCHA}${GA.script}`
+    : `script-src 'self' ${HCAPTCHA}${GA.script}`,
   import.meta.env.DEV ? `style-src 'self' 'unsafe-inline' ${HCAPTCHA}` : `style-src 'self' ${HCAPTCHA}`,
-  "img-src 'self' data:",
+  `img-src 'self' data:${GA.img}`,
   "font-src 'self'",
   `frame-src ${HCAPTCHA}`,
-  `connect-src 'self' ${HCAPTCHA}`,
+  `connect-src 'self' ${HCAPTCHA}${GA.connect}`,
   "object-src 'none'",
   "base-uri 'self'",
   // web3forms.com too: if Web3Forms ever redirects to its own result page
@@ -53,6 +64,7 @@ const csp = [
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="generator" content={Astro.generator} />
+    {GA_MEASUREMENT_ID && <meta name="a2-ga-measurement-id" content={GA_MEASUREMENT_ID} />}
     <Seo title={title} description={description} image={image} type={type} noindex={noindex} canonicalPath={canonicalPath} />
     <slot name="head" />
   </head>
@@ -65,5 +77,6 @@ const csp = [
     <Footer />
     <CookieConsent />
     <script src="../scripts/nav.js"></script>
+    <script src="../scripts/analytics.js"></script>
   </body>
 </html>

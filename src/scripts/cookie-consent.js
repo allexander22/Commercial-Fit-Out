@@ -21,6 +21,8 @@
     } catch (e) {
       /* localStorage unavailable (private browsing etc) — banner will just reappear next visit */
     }
+    // Lets analytics.js start immediately when consent is given mid-visit.
+    window.dispatchEvent(new CustomEvent('a2:consent-change', { detail: { analytics: analytics } }));
   }
 
   // Exposed for future analytics scripts to check before loading anything.

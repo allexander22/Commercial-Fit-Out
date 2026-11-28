@@ -133,9 +133,9 @@ The London, Kent, Essex and Maidstone pages were taken off the site. Their conte
 
 Set `PHONE` in `src/consts.ts` (e.g. `'01622 000000'`). It then appears automatically in the header, footer, contact page and LocalBusiness schema.
 
-### Analytics (optional)
+### Google Analytics 4
 
-[Cloudflare Web Analytics](https://www.cloudflare.com/web-analytics/) and [Plausible](https://plausible.io) are both lightweight options. Add the script tag in `BaseLayout.astro`, add its host to `script-src` (and `connect-src` if needed) in the CSP, and load it only when `window.a2CookieConsent.hasAnalyticsConsent()` is true.
+Set `GA_MEASUREMENT_ID` in `src/consts.ts` (e.g. `'G-XXXXXXXXXX'`, from GA4 → Admin → Data streams) and rebuild. This adds the Google hosts to the CSP and a `<meta name="a2-ga-measurement-id">` tag that `src/scripts/analytics.js` reads. gtag.js is loaded only after the visitor accepts analytics cookies in the banner (on this or a previous visit). With the ID blank, nothing GA-related is emitted.
 
 ### Also pending (outside this repo)
 
@@ -161,4 +161,4 @@ The FTP login is stored as repository secrets under **Settings → Secrets and v
 
 ### Security headers
 
-The Content-Security-Policy and Referrer-Policy are delivered as `<meta>` tags in `BaseLayout.astro`, so they don't depend on server configuration. The CSP is self-only, except for hCaptcha (script/style/frame/connect) and Web3Forms (form-action). Because Krystal runs LiteSpeed, real response headers (`frame-ancestors`/`X-Frame-Options`, HSTS) could be added later through `.htaccess` in the website folder.
+The Content-Security-Policy and Referrer-Policy are delivered as `<meta>` tags in `BaseLayout.astro`, so they don't depend on server configuration. The CSP is self-only, except for hCaptcha (script/style/frame/connect), Web3Forms (form-action) and, when `GA_MEASUREMENT_ID` is set, Google Analytics (script/img/connect). Because Krystal runs LiteSpeed, real response headers (`frame-ancestors`/`X-Frame-Options`, HSTS) could be added later through `.htaccess` in the website folder.

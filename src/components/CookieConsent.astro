@@ -1,11 +1,8 @@
 ---
-// Cookie preferences banner. The site currently sets no non-essential
-// cookies (no analytics/marketing scripts are wired in yet — see the
-// implementation plan's "Out of Scope" notes on analytics), so this banner
-// doesn't gate anything live today. It's built ahead of that so consent is
-// already in place — and persisted via localStorage — once analytics is
-// added; that future script should check `window.a2CookieConsent.hasAnalyticsConsent()`
-// before loading anything.
+// Cookie preferences banner. Consent is persisted via localStorage and
+// gates Google Analytics 4 (src/scripts/analytics.js), which loads only
+// when `window.a2CookieConsent.hasAnalyticsConsent()` is true or an
+// `a2:consent-change` event grants analytics consent mid-visit.
 ---
 <div class="cookie-consent" role="dialog" aria-modal="false" aria-labelledby="cookie-consent-heading" hidden>
   <h2 id="cookie-consent-heading">Cookies preferences</h2>
